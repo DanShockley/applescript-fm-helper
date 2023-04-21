@@ -1,11 +1,12 @@
 -- CopyValuesFromViewIndexWindow({})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- Copy Values from View Index Window
 
 (*
 HISTORY:
-	1.1 - 2019-04-25 ( dshockley ): Provide visual feedback that the rows were copied by moving to the end of scroll area.
-	1.0 - 2017-xx-xx ( dshockley ): First created. 
+	2023-04-21 ( danshockley ): Revised to be FileMaker-version-independent. 
+	2019-04-25 ( danshockley ): Provide visual feedback that the rows were copied by moving to the end of scroll area.
+	2017-xx-xx ( danshockley ): First created. 
 *)
 
 
@@ -18,10 +19,13 @@ end run
 --------------------
 
 on CopyValuesFromViewIndexWindow({})
-	-- version 1.1
+	-- version 2023-04-21 ( danshockley )
 	
 	tell application "System Events"
-		tell application process "FileMaker Pro Advanced"
+		set frontAppName to get name of first application process whose frontmost is true
+		if frontAppName does not contain "FileMaker" then return false
+		
+		tell application process frontAppName
 			--set frontmost to true
 			if name of window 1 is not "View Index" then
 				display dialog "Please choose View Index on the field you'd like the list of index values for." buttons {"OK"} default button "OK"
