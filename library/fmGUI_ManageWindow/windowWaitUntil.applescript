@@ -5,6 +5,7 @@
 
 (*
 HISTORY:
+	1.5 - 2023-07-20 ( danshockley ): Use "FileMaker Pro" to work with 19. Provide an error for an unknown test. Added whichWindow "none" (use with your choice of windowNameTest). 
 	1.4 - 2017-10-19 ( eshagdar ): wrap in a try-block
 	1.3 - 2016-10-20 ( dshockley ): if using "any", then need to do the name tests in a loop for each window.
 	1.2 - 2015-09-30 ( eshagdar ): added 'is not test'.
@@ -17,7 +18,8 @@ on run
 	fmGUI_AppFrontMost()
 	delay 1
 	--windowWaitUntil({whichWindow:"any", windowNameTest:"contains", windowName:"Authenticate"})
-	windowWaitUntil({whichWindow:"front", windowNameTest:"is not", windowName:"Manage Database for"})
+	--windowWaitUntil({whichWindow:"front", windowNameTest:"is not", windowName:"Manage Database for"})
+	windowWaitUntil({whichWindow:"none", windowNameTest:"contains", windowName:"Manage Database for"})
 end run
 
 --------------------
@@ -25,7 +27,7 @@ end run
 --------------------
 
 on windowWaitUntil(prefs)
-	-- version 1.3, Daniel A. Shockley
+	-- version 2023-07-20 ( danshockley )
 	
 	set defaultPrefs to {windowName:null, windowNameTest:"contains", whichWindow:"any", waitCycleDelaySeconds:0.5, waitCycleMax:20}
 	set prefs to prefs & defaultPrefs
@@ -35,22 +37,31 @@ on windowWaitUntil(prefs)
 	set whichWindow to whichWindow of prefs
 	
 	set checkResult to false
+	set foundWindow to false
 	
 	try
 		repeat waitCycleMax of prefs times
 			tell application "System Events"
-				if whichWindow is "any" then
-					set windowNameList to name of every window of application process "FileMaker Pro Advanced"
+				if whichWindow is in {"any", "none"} then
+					set windowNameList to name of every window of application process "FileMaker Pro"
 				else if whichWindow is "front" then
-					set frontWindowName to name of window 1 of application process "FileMaker Pro Advanced"
+					set frontWindowName to name of window 1 of application process "FileMaker Pro"
 					set windowNameList to {frontWindowName} -- we are only checking ONE window, but need a list (of one item) for below.
 				else -- whichWindow  is window index number:
 					set windowIndex to whichWindow as number
-					set chosenWindowName to name of window windowIndex of application process "FileMaker Pro Advanced"
+					set chosenWindowName to name of window windowIndex of application process "FileMaker Pro"
 					set windowNameList to {chosenWindowName} -- we are only checking ONE window, but need a list (of one item) for below.
 				end if
 			end tell
 			
+			-- are we doing an existence search?
+			if whichWindow is "exists" then
+				set existenceSearch to true
+			else if whichWindow is "does not exist" then
+				set existenceSearch to false
+			else
+				set existenceSearch to ""
+			end if
 			
 			repeat with oneWindowName in windowNameList
 				-- BEGIN: loop over one (or more) windows.	
@@ -83,6 +94,8 @@ on windowWaitUntil(prefs)
 				else if windowNameTest is "is not" then
 					set checkResult to (oneWindowName is not windowName)
 					
+				else
+					error "Unknown windowNameTest: " & windowNameTest number -1024
 				end if
 				
 				if checkResult then exit repeat
@@ -90,15 +103,26 @@ on windowWaitUntil(prefs)
 				-- END OF: loop over one (or more) windows.	
 			end repeat
 			
+			if whichWindow is "none" then
+				-- we want to END the script when a scan through all windows did NOT find a window matching our test:
+				if not checkResult then exit repeat
+			else
+				-- "any" or "front" or any affirmative "FOUND IT" request:
+				if checkResult then exit repeat
+			end if
 			
-			if checkResult then exit repeat
 			
 			delay waitCycleDelaySeconds of prefs
 			
 			-- END OF: waiting loop.			
 		end repeat
 		
-		return checkResult
+		if whichWindow is "none" then
+			return not checkResult
+		else
+			return checkResult
+		end if
+		
 	on error errMsg number errNum
 		error "unable to windowWaitUntil - " & errMsg number errNum
 	end try
