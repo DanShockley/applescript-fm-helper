@@ -5,12 +5,12 @@
 
 (*
 HISTORY:
-	1.5 - 2023-07-20 ( danshockley ): Use "FileMaker Pro" to work with 19. Provide an error for an unknown test. Added whichWindow "none" (use with your choice of windowNameTest). 
+	1.5 - 2023-07-20 ( danshockley ): Use "FileMaker Pro" (v19's name) AFTER checking frontmost app. Provide an error for an unknown test. Added whichWindow "none" (use with your choice of windowNameTest). 
 	1.4 - 2017-10-19 ( eshagdar ): wrap in a try-block
-	1.3 - 2016-10-20 ( dshockley ): if using "any", then need to do the name tests in a loop for each window.
+	1.3 - 2016-10-20 ( danshockley ): if using "any", then need to do the name tests in a loop for each window.
 	1.2 - 2015-09-30 ( eshagdar ): added 'is not test'.
-	1.1 - 2014-xx-xx ( dshockley ): added 'is' as synonymous with 'equals'.
-	1.0 - 2014-xx-xx ( dshockley ): created.
+	1.1 - 2014-xx-xx ( danshockley ): added 'is' as synonymous with 'equals'.
+	1.0 - 2014-xx-xx ( danshockley ): created.
 *)
 
 
@@ -42,14 +42,18 @@ on windowWaitUntil(prefs)
 	try
 		repeat waitCycleMax of prefs times
 			tell application "System Events"
+				set fmAppName to get name of first application process whose frontmost is true
+				
+				if fmAppName does not contain "FileMaker" then set fmAppName to "FileMaker Pro"
+				
 				if whichWindow is in {"any", "none"} then
-					set windowNameList to name of every window of application process "FileMaker Pro"
+					set windowNameList to name of every window of application process fmAppName
 				else if whichWindow is "front" then
-					set frontWindowName to name of window 1 of application process "FileMaker Pro"
+					set frontWindowName to name of window 1 of application process fmAppName
 					set windowNameList to {frontWindowName} -- we are only checking ONE window, but need a list (of one item) for below.
 				else -- whichWindow  is window index number:
 					set windowIndex to whichWindow as number
-					set chosenWindowName to name of window windowIndex of application process "FileMaker Pro"
+					set chosenWindowName to name of window windowIndex of application process fmAppName
 					set windowNameList to {chosenWindowName} -- we are only checking ONE window, but need a list (of one item) for below.
 				end if
 			end tell
