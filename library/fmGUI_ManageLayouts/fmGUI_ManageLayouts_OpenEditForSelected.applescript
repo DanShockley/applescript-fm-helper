@@ -1,10 +1,10 @@
 -- fmGUI_ManageLayouts_OpenEditForSelected({})
--- Erik Shagdar, NYHTC
 -- for the selected layout, open the edit window
 
 
 (*
 HISTORY:
+	1.2 - 2024-04-04 ( danshockley ): Work with whatever the frontmost FileMaker app name is, instead of FMA (18) only.
 	1.1 - 2017-11-20 ( eshagdar ): make sure we're talking to the correct window - there may be several windows 'in front of' the manage layouts window.
 	1.0 - 2017-11-06 ( eshagdar ): created
 
@@ -23,14 +23,22 @@ end run
 --------------------
 
 on fmGUI_ManageLayouts_OpenEditForSelected(prefs)
-	-- version 1.1
+	-- version 1.2
 	
 	try
 		set defaultPrefs to {}
 		set prefs to prefs & defaultPrefs
 		
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			set fmAppName to get name of first application process whose frontmost is true
+			
+			if fmAppName does not contain "FileMaker" then
+				set scriptResult to "NOT in FileMaker? Front app name is " & fmAppName
+				return scriptResult
+			end if
+			
+			tell application process fmAppName
+				if not frontmost then set frontmost to true
 				set windowContextRef to first window whose name begins with "Manage Layouts"
 			end tell
 		end tell
