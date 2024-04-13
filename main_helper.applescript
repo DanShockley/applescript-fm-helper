@@ -3,7 +3,9 @@
 -- Helper script that compiles all .applescript files into a folder of compiled .scpt files, then builds the htcLib app to reference those compiled scripts.
 
 
-(* HISTORY:
+(* 
+HISTORY:
+	2024-04-13 ( danshockley ): If handlerName is EMPTY, do NOT try to compile, since that would create a non-compilable temp). Notice if on Ventura or newer and if so do not bother trying to enable assistance access in System Preferences. 
 	2020-02-19 ( dshockley ): added a comment that the prefs argument is a list of shell arguments specified. 
 	2020-01-06 ( hkierulf, dshockley, hdu ): if the app is missing, DO need to compile it. 
 	2019-12-11 ( eshagdar ): ensure CompiledHandlers folder exists.
@@ -25,7 +27,7 @@
 *)
 
 
-property debugMode : false
+property debugMode : true
 
 property LF : ASCII character 10
 property tempFileName : "temp.applescript"
@@ -122,7 +124,7 @@ on run prefs
 					-- SPECIAL DEBUGGING!!! 2020-02-19 ( dshockley )   SPECIAL DEBUGGING!!! 2020-02-19 ( dshockley )
 					-- SPECIAL DEBUGGING!!! 2020-02-19 ( dshockley )   SPECIAL DEBUGGING!!! 2020-02-19 ( dshockley )
 					-- SPECIAL DEBUGGING!!! 2020-02-19 ( dshockley )   SPECIAL DEBUGGING!!! 2020-02-19 ( dshockley )
-				--	if oneFileName is "fmGUI_ManageSecurity_Open" then set debugMode to true
+					--	if oneFileName is "fmGUI_ManageSecurity_Open" then set debugMode to true
 					
 					if debugMode then log "oneFileName: " & oneFileName
 					set pathOneFileinOneLibrary to pathOneLibrary & ":" & oneFileName
@@ -153,86 +155,95 @@ on run prefs
 						set handlerName to handlerCall
 					end if
 					
-					set handlerVersion to getTextBetween({codeOneHandler, subStr_beforeHandlerVersion, LF})
-					
-					if handlerName is "clickAtCoords" then
-						-- SPECIAL MODIFICATION to bring a "property" into the actual handler code. 
-						set codeOneHandler to my replaceSimple({codeOneHandler, subStr_special_clickAtCoords_InternalCode_InsertAfter, subStr_special_clickAtCoords_InternalCode_InsertAfter & subStr_special_clickAtCoords_InternalCode_ToAdd})
-					end if
-					
-					
-					
-					-- COMPARE existing (previously-compiled) version and handlerCall with NEW:
-					-- if no existing or different, then DO need to re-compile app
-					if (existingHandlerCall is equal to handlerCall) and (existingVersion is equal to handlerVersion) then
-						-- do NOT need to compile, and no "change" (for this ONE handler!) to the app.
-						set shouldCompileHandler to false
-					else if (existingHandlerCall is equal to handlerCall) then
-						-- do NOT need to re-compile the app due to THIS ONE handler (might need for some other).
+					if length of handlerName is 0 then
+						if debugMode then log "ERROR: EMPTY handlerName for file: " & oneFileName
+						display dialog "The file " & oneFileName & " does NOT seem to have a valid handlerName. Please either update that source file, or remove it. But, compilation will ignore that file and continue. That file can be found at: " & pathOneFileinOneLibrary buttons {"OK"} default button "OK"
 					else
-						-- the handlerCall was different, so THIS handler requires an app re-compile:
-						set appChangesMade to true
-					end if
-					
-					
-					-- APPEND TO APP: now append to htcLib APP code:
-					-- do this EVEN if the handler itself doesn't need to be re-compiled.
-					set handlerInternalCode to replaceSimple({replaceSimple({subStr_templateHandlerWrapperCode, "###HANDLER_NAME###", handlerName}), "###HANDLER_CALL###", handlerCall})
-					set codeHandlerWrapper to subStr_beforeHandlerName & handlerCall & LF & handlerInternalCode & subStr_endPrefixHandler & handlerName & LF
-					
-					if (length of tempCode) is greater than 0 then set tempCode to tempCode & return & return & return
-					set tempCode to tempCode & codeHandlerWrapper
-					
-					
-					if shouldCompileHandler then
-						-- SUBHANDLERS: process each sub-handler this handler depends upon:
+						-- BEGIN: ONE handlerName
 						
-						set codeSubHandlers to getTextAfter(oneFileRawCode, codeEnd)
+						set handlerVersion to getTextBetween({codeOneHandler, subStr_beforeHandlerVersion, LF})
 						
-						-- trim the Handler code now (NOT above, since it needs the leading linefeed before the handler call):			
-						set codeOneHandler to trimWhitespace(codeOneHandler)
+						if handlerName is "clickAtCoords" then
+							-- SPECIAL MODIFICATION to bring a "property" into the actual handler code. 
+							set codeOneHandler to my replaceSimple({codeOneHandler, subStr_special_clickAtCoords_InternalCode_InsertAfter, subStr_special_clickAtCoords_InternalCode_InsertAfter & subStr_special_clickAtCoords_InternalCode_ToAdd})
+						end if
 						
-						set codeHandlerWithNewSubCalls to subStr_handlerProperties & codeOneHandler
-						repeat while codeSubHandlers contains subStr_beforeHandlerName
-							set skipThisSubhandler to false
-							set oneSubhandlerCall to getTextBetween({codeSubHandlers, subStr_beforeHandlerName, LF})
-							if oneSubhandlerCall contains subStr_beforeHandlerParams then
-								set oneSubhandlerName to getTextBefore(oneSubhandlerCall, "(")
-							else
-								set oneSubhandlerName to oneSubhandlerCall
-							end if
+						
+						
+						-- COMPARE existing (previously-compiled) version and handlerCall with NEW:
+						-- if no existing or different, then DO need to re-compile app
+						if (existingHandlerCall is equal to handlerCall) and (existingVersion is equal to handlerVersion) then
+							-- do NOT need to compile, and no "change" (for this ONE handler!) to the app.
+							set shouldCompileHandler to false
+						else if (existingHandlerCall is equal to handlerCall) then
+							-- do NOT need to re-compile the app due to THIS ONE handler (might need for some other).
+						else
+							-- the handlerCall was different, so THIS handler requires an app re-compile:
+							set appChangesMade to true
+						end if
+						
+						
+						-- APPEND TO APP: now append to htcLib APP code:
+						-- do this EVEN if the handler itself doesn't need to be re-compiled.
+						set handlerInternalCode to replaceSimple({replaceSimple({subStr_templateHandlerWrapperCode, "###HANDLER_NAME###", handlerName}), "###HANDLER_CALL###", handlerCall})
+						set codeHandlerWrapper to subStr_beforeHandlerName & handlerCall & LF & handlerInternalCode & subStr_endPrefixHandler & handlerName & LF
+						
+						if (length of tempCode) is greater than 0 then set tempCode to tempCode & return & return & return
+						set tempCode to tempCode & codeHandlerWrapper
+						
+						
+						if shouldCompileHandler then
+							-- SUBHANDLERS: process each sub-handler this handler depends upon:
 							
-							if oneSubhandlerName is "coerceToString" then
-								if codeOneHandler does not contain "coerceToString" then
-									-- the coerceToString was NOT used in the main handler, so we don't actually NEED it:
-									-- so SKIP this:
-									set skipThisSubhandler to true
+							set codeSubHandlers to getTextAfter(oneFileRawCode, codeEnd)
+							
+							-- trim the Handler code now (NOT above, since it needs the leading linefeed before the handler call):			
+							set codeOneHandler to trimWhitespace(codeOneHandler)
+							
+							set codeHandlerWithNewSubCalls to subStr_handlerProperties & codeOneHandler
+							repeat while codeSubHandlers contains subStr_beforeHandlerName
+								set skipThisSubhandler to false
+								set oneSubhandlerCall to getTextBetween({codeSubHandlers, subStr_beforeHandlerName, LF})
+								if oneSubhandlerCall contains subStr_beforeHandlerParams then
+									set oneSubhandlerName to getTextBefore(oneSubhandlerCall, "(")
+								else
+									set oneSubhandlerName to oneSubhandlerCall
 								end if
-							end if
-							
-							if not skipThisSubhandler then
-								-- we DO need this subhandler, so reformat it:
-								set subHandlerInternalCode to replaceSimple({replaceSimple({subStr_templateHandlerWrapperCode, "###HANDLER_NAME###", oneSubhandlerName}), "###HANDLER_CALL###", oneSubhandlerCall})
-								set oneSubHandlerCode to subStr_beforeHandlerName & oneSubhandlerCall & LF & subHandlerInternalCode & subStr_endPrefixHandler & oneSubhandlerName & LF
 								
-								set codeHandlerWithNewSubCalls to codeHandlerWithNewSubCalls & LF & oneSubHandlerCode
-							end if
+								if oneSubhandlerName is "coerceToString" then
+									if codeOneHandler does not contain "coerceToString" then
+										-- the coerceToString was NOT used in the main handler, so we don't actually NEED it:
+										-- so SKIP this:
+										set skipThisSubhandler to true
+									end if
+								end if
+								
+								if not skipThisSubhandler then
+									-- we DO need this subhandler, so reformat it:
+									set subHandlerInternalCode to replaceSimple({replaceSimple({subStr_templateHandlerWrapperCode, "###HANDLER_NAME###", oneSubhandlerName}), "###HANDLER_CALL###", oneSubhandlerCall})
+									set oneSubHandlerCode to subStr_beforeHandlerName & oneSubhandlerCall & LF & subHandlerInternalCode & subStr_endPrefixHandler & oneSubhandlerName & LF
+									
+									set codeHandlerWithNewSubCalls to codeHandlerWithNewSubCalls & LF & oneSubHandlerCode
+								end if
+								
+								set codeSubHandlers to getTextAfter(codeSubHandlers, subStr_endPrefixHandler & oneSubhandlerName)
+								
+							end repeat
 							
-							set codeSubHandlers to getTextAfter(codeSubHandlers, subStr_endPrefixHandler & oneSubhandlerName)
-							
-						end repeat
-						
-						-- write the modified code into a temporary file:
-						try
+							-- write the modified code into a temporary file:
+							try
+								close access fileRef
+							end try
+							set fileRef to (open for access file pathTempCode with write permission)
+							set eof of fileRef to 0 --> empty file contents if needed
+							write codeHandlerWithNewSubCalls to fileRef
 							close access fileRef
-						end try
-						set fileRef to (open for access file pathTempCode with write permission)
-						set eof of fileRef to 0 --> empty file contents if needed
-						write codeHandlerWithNewSubCalls to fileRef
-						close access fileRef
+							
+							-- COMPILE the temporary file to the desired destination:
+							do shell script "osacompile -o " & quoted form of POSIX path of pathCompiled & " " & quoted form of POSIX path of pathTempCode
+						end if
 						
-						-- COMPILE the temporary file to the desired destination:
-						do shell script "osacompile -o " & quoted form of POSIX path of pathCompiled & " " & quoted form of POSIX path of pathTempCode
+						-- END OF: ONE handlerName
 					end if
 					
 				end if
@@ -303,36 +314,50 @@ on run prefs
 			-- navigate to security preference pane
 			if button returned of AsstAccessDlg is equal to "Open" then
 				
-				tell application "System Preferences" to activate
+				tell application "System Settings" to activate
 				do shell script "open " & quoted form of securityPrefPanePosix
 				
+				-- If on macOS Ventura 13.0 or newer, do NOT bother trying to open System Preferences. 
+				-- Just launch "Settings.app" instead.
+				set sysinfo to system info
+				set _versionString to system version of sysinfo
+				considering numeric strings
+					set noMoreSysPrefs to _versionString ³ "13"
+				end considering
 				
-				tell application "System Events"
-					tell process "System Preferences"
-						click radio button "Privacy" of tab group 1 of window 1
-						
-						-- get htcLib checkbox
-						set htcLibRow to (first row of table 1 of scroll area 1 of group 1 of tab group 1 of window 1 whose value of static text 1 of UI element 1 contains "htcLib")
-						set htcLibCheckbox to checkbox 1 of UI element 1 of htcLibRow
-						select htcLibRow
-						
-						-- unlock if needed
-						set canMakeChanges to enabled of htcLibCheckbox
-						if canMakeChanges is false then
-							click button 1 of window 1
-							display dialog "You must deselect, then reselect the " & appName & " checkbox" buttons "OK" default button "OK"
-							return true
-						end if
-						
-						
-						-- uncheck, then recheck to re-allow control of htcLib
-						click htcLibCheckbox
-						delay 0.5
-						click htcLibCheckbox
-						delay 0.5
-						set visible to false
+				if noMoreSysPrefs then
+					tell application "System Settings" to activate
+					display dialog "You might need to toggle System Events (and Finder) off, then back on for " & appName & ", which might instead have the name 'applet'" buttons "OK" default button "OK"
+				else
+					
+					
+					tell application "System Events"
+						tell process "System Preferences"
+							click radio button "Privacy" of tab group 1 of window 1
+							
+							-- get htcLib checkbox
+							set htcLibRow to (first row of table 1 of scroll area 1 of group 1 of tab group 1 of window 1 whose value of static text 1 of UI element 1 contains "htcLib")
+							set htcLibCheckbox to checkbox 1 of UI element 1 of htcLibRow
+							select htcLibRow
+							
+							-- unlock if needed
+							set canMakeChanges to enabled of htcLibCheckbox
+							if canMakeChanges is false then
+								click button 1 of window 1
+								display dialog "You must deselect, then reselect the " & appName & " checkbox" buttons "OK" default button "OK"
+								return true
+							end if
+							
+							
+							-- uncheck, then recheck to re-allow control of htcLib
+							click htcLibCheckbox
+							delay 0.5
+							click htcLibCheckbox
+							delay 0.5
+							set visible to false
+						end tell
 					end tell
-				end tell
+				end if
 				
 				tell me to activate
 				display dialog appName & " is ready" buttons "OK" default button "OK"
@@ -340,7 +365,7 @@ on run prefs
 			return true
 		else
 			
-			tell application "System Preferences" to activate
+			tell application "System Settings" to activate
 			do shell script "open " & quoted form of securityPrefPanePosix
 			
 			return "you must re-allow assistive devices to '" & appName & "'."
