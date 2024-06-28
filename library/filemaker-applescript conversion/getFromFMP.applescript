@@ -5,6 +5,7 @@
 
 (*
 HISTORY:
+	2.0 - 2024-06-28 ( danshockley ): Updated to avoid needing "Advanced" in app process name. Try frontmost app, then any with FileMaker in name. 
 	1.9 - 2018-09-20 ( eshagdar ): FileMaker 17 has only version so talk to it by name.
 	1.8 - removed references to 'someData' 
 	1.7 - fixed the bug where 'prefs' is passed as a paramater, but the fmType and someData was picking up values of 'someData' 
@@ -27,16 +28,26 @@ end run
 --------------------
 
 on getFromFMP(prefs)
-	-- version 1.9
-		
+	-- version 2024-06-28
+	
 	set asTransfer to "AppleScript_Transfer-DO_NOT_RENAME"
-	set fmpName to "FileMaker Pro Advanced"
+	set fmpName to "FileMaker"
 	
 	if (path to me) does not contain fmpName then
 		tell application "System Events"
-			set fmpActiveName to displayed name of (first application process whose displayed name begins with fmpName)
+			set appProc to first application process whose frontmost is true
+			if name of appProc does not contain appNameMatchString then
+				-- frontmost does not match, so just get the 1st one we can find.
+				try
+					set appProc to get first application process whose name contains appNameMatchString
+				on error errMsg number errNum
+					if errNum is -1719 then return false
+					error errMsg number errNum
+				end try
+			end if
+			set appProcID to id of appProc
 		end tell
-		set beginTellFM to "tell app id \"com.filemaker.client.pro12\"" & return
+		set beginTellFM to "tell app id " & appProcID & return
 		set endTellFM to return & "end tell"
 	else
 		set beginTellFM to ""
