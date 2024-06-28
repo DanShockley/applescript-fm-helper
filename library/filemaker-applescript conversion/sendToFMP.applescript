@@ -38,10 +38,10 @@ on sendToFMP(someData)
 	if (path to me) does not contain fmpName then
 		tell application "System Events"
 			set appProc to first application process whose frontmost is true
-			if name of appProc does not contain appNameMatchString then
+			if name of appProc does not contain fmpName then
 				-- frontmost does not match, so just get the 1st one we can find.
 				try
-					set appProc to get first application process whose name contains appNameMatchString
+					set appProc to get first application process whose name contains fmpName
 				on error errMsg number errNum
 					if errNum is -1719 then return false
 					error errMsg number errNum
