@@ -45,9 +45,9 @@ on getFromFMP(prefs)
 					error errMsg number errNum
 				end try
 			end if
-			set appProcID to id of appProc
+			set appBundleID to bundle identifier of appProc
 		end tell
-		set beginTellFM to "tell app id " & appProcID & return
+		set beginTellFM to "tell app id \"" & appBundleID & "\"" & return
 		set endTellFM to return & "end tell"
 	else
 		set beginTellFM to ""
@@ -57,7 +57,6 @@ on getFromFMP(prefs)
 	set codeToGet to "cell 1 of layout \"" & asTransfer & "\" of window 1"
 	set sendSource to beginTellFM & codeToGet & endTellFM
 	set inputData to run script sendSource
-	
 	return inputData
 end getFromFMP
 
