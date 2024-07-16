@@ -1,10 +1,11 @@
 -- fmGUI_Wait_MenuItemAvailable({menuItemRef:null, maxTimeoutSec:60, checkFrequencySec:0.5})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- wait until the specified menu item is available
 
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated SAMPLE USAGE CODE to tell app by process ID (works-with-FM19+). Bumped handler version to reflect documentation change. 
 	2020-03-04 ( dshockley ): Standardized version. 
 	1.0 - 2017-11-06 ( eshagdar ): taken from the sub-handler ( which should return an asnwer right away instead of wating ).
 
@@ -16,7 +17,8 @@ REQUIRES:
 
 on run
 	tell application "System Events"
-		tell application process "FileMaker Pro Advanced"
+		set fmProcID to id of first application process whose name contains "FileMaker"
+		tell process id fmProcID
 			set copyMenuItem to menu item "Copy" of menu 1 of menu bar item "Edit" of menu bar 1
 		end tell
 	end tell
@@ -29,17 +31,15 @@ end run
 --------------------
 
 on fmGUI_Wait_MenuItemAvailable(prefs)
-	-- version 2020-03-04-1535
+	-- version 2024-07-15
 	
 	try
 		set defaultPrefs to {menuItemRef:null, maxTimeoutSec:60, checkFrequencySec:0.5}
 		set prefs to prefs & defaultPrefs
 		if menuItemRef of prefs is null then error "menuItemRef not specified" number -1024
 		
-		
 		fmGUI_AppFrontMost()
-		
-		
+	
 		repeat ((maxTimeoutSec of prefs) / (checkFrequencySec of prefs) as integer) times
 			if fmGUI_MenuItemAvailable({menuItemRef:menuItemRef of prefs}) then return true
 		end repeat

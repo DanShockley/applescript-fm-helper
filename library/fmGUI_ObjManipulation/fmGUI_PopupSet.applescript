@@ -9,6 +9,7 @@ REQUIRES:
 	
 
 HISTORY:
+	2024-07-15 ( danshockley ): Updated SAMPLE USAGE CODE to tell app by process ID (works-with-FM19+). No change to actual handler, but bumped version for documentation.
 	1.1 - 2017-07-06 ( eshagdar ): narrowed scope
 	1.0 - created
 *)
@@ -16,7 +17,8 @@ HISTORY:
 
 on run
 	tell application "System Events"
-		tell application process "FileMaker Pro Advanced"
+		set fmProcID to id of first application process whose name contains "FileMaker"
+		tell process id fmProcID
 			set frontmost to true
 			--set TablePopupOnFieldTabOfManageDatabase to (pop up button "Table:" of tab group 1 of window 1)
 			set popUpButtonRef to pop up button "Available menu commands:" of window 1
@@ -32,7 +34,7 @@ end run
 --------------------
 
 on fmGUI_PopupSet(prefs)
-	-- version 1.1
+	-- version 2024-07-15
 	
 	set defaultPrefs to {objRef:null, objValue:null}
 	set prefs to prefs & defaultPrefs

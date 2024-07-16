@@ -9,7 +9,8 @@ REQUIRES:
 	
 	
 HISTORY:
-	1.2 - 2017-09-05 ( eshagdar ): offset should be the half teh object's height or width ( whichever is smaller ).
+	2024-07-15 ( danshockley ): Updated SAMPLE CODE to tell app by process ID (works-with-FM19+). 
+	1.2 - 2017-09-05 ( eshagdar ): offset should be the half the object's height or width ( whichever is smaller ).
 	1.1 - 2017-06-29 ( eshagdar ): incoming param may be a string, so ensure it becomes an object reference
 	1.0 - 201x-xx-xx ( dshockley ): created
 *)
@@ -17,7 +18,8 @@ HISTORY:
 
 on run
 	tell application "System Events"
-		tell process "FileMaker Pro Advanced"
+		set fmProcID to  id of first application process whose name contains "FileMaker"
+		tell process id fmProcID
 			set frontmost to true
 			delay 0.25
 			--set optionsButton to first button of tab group 1 of window 1 whose name starts with "Options"

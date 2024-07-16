@@ -5,6 +5,7 @@
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.1 - 2019-03-11 ( eshagdar ): window name can be 'Specify Calculation for “«fieldName»”', so test for window name 'starts with' (instead 'is').
 	1.0 - 2017-09-22 ( eshagdar ):created
 
@@ -27,7 +28,7 @@ end run
 --------------------
 
 on fmGUI_SpecifyCalcWindowSet(prefs)
-	-- version 1.1
+	-- version 2024-07-15
 	
 	set defaultPrefs to {calc:null, needsSave:false}
 	set prefs to prefs & defaultPrefs
@@ -40,10 +41,17 @@ on fmGUI_SpecifyCalcWindowSet(prefs)
 	try
 		-- ensure context
 		fmGUI_AppFrontMost()
+
+		try
+			set fmProcID to fmProcID of prefs
+		on error
+			set fmProcID to my getFmAppProcessID()
+		end try
+
 		if not windowWaitUntil({windowName:calcBoxWindowName, windowNameTest:"starts with", whichWindow:whichWindow}) then error "Timed out waiting for '" & calcBoxWindowName & "' window" number -1024
 		
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell process id fmProcID
 				set calcBox to text area 1 of scroll area 1 of splitter group 1 of window 1
 				if value of calcBox is not equal to calcValue of prefs then
 					set the value of calcBox to calcValue of prefs
@@ -68,10 +76,10 @@ end fmGUI_SpecifyCalcWindowSet
 --------------------
 -- END OF CODE
 --------------------
-
 on fmGUI_AppFrontMost()
 	tell application "htcLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
+
 
 on windowWaitUntil(prefs)
 	tell application "htcLib" to windowWaitUntil(prefs)
@@ -88,3 +96,8 @@ end fmGUI_ObjectClick_CancelButton
 on fmGUI_ObjectClick_OkButton(prefs)
 	tell application "htcLib" to fmGUI_ObjectClick_OkButton(prefs)
 end fmGUI_ObjectClick_OkButton
+
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID
+

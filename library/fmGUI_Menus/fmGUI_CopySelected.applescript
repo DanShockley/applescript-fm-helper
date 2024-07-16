@@ -1,10 +1,11 @@
 -- fmGUI_CopySelected({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Copy the selected objects in the current window in FileMaker
 
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.3.1 - 2017-11-06 ( eshagdar ): try block encompasses param declaration. added clipboardClear to helper fucntions.
 	1.3 - 2016-10-18 ( eshagdar ): use fmGUI_clickMenuItem handler
 	1.2 - 2016-10-18 ( eshagdar ): make sure the menu item is available again
@@ -26,7 +27,7 @@ end run
 --------------------
 
 on fmGUI_CopySelected(prefs)
-	-- version 1.3.1, Erik Shagdar
+	-- version 2024-07-15
 	
 	try
 		set defaultPrefs to {}
@@ -34,11 +35,16 @@ on fmGUI_CopySelected(prefs)
 		
 		
 		fmGUI_AppFrontMost()
+		try
+			set fmProcID to fmProcID of prefs
+		on error
+			set fmProcID to my getFmAppProcessID()
+		end try
+		
 		clipboardClear() -- want clipboard to be EMPTY before we copy, so we can check for copied scripts.
 		
-		
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell process id fmProcID
 				set copyMenuItem to menu item "Copy" of menu 1 of menu bar item "Edit" of menu bar 1
 			end tell
 		end tell
@@ -67,6 +73,9 @@ on fmGUI_clickMenuItem(prefs)
 	tell application "htcLib" to fmGUI_clickMenuItem(prefs)
 end fmGUI_clickMenuItem
 
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID
 
 
 on coerceToString(incomingObject)

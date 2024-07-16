@@ -1,10 +1,11 @@
 -- fmGUI_SelectAll({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Copy the selected objects in the current window in FileMaker
 
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.4.1 - 2018-01-18 ( eshagdar ): get menu item directly instead of finding it using 'whose'.
 	1.4 - 2017-11-06 ( eshagdar ): inaccurate history - start a new version.
 	1.3 - 2016-10-18 ( eshagdar ): use fmGUI_clickMenuItem handler
@@ -27,13 +28,13 @@ end run
 --------------------
 
 on fmGUI_SelectAll()
-	-- version 1.4.1, Erik Shagdar
+	-- version 2024-07-15
 	
 	try
 		fmGUI_AppFrontMost()
-		
+				set fmProcID to my getFmAppProcessID()
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell process id fmProcID
 				set SelectAllMenuItem to menu item "Select All" of menu 1 of menu bar item "Edit" of menu bar 1
 			end tell
 		end tell
@@ -57,6 +58,9 @@ on fmGUI_ClickMenuItem(prefs)
 	tell application "htcLib" to fmGUI_ClickMenuItem(prefs)
 end fmGUI_ClickMenuItem
 
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID
 
 
 on coerceToString(incomingObject)

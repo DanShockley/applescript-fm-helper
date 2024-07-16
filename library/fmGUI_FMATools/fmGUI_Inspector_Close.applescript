@@ -5,6 +5,7 @@
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.4 - 2016-11-16 ( eshagdar ): instead of trying just twice, try closing the window until we actually succeed.
 	1.3 - 2016-10-28 ( eshagdar ): delay a bit more before exiting.
 	1.2 - 2016-09-16 ( eshagdar ): wait until the window no longer exists.
@@ -26,11 +27,12 @@ end run
 --------------------
 
 on fmGUI_Inspector_Close()
-	-- version 1.4
+	-- version 2024-07-15
 	
 	fmGUI_AppFrontMost()
+	set fmProcID to my getFmAppProcessID()
 	tell application "System Events"
-		tell application process "FileMaker Pro Advanced"
+		tell process id fmProcID
 			--wait until the window no longer exists ( or we time out )
 			repeat 20 times
 				try
@@ -63,3 +65,7 @@ end fmGUI_Inspector_Close
 on fmGUI_AppFrontMost()
 	tell application "htcLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
+
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID

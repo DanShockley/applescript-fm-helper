@@ -1,10 +1,11 @@
 -- fmGUI_Menu_OpenDB({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Click Open Manage Database menu item
 
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.1 - 2017-11-06 ( eshagdar ): wait until window renders.
 	1.0.1 - 2017-11-03 ( eshagdar ): updated error message.
 	1.0 - 2017-08-23 ( eshagdar ): copied logic from fmGUI_Cut
@@ -26,14 +27,18 @@ end run
 --------------------
 
 on fmGUI_Menu_OpenDB(prefs)
-	-- version 1.1, Erik Shagdar
+	-- version 2024-07-15
 	
 	try
 		fmGUI_AppFrontMost()
-		
+		try
+			set fmProcID to fmProcID of prefs
+		on error
+			set fmProcID to my getFmAppProcessID()
+		end try
 		
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell process id fmProcID
 				set openManageDBMenuItem to first menu item of menu 1 of menu item "Manage" of menu 1 of menu bar item "File" of menu bar 1 whose name starts with "Database"
 			end tell
 		end tell
@@ -62,6 +67,9 @@ on windowWaitUntil(prefs)
 	tell application "htcLib" to windowWaitUntil(prefs)
 end windowWaitUntil
 
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID
 
 
 on coerceToString(incomingObject)

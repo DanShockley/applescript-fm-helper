@@ -1,10 +1,11 @@
--- fmGUI_Cut({})
--- Erik Shagdar, NYHTC
+-- fmGUI_Cut()
+-- Erik Shagdar
 -- Cut the selected objects in the current window in FileMaker
 
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.0 - 2017-08-07 ( eshagdar ): copied logic from fmGUI_SelectAll
 
 
@@ -23,13 +24,15 @@ end run
 --------------------
 
 on fmGUI_Cut()
-	-- version 1.1, Erik Shagdar
+	-- version 2024-07-15
 	
 	try
 		fmGUI_AppFrontMost()
 		
+		set fmProcID to my getFmAppProcessID()
+	
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell process id fmProcID
 				set cutMenuItem to first menu item of menu 1 of menu bar item "Edit" of menu bar 1 whose name is "Cut"
 			end tell
 		end tell
@@ -53,6 +56,9 @@ on fmGUI_ClickMenuItem(prefs)
 	tell application "htcLib" to fmGUI_ClickMenuItem(prefs)
 end fmGUI_ClickMenuItem
 
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID
 
 
 on coerceToString(incomingObject)

@@ -4,13 +4,14 @@
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated SAMPLE USAGE CODE to tell app by name of process (works-with-FM19+). Bumped handler version to reflect documentation change. 
 	1.1 - 2020-03-04 ( dshockley ): app name change - 17+ is always Advanced.
 	1.0 - 2017-06-29 ( dshockley/eshagdar ): created
 *)
 
 
 on run
-	ensureObjectRef("button \"Cancel\" of window \"Edit Privilege Set\" of application process \"FileMaker Pro Advanced\" of application \"System Events\"")
+	ensureObjectRef("button \"Cancel\" of window \"Edit Privilege Set\" of (first process of application \"System Events\" whose name contains \"FileMaker\")")
 end run
 
 --------------------
@@ -18,7 +19,7 @@ end run
 --------------------
 
 on ensureObjectRef(someObjectRef)
-	-- version 1.1
+	-- version 2024-07-15
 	
 	tell application "System Events"
 		

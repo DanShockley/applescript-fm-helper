@@ -1,5 +1,5 @@
 -- fmGUI_Popup_SelectByCommand({objRef:"", objValue:"", calcValue:null, selectCommand:"", clickIfAlreadySet:""})
--- Daniel A. Shockley, NYHTC
+-- Daniel A. Shockley
 -- Selects a choice from a popup menu
 
 
@@ -10,6 +10,7 @@ REQUIRES:
 	
 	 
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	2020-05-21 ( dshockley ): Try a 2nd time to click-and-wait for the menu to appear. And, don't try a 2nd "exists" command, since that seems to fail. Instead, save the result of that in a variable "isMenuOpen". 
 	1.4.1 - 2018-04-30 ( eshagdar ): tell FM to click on the value since it might not be visible ( and unclickable by CLI ).
 	1.4 - 2017-09-22 ( eshagdar ): set calc using handler.
@@ -22,7 +23,8 @@ HISTORY:
 
 on run
 	tell application "System Events"
-		tell application process "FileMaker Pro Advanced"
+		set fmProcID to id of first application process whose name contains "FileMaker"
+		tell process id fmProcID
 			set frontmost to true
 			delay 1
 			--set popUpButtonRef to pop up button "Available menu commands:" of window 1
@@ -39,10 +41,15 @@ end run
 --------------------
 
 on fmGUI_Popup_SelectByCommand(prefs)
-	-- version 2020-05-21-1321
+	-- version 2024-07-15
 	
 	set defaultPrefs to {objRef:null, objValue:null, calcValue:null, selectCommand:"is", clickIfAlreadySet:false}
 	set prefs to prefs & defaultPrefs
+	try
+		set fmProcID to fmProcID of prefs
+	on error
+		set fmProcID to my getFmAppProcessID()
+	end try
 	
 	set objRef to ensureObjectRef(objRef of prefs)
 	set selectCommand to selectCommand of prefs
@@ -112,7 +119,7 @@ on fmGUI_Popup_SelectByCommand(prefs)
 				repeat 100 times
 					try
 						tell application "System Events"
-							tell application process "FileMaker Pro Advanced"
+							tell process id fmProcID
 								if exists (menu 1 of objRef) then
 									set isMenuOpen to true
 									exit repeat
@@ -135,7 +142,7 @@ on fmGUI_Popup_SelectByCommand(prefs)
 					repeat 20 times
 						try
 							tell application "System Events"
-								tell application process "FileMaker Pro Advanced"
+								tell process id fmProcID
 									if exists (menu 1 of objRef) then
 										set isMenuOpen to true
 										exit repeat
@@ -167,13 +174,10 @@ on fmGUI_Popup_SelectByCommand(prefs)
 						error "unable to pick objValue because select command is failed" number -1024
 					end if
 					
-					tell process "FileMaker Pro Advanced"
+					tell process id fmProcID
 						click objValue
 					end tell
 				end tell
-				
-				-- must tell FM to click since the value might now be available ( need to scroll )
-				--clickObjectByCoords(objValue)
 			end if
 			
 			
@@ -199,6 +203,11 @@ end clickObjectByCoords
 on fmGUI_SpecifyCalcWindowSet(prefs)
 	tell application "htcLib" to fmGUI_SpecifyCalcWindowSet(prefs)
 end fmGUI_SpecifyCalcWindowSet
+
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID
+
 
 
 on coerceToString(incomingObject)

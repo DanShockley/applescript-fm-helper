@@ -5,6 +5,7 @@
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.2 - 2016-06-30 ( eshagdar ): wait for the window to appear.
 	1.1 - 
 	1.0 - created
@@ -24,12 +25,16 @@ end run
 --------------------
 
 on fmGUI_CustomFunctions_FunctionNames(prefs)
-	-- version 1.1
-	
+	-- version 2024-07-15
+	try
+		set fmProcID to fmProcID of prefs
+	on error
+		set fmProcID to my getFmAppProcessID()
+	end try
 	try
 		fmGUI_CustomFunctions_Open({})
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell process id fmProcID
 				value of static text 1 of every row of table 1 of scroll area 1 of window 1
 			end tell
 		end tell
@@ -46,3 +51,7 @@ end fmGUI_CustomFunctions_FunctionNames
 on fmGUI_CustomFunctions_Open(prefs)
 	tell application "htcLib" to fmGUI_CustomFunctions_Open(prefs)
 end fmGUI_CustomFunctions_Open
+
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID

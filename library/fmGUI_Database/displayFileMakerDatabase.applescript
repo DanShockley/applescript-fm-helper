@@ -5,6 +5,8 @@
 
 (*
 HISTORY:
+	2024-07-16 ( danshockley ): For the FileMaker-specific dictionary, used handler getFmAppPath (works-with-FM19+). 
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.6.4 - 2020-05-20 ( dshockley ): fixed typo in error message. 
 	1.6.3 - 2019-02-27 ( eshagdar ): throw up a dialog if there is a privSet violation.
 	1.6.2 - 2018-12-07 ( eshagdar ): don't both using case, terms, or bundle ID - just talk to the application directly.
@@ -31,7 +33,7 @@ property debugMode : true
 property ScriptName : "displayFileMakerDatabase_TEST"
 
 on run
-	displayFileMakerDatabase({dbName:"a01_PERSON"})
+	displayFileMakerDatabase({dbName:"TEMPLATE_DATABASE"})
 end run
 
 --------------------
@@ -39,8 +41,9 @@ end run
 --------------------
 
 on displayFileMakerDatabase(prefs)
-	-- version 1.6.3
+	-- version 2024-07-15
 	
+	set fmPosixPath to my getFmAppPath()
 	try
 		set defaultPrefs to {dbName:null, waitCycleDelaySeconds:5, waitSaveTotalSeconds:2 * minutes}
 		set prefs to prefs & defaultPrefs
@@ -59,8 +62,9 @@ on displayFileMakerDatabase(prefs)
 		repeat waitCycleMax times
 			set docNameList to null
 			try
-				using terms from application "FileMaker Pro Advanced"
-					tell application ID "com.filemaker.client.pro12"
+				
+				using terms from application "FileMaker Pro"
+					tell application appPosixPath
 						set docNameList to name of every document
 					end tell
 				end using terms from
@@ -94,11 +98,13 @@ on displayFileMakerDatabase(prefs)
 			
 			-- apparently these two TEXT variables have some difference (formatting?) even when they are identical STRINGS:
 			if oneDocName is equal to (dbName as string) then
-				tell application "FileMaker Pro Advanced"
-					--if debugMode then my logConsole(ScriptName, "displayFileMakerDatabase about to show oneDocName: " & oneDocName)
-					show document oneDocName
-					if debugMode then my logConsole(ScriptName, "displayFileMakerDatabase: " & oneDocName)
-				end tell
+				using terms from application "FileMaker Pro"
+					tell application appPosixPath
+						--if debugMode then my logConsole(ScriptName, "displayFileMakerDatabase about to show oneDocName: " & oneDocName)
+						show document oneDocName
+						if debugMode then my logConsole(ScriptName, "displayFileMakerDatabase: " & oneDocName)
+					end tell
+				end using terms from
 				return true
 			end if
 		end repeat
@@ -118,6 +124,9 @@ on logConsole(processName, consoleMsg)
 	tell application "htcLib" to logConsole(processName, consoleMsg)
 end logConsole
 
+on getFmAppPath()
+	tell application "htcLib" to getFmAppPath()
+end getFmAppPath
 
 
 on coerceToString(incomingObject)

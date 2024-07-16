@@ -5,6 +5,7 @@
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.2 - 2017-06-28 ( eshagdar ): convert params to a record.
 	1.1 - 
 	1.0 - created
@@ -24,14 +25,19 @@ end run
 --------------------
 
 on fmGUI_CustomFunctions_ParamsForFunction(prefs)
-	-- version 1.2
+	-- version 2024-07-15
 	
 	set defaultPrefs to {functionName:null}
 	set prefs to prefs & defaultPrefs
 	try
+		set fmProcID to fmProcID of prefs
+	on error
+		set fmProcID to my getFmAppProcessID()
+	end try
+	try
 		fmGUI_CustomFunctions_Open({})
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell process id fmProcID
 				set rawParams to value of static text 2 of (first row of table 1 of scroll area 1 of window 1 whose (value of static text 1) is functionName of prefs)
 			end tell
 		end tell
@@ -55,3 +61,7 @@ end fmGUI_CustomFunctions_Open
 on parseChars(prefs)
 	tell application "htcLib" to parseChars(prefs)
 end parseChars
+
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID

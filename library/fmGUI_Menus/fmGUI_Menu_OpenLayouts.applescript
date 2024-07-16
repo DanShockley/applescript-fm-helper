@@ -1,10 +1,11 @@
 -- fmGUI_Menu_OpenLayouts({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Click Open Manage Layouts menu item
 
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.0 - 2017-11-03 ( eshagdar ): copied logic from fmGUI_Menu_OpenDB
 
 
@@ -24,13 +25,17 @@ end run
 --------------------
 
 on fmGUI_Menu_OpenLayouts(prefs)
-	-- version 1.0, Erik Shagdar
-	
+	-- version 2024-07-15
+
 	try
 		fmGUI_AppFrontMost()
-		
+		try
+			set fmProcID to fmProcID of prefs
+		on error
+			set fmProcID to my getFmAppProcessID()
+		end try		
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell process id fmProcID
 				set openManageLayoutsMenuItem to first menu item of menu 1 of menu item "Manage" of menu 1 of menu bar item "File" of menu bar 1 whose name starts with "Layouts"
 			end tell
 		end tell
@@ -59,6 +64,10 @@ end fmGUI_ClickMenuItem
 on windowWaitUntil(prefs)
 	tell application "htcLib" to windowWaitUntil(prefs)
 end windowWaitUntil
+
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID
 
 
 

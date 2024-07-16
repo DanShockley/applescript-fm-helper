@@ -1,15 +1,20 @@
--- getFmAppProcessID
+-- getFmAppProcessID()
+-- Dan Shockley, Gotham DataWorks LLC
+-- Gets the process ID for use in UI Scripting via System Events. 
 
 (*
 	Gets the process ID of the frontost FileMaker app, to use for UI Scripting via System Events. If the frontmost app does not include FileMaker in its name, gets the first process ID that does. 
 	NOTE: You want to use THIS for UI scripting, along with a "tell process id <foundID>" block, INSTEAD OF a reference to the FileMaker app, since when there are multiple FM copies running at the same time, going by name will talk to the earliest(?) app launched, NOT the FM app that is currently frontmost. This function will let you work with the frontmost FM app, if there is one, and only if there is not will it fall back to "whatever the first/default" process named FileMaker. 
-	NOTE ALSO: this is NOT what you use for non-UI "app's-own-dictionary-terminology" scripting. *)
+	NOTE ALSO: this is NOT what you use for non-UI "app's-own-dictionary-terminology" scripting. 
+	
+HISTORY:
+	2024-07-15 ( danshockley ): created	
+*)
 
 on run
-	
 	-- EXAMPLE USAGE:	
 	try
-		set fmProcID to getFmAppProcessID()
+		set fmProcID to my getFmAppProcessID()
 		tell application "System Events"
 			tell process id fmProcID
 				set frontmost to true -- just in case none WAS frontmost, bring one selected to front
@@ -24,6 +29,9 @@ on run
 	end try
 end run
 
+--------------------
+-- START OF CODE
+--------------------
 
 on getFmAppProcessID()
 	-- version 2024-07-15
@@ -48,3 +56,7 @@ on getFmAppProcessID()
 	end tell
 	
 end getFmAppProcessID
+
+--------------------
+-- END OF CODE
+--------------------

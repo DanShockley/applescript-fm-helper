@@ -5,6 +5,7 @@
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated SAMPLE USAGE CODE to tell app by process ID (works-with-FM19+). Bumped handler version to reflect documentation change. 
 	2020-03-04 ( dshockley ): Standardized version. 
 	1.1 - 2017-11-06 ( eshagdar ): this handler should an if the menu is available right now, waiting should happen in another handler. try block around entire handler.
 	1.0 - 2016-10-18 ( eshagdar ): created
@@ -17,7 +18,8 @@ REQUIRES:
 
 on run
 	tell application "System Events"
-		tell application process "FileMaker Pro Advanced"
+		set fmProcID to id of first application process whose name contains "FileMaker"
+		tell process id fmProcID
 			set copyMenuItem to menu item "Copy" of menu 1 of menu bar item "Edit" of menu bar 1
 		end tell
 	end tell
@@ -30,17 +32,15 @@ end run
 --------------------
 
 on fmGUI_MenuItemAvailable(prefs)
-	-- version 2020-03-04-1535
+	-- version 2024-07-15
 	
 	try
 		set defaultPrefs to {menuItemRef:null, maxTimeoutSec:60, checkFrequencySec:0.5}
 		set prefs to prefs & defaultPrefs
 		set menuItemRef to ensureObjectRef(menuItemRef of prefs)
 		if menuItemRef is null then error "menuItemRef not specified" number -1024
-		
-		
+				
 		fmGUI_AppFrontMost()
-		
 		
 		try
 			return exists menuItemRef
@@ -62,8 +62,6 @@ on fmGUI_AppFrontMost()
 	tell application "htcLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
-
-
 on ensureObjectRef(someObjectRef)
 	-- 2017-07-12 ( eshagdar ): bootstrap code to bring a ensureObjectRef into this file for the sample to run ( instead of having a copy of the handler locally ).
 	
@@ -73,3 +71,5 @@ on ensureObjectRef(someObjectRef)
 	set codeEnsureObj to run script codeEnsureObj
 	tell codeEnsureObj to ensureObjectRef(someObjectRef)
 end ensureObjectRef
+
+

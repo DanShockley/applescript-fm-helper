@@ -1,10 +1,11 @@
 -- fmGUI_AppFrontMost()
 -- Erik Shagdar, NYHTC
--- Ensures FileMaker Advanced is the frontmost window. Closes 2empowerFM Toolbox window if it is visible
+-- Ensures FileMaker Advanced is the frontmost window. Closes 2empowerFM Toolbox window if it is visible. 
 
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.1 - 2015-04-14 ( eshagdar ): close FMEmpower window if open
 	1.0 - created
 *)
@@ -19,10 +20,11 @@ end run
 --------------------
 
 on fmGUI_AppFrontMost()
-	-- version 1.1
-	
+	-- version 2024-07-15
+
+	set fmProcID to my getFmAppProcessID()	
 	tell application "System Events"
-		tell application process "FileMaker Pro Advanced"
+		tell process id fmProcID
 			if frontmost is not true then
 				set frontmost to true
 				delay 1
@@ -40,3 +42,7 @@ end fmGUI_AppFrontMost
 --------------------
 -- END OF CODE
 --------------------
+
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID

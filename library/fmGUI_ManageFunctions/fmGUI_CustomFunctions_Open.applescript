@@ -5,9 +5,10 @@
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.3 - 2017-10-19 ( eshagdar ): UI interaction done via sub-handlers. wait for window before attempting to change sort order.
 	1.2 - 2016-06-30 ( eshagdar ): wait for the window to appear.
-	1.1 - 
+	1.1 - ???
 	1.0 - created
 
 
@@ -28,17 +29,21 @@ end run
 --------------------
 
 on fmGUI_CustomFunctions_Open(prefs)
-	-- version 1.3
-	
-	
+	-- version 2024-07-15
+		
 	try
 		fmGUI_AppFrontMost()
+		try
+			set fmProcID to fmProcID of prefs
+		on error
+			set fmProcID to my getFmAppProcessID()
+		end try
 		if fmGUI_NameOfFrontmostWindow() starts with "Manage Custom Functions for" then
 			return true
 		else
 			-- open manage custom functions
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell process id fmProcID
 					set manageFunctionsMenuItem to first menu item of menu 1 of menu item "Manage" of menu 1 of menu bar item "File" of menu bar 1 whose name starts with "Custom Functions"
 				end tell
 			end tell
@@ -48,7 +53,7 @@ on fmGUI_CustomFunctions_Open(prefs)
 			
 			-- sort by function name
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell process id fmProcID
 					set sortPopup to pop up button "View by" of window 1
 				end tell
 			end tell
@@ -89,6 +94,9 @@ on fmGUI_PopupSet(prefs)
 	tell application "htcLib" to fmGUI_PopupSet({objRef:objRefStr} & prefs)
 end fmGUI_PopupSet
 
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID
 
 
 on coerceToString(incomingObject)

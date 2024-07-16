@@ -5,6 +5,7 @@
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.5 - 2023-07-20 ( danshockley ): Use "FileMaker Pro" (v19's name) AFTER checking frontmost app. Provide an error for an unknown test. Added whichWindow "none" (use with your choice of windowNameTest). 
 	1.4 - 2017-10-19 ( eshagdar ): wrap in a try-block
 	1.3 - 2016-10-20 ( danshockley ): if using "any", then need to do the name tests in a loop for each window.
@@ -27,10 +28,15 @@ end run
 --------------------
 
 on windowWaitUntil(prefs)
-	-- version 2023-07-20 ( danshockley )
+	-- version 2024-07-15
 	
 	set defaultPrefs to {windowName:null, windowNameTest:"contains", whichWindow:"any", waitCycleDelaySeconds:0.5, waitCycleMax:20}
 	set prefs to prefs & defaultPrefs
+	try
+		set fmProcID to fmProcID of prefs
+	on error
+		set fmProcID to my getFmAppProcessID()
+	end try
 	
 	set windowName to windowName of prefs
 	set windowNameTest to windowNameTest of prefs
@@ -42,18 +48,15 @@ on windowWaitUntil(prefs)
 	try
 		repeat waitCycleMax of prefs times
 			tell application "System Events"
-				set fmAppName to get name of first application process whose frontmost is true
-				
-				if fmAppName does not contain "FileMaker" then set fmAppName to "FileMaker Pro"
 				
 				if whichWindow is in {"any", "none"} then
-					set windowNameList to name of every window of application process fmAppName
+					set windowNameList to name of every window of process id fmProcID
 				else if whichWindow is "front" then
-					set frontWindowName to name of window 1 of application process fmAppName
+					set frontWindowName to name of window 1 of process id fmProcID
 					set windowNameList to {frontWindowName} -- we are only checking ONE window, but need a list (of one item) for below.
 				else -- whichWindow  is window index number:
 					set windowIndex to whichWindow as number
-					set chosenWindowName to name of window windowIndex of application process fmAppName
+					set chosenWindowName to name of window windowIndex of process id fmProcID
 					set windowNameList to {chosenWindowName} -- we are only checking ONE window, but need a list (of one item) for below.
 				end if
 			end tell
@@ -139,3 +142,8 @@ end windowWaitUntil
 on fmGUI_AppFrontMost()
 	tell application "htcLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
+
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID
+

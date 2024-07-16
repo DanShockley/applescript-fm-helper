@@ -5,6 +5,7 @@
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	2020-03-04 ( dshockley ): first created
 
 
@@ -23,11 +24,12 @@ end run
 --------------------
 
 on fmGUI_2empowerFM_Toolbox_Close()
-	-- version 2020-03-04-1645
+	-- version 2024-07-15
 	
 	fmGUI_AppFrontMost()
+	set fmProcID to my getFmAppProcessID()
 	tell application "System Events"
-		tell process "FileMaker Pro Advanced"
+			tell process id fmProcID
 			try
 				click button 1 of (first window whose name is "2empowerFM Toolbox")
 				-- gets an error even if button exists, but still works. 
@@ -44,3 +46,7 @@ end fmGUI_2empowerFM_Toolbox_Close
 on fmGUI_AppFrontMost()
 	tell application "htcLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
+
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID

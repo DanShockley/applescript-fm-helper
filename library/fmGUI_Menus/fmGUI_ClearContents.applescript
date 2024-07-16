@@ -1,10 +1,11 @@
 -- fmGUI_ClearContents()
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Clear contents/selected objects
 
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.0.1 - 2017-11-06 ( eshagdar ): updated handler to wait for the menu item.
 	1.0 - 2016-10-28 ( eshagdar ): first created
 
@@ -24,13 +25,15 @@ end run
 --------------------
 
 on fmGUI_ClearContents()
-	-- version 1.0.1, Erik Shagdar
+	-- version 2024-07-15
 	
 	try
 		fmGUI_AppFrontMost()
-		
+
+		set fmProcID to my getFmAppProcessID()
+
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell process id fmProcID
 				set ClearMenuItem to first menu item of menu 1 of menu bar item "Edit" of menu bar 1 whose name is "Clear"
 			end tell
 		end tell
@@ -55,7 +58,9 @@ on fmGUI_ClickMenuItem(prefs)
 	tell application "htcLib" to fmGUI_ClickMenuItem(prefs)
 end fmGUI_ClickMenuItem
 
-
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID
 
 on coerceToString(incomingObject)
 	-- 2017-07-12 ( eshagdar ): bootstrap code to bring a coerceToString into this file for the sample to run ( instead of having a copy of the handler locally ).

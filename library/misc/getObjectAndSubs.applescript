@@ -1,10 +1,12 @@
 -- getObjectAndSubs({someObjectRef:null, outputType:"TEXT", maxSubLevel:null, subLevel:0})
--- Daniel A. Shockley & Erik Shagdar, NYHTC
+-- Daniel A. Shockley & Erik Shagdar
 -- Gets detailed UI Scripting info for the specified object, recursively for all sub-objects. 
 
 
 (*
 HISTORY:
+	2024-07-16 ( danshockley ): NOTE: this may not yet work properly - needs more testing once compiled into applet. 
+	2024-07-15 ( danshockley ): Updated SAMPLE USAGE CODE to tell app by process ID (works-with-FM19+). Bumped handler version to reflect documentation change. 
 	1.1 - 2017-06-29 ( dshockley ): added ensureObjectRef. 
 	1.0 - 2016-10-21 ( dshockley ): first created.
 
@@ -23,7 +25,8 @@ REQUIRES:
 
 on run
 	tell application "System Events"
-		tell application process "FileMaker Pro Advanced"
+		set fmProcID to id of first application process whose name contains "FileMaker"
+		tell process id fmProcID
 			set frontmost to true
 			delay 0.5
 			
@@ -42,7 +45,7 @@ end run
 --------------------
 
 on getObjectAndSubs(prefs)
-	-- version 1.1
+	-- version 2024-07-15
 	
 	set defaultPrefs to {someObjectRef:null, outputType:"TEXT", maxSubLevel:null, subLevel:0}
 	(* 
@@ -91,23 +94,6 @@ on getObjectAndSubs(prefs)
 			
 			try
 				set subObjects to UI elements of someObjectRef
-				
-				
-				
-				
-				(*
-				if subLevel is 1 then
-					tell me to activate
-					display dialog my coerceToString(someObjectRef)
-					display dialog "subObjects : " & my coerceToString(subObjects)
-					display dialog (length of indentString) as string
-					error -128
-				end if
-				*)
-				
-				
-				
-				
 				
 				if outputType is "Record" then
 					set thisSubObjectList to {}
