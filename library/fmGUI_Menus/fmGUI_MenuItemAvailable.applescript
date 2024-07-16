@@ -1,5 +1,5 @@
 -- fmGUI_MenuItemAvailable({menuItemRef:null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- return if the specified menu item available.
 
 

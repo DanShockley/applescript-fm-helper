@@ -1,5 +1,5 @@
 -- fmGUI_NameOfFrontmostWindow()
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Return the name of the frontmost window.
 
 

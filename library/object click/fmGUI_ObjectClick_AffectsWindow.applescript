@@ -1,17 +1,19 @@
 -- fmGUI_ObjectClick_AffectsWindow(buttonRef)
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- Click on an object that will open a window
 
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated SAMPLE USAGE CODE to tell app by process ID (works-with-FM19+). Bumped handler version to reflect documentation change. 
 	1.0 - created
 *)
 
 
 on run
 	tell application "System Events"
-		tell process "FileMaker Pro Advanced"
+		set fmProcID to id of first application process whose name contains "FileMaker"
+		tell process id fmProcID
 			set frontmost to true
 			set cancelButton to get first button of window 1 whose name is "Cancel"
 		end tell
@@ -25,7 +27,7 @@ end run
 --------------------
 
 on fmGUI_ObjectClick_AffectsWindow(buttonRef)
-	-- version 1.0
+	-- version 2024-07-15
 	
 	using terms from application "System Events"
 		my clickObjectByCoords(buttonRef)

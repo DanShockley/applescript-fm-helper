@@ -1,10 +1,11 @@
 -- closeDatabase({waitCycleDelaySeconds:10, waitSaveTotalSeconds:10 * minutes, dbName:null, closeScriptName:"CLOSE_SCRIPT"})
--- Daniel A. Shockley, NYHTC
+-- Daniel A. Shockley
 -- If possible, close the frontmost database. If it takes too long, error. 
 
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). Also, use getFmAppPath for dictionary-specific commands. 
 	1.6 - 2018-10-16 ( eshagdar ): FM17 only have FMP, so remove param and logic for FMA.
 	1.5 - 2017-06-06 ( eshagdar ): use a handler for checking if menu item is available
 	1.4 - 2016-07-07 ( eshagdar ): try closing DB by name first. changed the calling script to be a parameter insted of being hard-coded into the handler.
@@ -20,6 +21,8 @@ REQUIRES:
 	fmGUI_ManageScripts_FmScript_Select
 	fmGUI_ManageScripts_Open
 	fmGUI_Wait_MenuItemAvailable
+	getFmAppPath
+	getFmAppProcessID
 	logConsole
 	logLEVEL
 *)
@@ -37,7 +40,7 @@ end run
 --------------------
 
 on closeDatabase(prefs)
-	-- version 1.6
+	-- version 2024-07-15
 	
 	set defaultPrefs to {waitCycleDelaySeconds:10, waitSaveTotalSeconds:10 * minutes, dbName:null, closeScriptName:"CLOSE_SCRIPT"}
 	set prefs to prefs & defaultPrefs
@@ -48,12 +51,17 @@ on closeDatabase(prefs)
 	
 	set waitCycleMax to round (waitSaveTotalSeconds / waitCycleDelaySeconds) rounding down
 	
-	
 	try
 		-- try closing the database by telling FileMaker to do it
 		if dbName of prefs is not null then
 			try
-				tell application "FileMaker Pro Advanced" to close database dbName
+				set appPosixPath to getFmAppPath()
+				
+				using terms from application "FileMaker Pro"
+					tell application appPosixPath
+						close database dbName
+					end tell
+				end using terms from
 				if debugMode then my logConsole(ScriptName, "DATABASE '" & dbName & "' closed directly.")
 				return true
 			on error errMsg number errNum
@@ -64,9 +72,15 @@ on closeDatabase(prefs)
 		
 		-- unable to close directly, try to call the close script
 		fmGUI_AppFrontMost()
+		try
+			set fmProcID to fmProcID of prefs
+		on error
+			set fmProcID to my getFmAppProcessID()
+		end try
+		
 		
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell process id fmProcID
 				set closeMenuItem to menu item "Close" of menu 1 of menu bar item "File" of menu bar 1
 			end tell
 		end tell
@@ -82,7 +96,7 @@ on closeDatabase(prefs)
 				fmGUI_ManageScripts_Open({})
 				fmGUI_ManageScripts_FmScript_Select({fmScriptName:(closeScriptName of prefs)})
 				tell application "System Events"
-					tell process "FileMaker Pro Advanced"
+					tell process id fmProcID
 						set runScriptButton to first button of window 1 whose description is "Perform"
 						click runScriptButton
 					end tell
@@ -95,7 +109,7 @@ on closeDatabase(prefs)
 			if debugMode then logConsole(ScriptName, "No '" & (closeScriptName of prefs) & "' for " & dbName & ", attempting to close window instead")
 			fmGUI_ManageScripts_Close({})
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell process id fmProcID
 					click button 1 of window 1
 				end tell
 			end tell
@@ -137,3 +151,11 @@ end logConsole
 on logLEVEL(level, someMsg)
 	tell application "htcLib" to logLEVEL(level, someMsg)
 end logLEVEL
+
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID
+
+on getFmAppPath()
+	tell application "htcLib" to getFmAppPath()
+end getFmAppPath

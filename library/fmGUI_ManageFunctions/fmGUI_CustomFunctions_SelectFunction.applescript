@@ -1,5 +1,5 @@
 -- fmGUI_CustomFunctions_ParamsForFunction({functionName:null})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- select a function by name
 
 
@@ -12,7 +12,8 @@ HISTORY:
 
 
 REQUIRES:
-	fmGUI_ManageDb_GoToTab
+	fmGUI_CustomFunctions_Open
+	getFmAppProcessID
 *)
 
 

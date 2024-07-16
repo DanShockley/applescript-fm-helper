@@ -1,10 +1,11 @@
 -- main_helper
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Helper script that compiles all .applescript files into a folder of compiled .scpt files, then builds the htcLib app to reference those compiled scripts.
 
 
 (* 
 HISTORY:
+	2024-07-16 ( danshockley ): After initial read attempt, if source file starts with UTF-16 byte-marker, re-read as Unicode text. This was because the getFmAppPath was saved as UTF-16 Little Endian by Script Editor, despite previously being UTF-8 or "Western (Mac OS Roman)" before Scritp Editor touched it. Rather than fight, updated this script to read it properly. 
 	2024-04-13 ( danshockley ): If handlerName is EMPTY, do NOT try to compile, since that would create a non-compilable temp). Notice if on Ventura or newer and if so do not bother trying to enable assistance access in System Preferences. 
 	2020-02-19 ( dshockley ): added a comment that the prefs argument is a list of shell arguments specified. 
 	2020-01-06 ( hkierulf, dshockley, hdu ): if the app is missing, DO need to compile it. 
@@ -37,7 +38,7 @@ property appName : "htcLib"
 property appExtension : ".app"
 property compiledFolderName : "CompiledHandlers"
 property securityPrefPanePosix : "/System/Library/PreferencePanes/Security.prefPane"
-
+property byteMarker_UTF16 : "ÿþ"
 
 on run prefs
 	
@@ -121,10 +122,10 @@ on run prefs
 				set oneFileName to item fileCount of fileNamesInOneLibrary
 				if oneFileName does not start with fileNamePrefix_toSkip then
 					
-					-- SPECIAL DEBUGGING!!! 2020-02-19 ( dshockley )   SPECIAL DEBUGGING!!! 2020-02-19 ( dshockley )
-					-- SPECIAL DEBUGGING!!! 2020-02-19 ( dshockley )   SPECIAL DEBUGGING!!! 2020-02-19 ( dshockley )
-					-- SPECIAL DEBUGGING!!! 2020-02-19 ( dshockley )   SPECIAL DEBUGGING!!! 2020-02-19 ( dshockley )
-					--	if oneFileName is "fmGUI_ManageSecurity_Open" then set debugMode to true
+					-- SPECIAL DEBUGGING!!! 2024-07-16 ( danshockley )   SPECIAL DEBUGGING!!! 2024-07-16 ( danshockley )   
+					-- SPECIAL DEBUGGING!!! 2024-07-16 ( danshockley )   SPECIAL DEBUGGING!!! 2024-07-16 ( danshockley )   
+					-- SPECIAL DEBUGGING!!! 2024-07-16 ( danshockley )   SPECIAL DEBUGGING!!! 2024-07-16 ( danshockley )   
+					--if oneFileName is "getFmAppPath.applescript" then set debugMode to true
 					
 					if debugMode then log "oneFileName: " & oneFileName
 					set pathOneFileinOneLibrary to pathOneLibrary & ":" & oneFileName
@@ -142,6 +143,9 @@ on run prefs
 					if debugMode then log "existingVersion: " & existingVersion
 					
 					set oneFileRawCode to read file pathOneFileinOneLibrary
+					if oneFileRawCode starts with byteMarker_UTF16 then
+						set oneFileRawCode to read file pathOneFileinOneLibrary as Unicode text
+					end if
 					if oneFileRawCode contains codeStart and oneFileRawCode contains codeEnd then
 						set codeOneHandler to getTextBetween({oneFileRawCode, codeStart, codeEnd})
 					else
@@ -158,6 +162,9 @@ on run prefs
 					if length of handlerName is 0 then
 						if debugMode then log "ERROR: EMPTY handlerName for file: " & oneFileName
 						display dialog "The file " & oneFileName & " does NOT seem to have a valid handlerName. Please either update that source file, or remove it. But, compilation will ignore that file and continue. That file can be found at: " & pathOneFileinOneLibrary buttons {"OK"} default button "OK"
+						
+						return handlerCall
+						
 					else
 						-- BEGIN: ONE handlerName
 						

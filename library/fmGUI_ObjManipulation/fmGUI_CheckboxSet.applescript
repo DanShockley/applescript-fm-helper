@@ -1,10 +1,11 @@
 -- fmGUI_CheckboxSet({objRef:null, objValue:null})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- (de)select checkbox object
 
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated SAMPLE USAGE CODE to tell app by process ID (works-with-FM19+). Bumped handler version to reflect documentation change. 
 	1.2 - 2018-05-03 ( eshagdar ): allow objValue to be a boolean.
 	1.1 - 2017-09-05 ( eshagdar ): converted prefs to record.
 	1.0 - created
@@ -14,7 +15,8 @@ HISTORY:
 
 on run
 	tell application "System Events"
-		tell process "FileMaker Pro Advanced"
+		set fmProcID to id of first application process whose name contains "FileMaker"
+		tell process id fmProcID
 			set frontmost to true
 			set checkboxRef to checkbox "Item Name:" of window 1
 		end tell
@@ -28,7 +30,7 @@ end run
 --------------------
 
 on fmGUI_CheckboxSet(prefs)
-	-- version 1.2
+	-- version 2024-07-15
 	
 	set defaultPrefs to {objRef:null, objValue:null}
 	set prefs to prefs & defaultPrefs

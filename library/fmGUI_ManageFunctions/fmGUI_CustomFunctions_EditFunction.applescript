@@ -44,12 +44,12 @@ on fmGUI_CustomFunctions_EditFunction(prefs)
 	
 	set defaultPrefs to {functionName:null, functionOldName:null, doNotChangeExisting:false, availability:"ALL", parameterList:{}, calcCode:null, doNotUpdateIfVersion:null}
 	set prefs to prefs & defaultPrefs
-		try
+	try
 		set fmProcID to fmProcID of prefs
 	on error
 		set fmProcID to my getFmAppProcessID()
 	end try
-
+	
 	try
 		-- init vars		
 		set foundFunction to false
@@ -65,7 +65,7 @@ on fmGUI_CustomFunctions_EditFunction(prefs)
 		-- open list of functions and get objects
 		fmGUI_CustomFunctions_Open({})
 		tell application "System Events"
-					tell process id fmProcID
+			tell process id fmProcID
 				set editButton to first button of window 1 whose name begins with "Edit"
 				set newButton to first button of window 1 whose name begins with "New"
 			end tell
@@ -109,7 +109,7 @@ on fmGUI_CustomFunctions_EditFunction(prefs)
 			
 			-- get version of function in the file
 			tell application "System Events"
-					tell process id fmProcID
+				tell process id fmProcID
 					set existingCalc to value of text area 1 of scroll area 4 of window 1
 				end tell
 			end tell
@@ -141,7 +141,7 @@ on fmGUI_CustomFunctions_EditFunction(prefs)
 		-- ensure standard calc
 		if calcCode of prefs is not null then
 			tell application "System Events"
-					tell process id fmProcID
+				tell process id fmProcID
 					set value of text area 1 of scroll area 4 of window 1 to calcCode of prefs
 				end tell
 			end tell
@@ -153,7 +153,7 @@ on fmGUI_CustomFunctions_EditFunction(prefs)
 		set parameterList to parameterList of prefs
 		if (count of parameterList) is not 0 then
 			tell application "System Events"
-					tell process id fmProcID
+				tell process id fmProcID
 					repeat with paramNum from 1 to count of parameterList
 						set paramName to contents of item paramNum of parameterList
 						select row paramNum of table 1 of scroll area 3 of window 1

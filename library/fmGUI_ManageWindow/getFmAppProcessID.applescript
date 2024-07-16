@@ -8,6 +8,7 @@
 	NOTE ALSO: this is NOT what you use for non-UI "app's-own-dictionary-terminology" scripting. 
 	
 HISTORY:
+	2024-07-16 ( danshockley ): Version bump to encourage recompile.
 	2024-07-15 ( danshockley ): created	
 *)
 
@@ -34,7 +35,7 @@ end run
 --------------------
 
 on getFmAppProcessID()
-	-- version 2024-07-15
+	-- version 2024-07-16
 	-- Gets process ID of "FileMaker" app that is frontmost (if any), otherwise the 1st one available.
 	set appNameMatchString to "FileMaker"
 	-- [ NOTE: the code below is identical to the function "getAppProcessID" ]
@@ -60,3 +61,4 @@ end getFmAppProcessID
 --------------------
 -- END OF CODE
 --------------------
+

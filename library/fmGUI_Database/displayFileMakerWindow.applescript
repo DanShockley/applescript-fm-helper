@@ -1,10 +1,11 @@
 -- displayFileMakerWindow({windowName:"", waitCycleDelaySeconds:"", waitSaveTotalSeconds:""})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- If open, then display first window this finds and return true, else return false.
 
 
 (*
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.8 - 2020-05-20 ( dshockley ): fixed name in 1st comment line. 
 	1.7 - 2018-09-20 ( eshagdar ): FM17 has only 1 version, so no need to specify by name/bundle
 	1.6 - get list of window names of open files from the menu instead of asking FM for document names.
@@ -23,6 +24,7 @@ REQUIRES:
 	getTextBefore
 	getTextBetween
 	logConsole
+	getFmAppProcessID
 *)
 
 
@@ -44,6 +46,12 @@ on displayFileMakerWindow(prefs)
 		set defaultPrefs to {windowName:null, waitCycleDelaySeconds:5, waitSaveTotalSeconds:2 * minutes}
 		set prefs to prefs & defaultPrefs
 		
+		try
+			set fmProcID to fmProcID of prefs
+		on error
+			set fmProcID to my getFmAppProcessID()
+		end try
+		
 		--if debugMode then logConsole(ScriptName, "displayFileMakerDatabase prefs: " & coerceToString(prefs))
 		
 		set windowName to windowName of prefs
@@ -55,7 +63,7 @@ on displayFileMakerWindow(prefs)
 		
 		-- get name of all documents
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell process id fmProcID
 				set windowMenu to menu 1 of menu bar item "Window" of menu bar 1
 				set hiddenWindowMenu to menu 1 of menu item "Show Window" of windowMenu
 				set windowMenuItems to name of menu items of windowMenu
@@ -87,14 +95,14 @@ on displayFileMakerWindow(prefs)
 					if oneDocName is in windowMenuItems then
 						-- window exists
 						tell application "System Events"
-							tell process "FileMaker Pro Advanced"
+							tell process id fmProcID
 								set menuItemRef to menu item oneDocName of windowMenu
 							end tell
 						end tell
 					else
 						-- hidden file
 						tell application "System Events"
-							tell process "FileMaker Pro Advanced"
+							tell process id fmProcID
 								set menuItemRef to menu item oneDocName of hiddenWindowMenu
 							end tell
 						end tell
@@ -132,6 +140,10 @@ end getTextBetween
 on logConsole(processName, consoleMsg)
 	tell application "htcLib" to logConsole(processName, consoleMsg)
 end logConsole
+
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID
 
 
 

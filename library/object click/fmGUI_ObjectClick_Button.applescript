@@ -1,5 +1,5 @@
 -- fmGUI_ObjectClick_Button({buttonName:null, buttonRef:null, windowNameThatCloses:null, windowNameThatOpens:null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Wrapper method for clicking the ok button and waiting for the window to close
 
 
@@ -13,6 +13,7 @@ REQUIRES:
 	
 
 HISTORY:
+	2024-07-15 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.3.1 - 2018-12-07 ( eshagdar ): FM process name contains 'Advanced'.
 	1.3 - 2017-11-20 ( eshagdar ): make sure we're talking to the correct window - there may be several windows 'in front of' the manage layouts window.
 	1.2 - 2017-11-06 ( eshagdar ): added windowNameThatOpens.
@@ -23,7 +24,8 @@ HISTORY:
 
 on run
 	tell application "System Events"
-		tell process "FileMaker Pro Advanced"
+		set fmProcID to id of first application process whose name contains "FileMaker"
+		tell process id fmProcID
 			set windowContextRef to first window whose name begins with "Manage Layouts"
 		end tell
 	end tell
@@ -36,7 +38,7 @@ end run
 --------------------
 
 on fmGUI_ObjectClick_Button(prefs)
-	-- version 1.3.1
+	-- version 2024-07-15
 	
 	set defaultPrefs to {buttonName:null, buttonRef:null, windowContextRef:null, windowNameThatCloses:null, windowNameThatOpens:null}
 	set prefs to prefs & defaultPrefs
@@ -47,12 +49,15 @@ on fmGUI_ObjectClick_Button(prefs)
 	
 	try
 		fmGUI_AppFrontMost()
-		
-		
+		try
+			set fmProcID to fmProcID of prefs
+		on error
+			set fmProcID to my getFmAppProcessID()
+		end try
 		-- ensure windowContext
 		if windowContextRef is null then
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell process id fmProcID
 					set windowContextRef to window 1
 				end tell
 			end tell
@@ -61,7 +66,7 @@ on fmGUI_ObjectClick_Button(prefs)
 		-- use the most commonly found button reference ( unless specified )
 		if buttonRef is null then
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell process id fmProcID
 					set buttonRef to button (buttonName of prefs) of windowContextRef
 				end tell
 			end tell
@@ -106,6 +111,9 @@ on windowWaitUntil_FrontIS(prefs)
 	tell application "htcLib" to windowWaitUntil_FrontIS(prefs)
 end windowWaitUntil_FrontIS
 
+on getFmAppProcessID()
+	tell application "htcLib" to getFmAppProcessID()
+end getFmAppProcessID
 
 
 on coerceToString(incomingObject)
