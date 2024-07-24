@@ -3,7 +3,7 @@
 #
 # Make file for applescript-fm-helper
 #
-# NYHTC. 2016-08-16-dshockley
+# 2016-08-16-dshockley
 
 
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"

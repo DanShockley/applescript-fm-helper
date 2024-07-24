@@ -1,5 +1,4 @@
 -- fmGUI_ManageDb_Table_ListOfFieldNames(baseTableName)
--- NYHTC
 -- Return the list of field names for the specified table name
 
 
@@ -45,5 +44,5 @@ end fmGUI_ManageDb_Table_ListOfFieldNames
 --------------------
 
 on fmGUI_ManageDb_FieldsPickTable(baseTableName)
-	tell application "htcLib" to fmGUI_ManageDb_FieldsPickTable(baseTableName)
+	tell application "fmGuiLib" to fmGUI_ManageDb_FieldsPickTable(baseTableName)
 end fmGUI_ManageDb_FieldsPickTable

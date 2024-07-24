@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_PrivSet_Rename({privSet_oldName:"", privSet_newName:"", fullAccessAccountName:"admin", fullAccessPassword:""})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- rename a privilege set
 
 
@@ -68,23 +68,23 @@ end fmGUI_ManageSecurity_PrivSet_Rename
 --------------------
 
 on clickObjectByCoords(prefs)
-	tell application "htcLib" to clickObjectByCoords(my coerceToString(prefs))
+	tell application "fmGuiLib" to clickObjectByCoords(my coerceToString(prefs))
 end clickObjectByCoords
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageSecurity_PrivSet_OpenSelected(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_OpenSelected(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_OpenSelected(prefs)
 end fmGUI_ManageSecurity_PrivSet_OpenSelected
 
 on fmGUI_ManageSecurity_PrivSet_Select(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_Select(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_Select(prefs)
 end fmGUI_ManageSecurity_PrivSet_Select
 
 on windowWaitUntil(prefs)
-	tell application "htcLib" to windowWaitUntil(prefs)
+	tell application "fmGuiLib" to windowWaitUntil(prefs)
 end windowWaitUntil
 
 
@@ -94,7 +94,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

@@ -1,5 +1,5 @@
 -- fmGUI_ManageDataSources_Delete(dataSourceName:null)
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Delete a data source
 
 
@@ -60,19 +60,19 @@ end fmGUI_ManageDataSources_Delete
 --------------------
 
 on clickObjectByCoords(prefs)
-	tell application "htcLib" to clickObjectByCoords(my coerceToString(prefs))
+	tell application "fmGuiLib" to clickObjectByCoords(my coerceToString(prefs))
 end clickObjectByCoords
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageDataSources_Open(prefs)
-	tell application "htcLib" to fmGUI_ManageDataSources_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDataSources_Open(prefs)
 end fmGUI_ManageDataSources_Open
 
 on windowWaitUntil_FrontIS(prefs)
-	tell application "htcLib" to windowWaitUntil_FrontIS(prefs)
+	tell application "fmGuiLib" to windowWaitUntil_FrontIS(prefs)
 end windowWaitUntil_FrontIS
 
 
@@ -81,7 +81,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

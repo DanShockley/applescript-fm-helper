@@ -1,5 +1,5 @@
 -- fmGUI_Database_DbNameOfFrontWindow({})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- return the database name of frontmost window
 
 
@@ -44,9 +44,9 @@ end fmGUI_Database_DbNameOfFrontWindow
 --------------------
 
 on fmGUI_ALL_Utilities_Close()
-	tell application "htcLib" to fmGUI_ALL_Utilities_Close()
+	tell application "fmGuiLib" to fmGUI_ALL_Utilities_Close()
 end fmGUI_ALL_Utilities_Close
 
 on dbNameOfWindowName(prefs)
-	tell application "htcLib" to dbNameOfWindowName(prefs)
+	tell application "fmGuiLib" to dbNameOfWindowName(prefs)
 end dbNameOfWindowName

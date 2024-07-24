@@ -1,5 +1,5 @@
 -- fmGUI_2empowerFM_Toolbox_Close()
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Closes floating 2empowerFM Toolbox utility window. 
 
 
@@ -44,9 +44,9 @@ end fmGUI_2empowerFM_Toolbox_Close
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on getFmAppProcessID()
-	tell application "htcLib" to getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
 end getFmAppProcessID

@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_AccessRecord_CopyTable({sourceTable:null, effectTable:null, allowFieldAccessOverride: false})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- copy record-access priviledges from from one table to another
 
 
@@ -46,13 +46,13 @@ end fmGUI_ManageSecurity_AccessRecord_CopyTable
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageSecurity_AccessRecord_GetInfo_OneTable(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_AccessRecord_GetInfo_OneTable(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_AccessRecord_GetInfo_OneTable(prefs)
 end fmGUI_ManageSecurity_AccessRecord_GetInfo_OneTable
 
 on fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_OneTable(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_OneTable(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_OneTable(prefs)
 end fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_OneTable

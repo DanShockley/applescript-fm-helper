@@ -1,5 +1,5 @@
 -- fmGUI_relogin({accountName:null, pwd:null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- re-login with specified credentials. must be triggered elsewhere - this handler only deals with the re-login window.
 
 
@@ -45,5 +45,5 @@ end fmGUI_relogin
 --------------------
 
 on fmGUI_AuthenticateDialog(prefs)
-	tell application "htcLib" to fmGUI_AuthenticateDialog(prefs)
+	tell application "fmGuiLib" to fmGUI_AuthenticateDialog(prefs)
 end fmGUI_AuthenticateDialog

@@ -1,5 +1,5 @@
 -- fileNameWithoutExtension({fileName:null})
--- Daniel A. Shockley
+-- Dan Shockley
 -- Gets the file name without the extension. Expects a file name, not file path.
 
 

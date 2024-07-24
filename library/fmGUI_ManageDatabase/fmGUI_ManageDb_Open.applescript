@@ -1,5 +1,5 @@
 -- fmGUI_ManageDb_Open(prefs)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Open Manage Database
 
 

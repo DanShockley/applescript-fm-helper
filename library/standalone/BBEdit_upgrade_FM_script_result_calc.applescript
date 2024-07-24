@@ -1,5 +1,5 @@
 -- BBEdit_upgrade_FM_script_result_calc({})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- BBEdit - upgrade upgrade FM script result calc
 
 (* 

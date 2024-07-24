@@ -1,5 +1,5 @@
 -- fmGUI_ManageDb_TO_Add({tocName:null, dbName:null, doNotChangeExisting:false, baseTableName:null})
--- Daniel Shockley, NYHTC
+-- Daniel Shockley
 -- add table occurence to the current database
 
 
@@ -120,36 +120,36 @@ end fmGUI_ManageDb_TO_Add
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageDataSources_EnsureExists(prefs)
-	tell application "htcLib" to fmGUI_ManageDataSources_EnsureExists(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDataSources_EnsureExists(prefs)
 end fmGUI_ManageDataSources_EnsureExists
 
 on fmGUI_ManageDataSources_Save(prefs)
-	tell application "htcLib" to fmGUI_ManageDataSources_Save(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDataSources_Save(prefs)
 end fmGUI_ManageDataSources_Save
 
 on fmGUI_ManageDb_GoToTab_Relationships(prefs)
-	tell application "htcLib" to fmGUI_ManageDb_GoToTab_Relationships(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDb_GoToTab_Relationships(prefs)
 end fmGUI_ManageDb_GoToTab_Relationships
 
 on fmGUI_ObjectClick_Button(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_Button({buttonRef:my coerceToString(buttonRef of prefs)} & prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_Button({buttonRef:my coerceToString(buttonRef of prefs)} & prefs)
 end fmGUI_ObjectClick_Button
 
 on fmGUI_ObjectClick_OkButton(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_OkButton(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_OkButton(prefs)
 end fmGUI_ObjectClick_OkButton
 
 on fmGUI_PopupSet(prefs)
 	set objRefStr to coerceToString(objRef of prefs)
-	tell application "htcLib" to fmGUI_PopupSet({objRef:objRefStr} & prefs)
+	tell application "fmGuiLib" to fmGUI_PopupSet({objRef:objRefStr} & prefs)
 end fmGUI_PopupSet
 
 on windowWaitUntil_FrontIS(prefs)
-	tell application "htcLib" to windowWaitUntil_FrontIS(prefs)
+	tell application "fmGuiLib" to windowWaitUntil_FrontIS(prefs)
 end windowWaitUntil_FrontIS
 
 
@@ -159,7 +159,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceTEXT:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceTEXT:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

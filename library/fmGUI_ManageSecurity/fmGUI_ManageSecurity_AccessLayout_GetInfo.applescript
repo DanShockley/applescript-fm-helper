@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_AccessLayout_GetInfo({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- get the layout access for the currently opened layout privileges
 
 
@@ -64,9 +64,9 @@ end fmGUI_ManageSecurity_AccessLayout_GetInfo
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on windowWaitUntil_FrontIS(prefs)
-	tell application "htcLib" to windowWaitUntil_FrontIS(prefs)
+	tell application "fmGuiLib" to windowWaitUntil_FrontIS(prefs)
 end windowWaitUntil_FrontIS

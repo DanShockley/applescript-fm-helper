@@ -1,5 +1,5 @@
 -- fmGUI_ManageScripts_SearchBoxFind({searchCriteria:null, delayTime:0.25, maxDelay:2, delayIncreaseBy:0.25})
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Specify the contents of the search box in the Script Workspace, which activates a live-filter type of search. 
 
 
@@ -73,10 +73,10 @@ end fmGUI_ManageScripts_SearchBoxFind
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageScripts_Open(prefs)
-	tell application "htcLib" to fmGUI_ManageScripts_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageScripts_Open(prefs)
 end fmGUI_ManageScripts_Open
 

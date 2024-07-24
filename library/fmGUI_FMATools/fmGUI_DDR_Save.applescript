@@ -1,5 +1,5 @@
 -- fmGUI_DDR_Save({ddrPath:null, dbNameList:{}})
--- Erik Shagar, NYHTC
+-- Erik Shagar
 -- Save an XML DDR of all the currently open files
 
 
@@ -36,7 +36,7 @@ end run
 --------------------
 
 on fmGUI_DDR_Save(prefs)
-	-- version 1.4, Erik Shagar, NYHTC
+	-- version 1.4, Erik Shagar
 	
 	
 	try
@@ -143,52 +143,52 @@ end fmGUI_DDR_Save
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ClickMenuItem(prefs)
 	set prefs to {menuItemRef:my coerceToString(menuItemRef of prefs)} & prefs
-	tell application "htcLib" to fmGUI_ClickMenuItem(prefs)
+	tell application "fmGuiLib" to fmGUI_ClickMenuItem(prefs)
 end fmGUI_ClickMenuItem
 
 on fmGUI_isInFullAccessMode(prefs)
-	tell application "htcLib" to fmGUI_isInFullAccessMode(prefs)
+	tell application "fmGuiLib" to fmGUI_isInFullAccessMode(prefs)
 end fmGUI_isInFullAccessMode
 
 on fmGUI_NameOfFrontmostWindow()
-	tell application "htcLib" to fmGUI_NameOfFrontmostWindow()
+	tell application "fmGuiLib" to fmGUI_NameOfFrontmostWindow()
 end fmGUI_NameOfFrontmostWindow
 
 on fmGUI_ObjectClick_Button(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_Button(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_Button(prefs)
 end fmGUI_ObjectClick_Button
 
 on fmGUI_ObjectClick_CancelButton(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_CancelButton(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_CancelButton(prefs)
 end fmGUI_ObjectClick_CancelButton
 
 on fmGUI_ObjectClick_OkButton(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_OkButton(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_OkButton(prefs)
 end fmGUI_ObjectClick_OkButton
 
 on fmGUI_DDR_SelectFiles(prefs)
-	tell application "htcLib" to fmGUI_DDR_SelectFiles(prefs)
+	tell application "fmGuiLib" to fmGUI_DDR_SelectFiles(prefs)
 end fmGUI_DDR_SelectFiles
 
 on fmGUI_DDR_SelectParts(prefs)
-	tell application "htcLib" to fmGUI_DDR_SelectParts(prefs)
+	tell application "fmGuiLib" to fmGUI_DDR_SelectParts(prefs)
 end fmGUI_DDR_SelectParts
 
 on fmGUI_selectAllTablesInDDR()
-	tell application "htcLib" to fmGUI_selectAllTablesInDDR()
+	tell application "fmGuiLib" to fmGUI_selectAllTablesInDDR()
 end fmGUI_selectAllTablesInDDR
 
 on fmGUI_selectAllPartsInDDR()
-	tell application "htcLib" to fmGUI_selectAllPartsInDDR()
+	tell application "fmGuiLib" to fmGUI_selectAllPartsInDDR()
 end fmGUI_selectAllPartsInDDR
 
 on windowWaitUntil(prefs)
-	tell application "htcLib" to windowWaitUntil(prefs)
+	tell application "fmGuiLib" to windowWaitUntil(prefs)
 end windowWaitUntil
 
 
@@ -198,7 +198,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_PrivSet_Update({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- update a privilege set
 
 
@@ -132,50 +132,50 @@ end fmGUI_ManageSecurity_PrivSet_Update
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_CheckboxSet(prefs)
 	set objRefStr to coerceToString(objRef of prefs)
-	tell application "htcLib" to fmGUI_CheckboxSet({objRef:objRefStr} & prefs)
+	tell application "fmGuiLib" to fmGUI_CheckboxSet({objRef:objRefStr} & prefs)
 end fmGUI_CheckboxSet
 
 on fmGUI_ManageSecurity_PrivSet_OpenForEdit(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_OpenForEdit(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_OpenForEdit(prefs)
 end fmGUI_ManageSecurity_PrivSet_OpenForEdit
 
 on fmGUI_ManageSecurity_PrivSet_Update_AccessLayout(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessLayout(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessLayout(prefs)
 end fmGUI_ManageSecurity_PrivSet_Update_AccessLayout
 
 on fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_AllTables(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_AllTables(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_AllTables(prefs)
 end fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_AllTables
 
 on fmGUI_ManageSecurity_PrivSet_Update_AccessScript(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessScript(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessScript(prefs)
 end fmGUI_ManageSecurity_PrivSet_Update_AccessScript
 
 on fmGUI_ManageSecurity_PrivSet_Update_AccessValueList(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessValueList(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessValueList(prefs)
 end fmGUI_ManageSecurity_PrivSet_Update_AccessValueList
 
 on fmGUI_ManageSecurity_PrivSet_Update_ExtendedPrivileges(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_Update_ExtendedPrivileges(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_Update_ExtendedPrivileges(prefs)
 end fmGUI_ManageSecurity_PrivSet_Update_ExtendedPrivileges
 
 on fmGUI_ObjectClick_OkButton(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_OkButton(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_OkButton(prefs)
 end fmGUI_ObjectClick_OkButton
 
 on fmGUI_PopupSet(prefs)
 	set objRefStr to coerceToString(objRef of prefs)
-	tell application "htcLib" to fmGUI_PopupSet({objRef:objRefStr} & prefs)
+	tell application "fmGuiLib" to fmGUI_PopupSet({objRef:objRefStr} & prefs)
 end fmGUI_PopupSet
 
 on fmGUI_TextFieldSet(prefs)
 	set objRefStr to coerceToString(objRef of prefs)
-	tell application "htcLib" to fmGUI_TextFieldSet({objRef:objRefStr} & prefs)
+	tell application "fmGuiLib" to fmGUI_TextFieldSet({objRef:objRefStr} & prefs)
 end fmGUI_TextFieldSet
 
 
@@ -185,7 +185,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceTEXT:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceTEXT:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

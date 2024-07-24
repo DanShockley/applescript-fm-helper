@@ -1,5 +1,5 @@
 -- upperFirstLetter({str:""})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- takes some string and returns the string with the first letter capitalized
 
 
@@ -45,5 +45,5 @@ end upperFirstLetter
 --------------------
 
 on textUpper()
-	tell application "htcLib" to textUpper(prefs)
+	tell application "fmGuiLib" to textUpper(prefs)
 end textUpper

@@ -1,5 +1,5 @@
 -- versionCompare(someString)
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Compares 2 version strings
 
 (*

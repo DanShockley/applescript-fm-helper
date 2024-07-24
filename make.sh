@@ -3,7 +3,6 @@
 #
 # Make file for applescript-fm-helper.
 #
-# NYHTC. 
 # 
 # 2016-08-16 ( dshockley ): created
 # 2017-10-20 ( eshagdar ): run without UI interaction.

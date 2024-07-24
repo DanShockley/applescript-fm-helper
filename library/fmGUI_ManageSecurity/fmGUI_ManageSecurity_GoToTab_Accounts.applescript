@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_GoToTab_Accounts({})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- Go to the "Accounts" tab of manage security
 
 
@@ -39,5 +39,5 @@ end fmGUI_ManageSecurity_GoToTab_Accounts
 --------------------
 
 on fmGUI_ManageSecurity_GotoTab(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_GotoTab(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_GotoTab(prefs)
 end fmGUI_ManageSecurity_GotoTab

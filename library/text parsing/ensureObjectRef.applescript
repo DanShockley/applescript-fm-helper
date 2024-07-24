@@ -1,5 +1,5 @@
 -- ensureObjectRef(someObjectRef)
--- Dan Shockley, Erik Shagdar, NYHTC
+-- Dan Shockley, Erik Shagdar
 -- Ensure the passed in object ( or string ) is actually an object reference
 
 (*

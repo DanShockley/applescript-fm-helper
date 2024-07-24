@@ -1,5 +1,5 @@
 -- fmGUI_ClickMenuItem({menuItemRef:null, waitForMenuAvailable: null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- click on a menu item in FileMaker
 
 
@@ -70,16 +70,16 @@ end fmGUI_ClickMenuItem
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_Wait_MenuItemAvailable(prefs)
 	set prefs to {menuItemRef:my coerceToString(menuItemRef of prefs)} & prefs
-	tell application "htcLib" to fmGUI_Wait_MenuItemAvailable(prefs)
+	tell application "fmGuiLib" to fmGUI_Wait_MenuItemAvailable(prefs)
 end fmGUI_Wait_MenuItemAvailable
 
 on getFmAppProcessID()
-	tell application "htcLib" to getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
 end getFmAppProcessID
 
 
@@ -88,7 +88,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString
@@ -100,7 +100,7 @@ on ensureObjectRef(someObjectRef)
 	
 	tell application "Finder" to set ensureObjPath to (container of (container of (path to me)) as text) & "text parsing:ensureObjectRef.applescript"
 	set codeEnsureObj to read file ensureObjPath as text
-	tell application "htcLib" to set codeEnsureObj to "script codeEnsureObj " & return & getTextBetween({sourceText:codeEnsureObj, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeEnsureObj"
+	tell application "fmGuiLib" to set codeEnsureObj to "script codeEnsureObj " & return & getTextBetween({sourceText:codeEnsureObj, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeEnsureObj"
 	set codeEnsureObj to run script codeEnsureObj
 	tell codeEnsureObj to ensureObjectRef(someObjectRef)
 end ensureObjectRef

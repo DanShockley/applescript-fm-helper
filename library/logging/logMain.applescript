@@ -29,5 +29,5 @@ end logMAIN
 --------------------
 
 on logLEVEL(level, someMsg)
-	tell application "htcLib" to logLEVEL(level, someMsg)
+	tell application "fmGuiLib" to logLEVEL(level, someMsg)
 end logLEVEL

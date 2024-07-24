@@ -1,5 +1,5 @@
 -- fmGUI_ManageDb_GoToTab({tabName:null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Go to the "Fields" tab of manage database
 
 
@@ -58,9 +58,9 @@ end fmGUI_ManageDb_GoToTab
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageDb_Open(prefs)
-	tell application "htcLib" to fmGUI_ManageDb_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDb_Open(prefs)
 end fmGUI_ManageDb_Open

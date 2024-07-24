@@ -1,5 +1,5 @@
 -- fmGUI_AppFrontMost()
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Ensures FileMaker Advanced is the frontmost window. Closes 2empowerFM Toolbox window if it is visible. 
 
 
@@ -44,5 +44,5 @@ end fmGUI_AppFrontMost
 --------------------
 
 on getFmAppProcessID()
-	tell application "htcLib" to getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
 end getFmAppProcessID

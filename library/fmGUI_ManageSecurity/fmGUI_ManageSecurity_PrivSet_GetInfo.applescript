@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_PrivSet_GetInfo({getAccessInfo:false})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- gather all the info about the currently opened privSet
 
 
@@ -134,33 +134,33 @@ end fmGUI_ManageSecurity_PrivSet_GetInfo
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageSecurity_AccessLayout_GetInfo(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_AccessLayout_GetInfo(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_AccessLayout_GetInfo(prefs)
 end fmGUI_ManageSecurity_AccessLayout_GetInfo
 
 on fmGUI_ManageSecurity_AccessRecord_GetInfo_AllTables(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_AccessRecord_GetInfo_AllTables(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_AccessRecord_GetInfo_AllTables(prefs)
 end fmGUI_ManageSecurity_AccessRecord_GetInfo_AllTables
 
 on fmGUI_ManageSecurity_AccessScripts_GetInfo(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_AccessScripts_GetInfo(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_AccessScripts_GetInfo(prefs)
 end fmGUI_ManageSecurity_AccessScripts_GetInfo
 
 on fmGUI_ManageSecurity_AccessValueList_GetInfo(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_AccessValueList_GetInfo(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_AccessValueList_GetInfo(prefs)
 end fmGUI_ManageSecurity_AccessValueList_GetInfo
 
 on fmGUI_ManageSecurity_PrivSet_OpenSelected(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_OpenSelected(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_OpenSelected(prefs)
 end fmGUI_ManageSecurity_PrivSet_OpenSelected
 
 on fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_Open(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_Open(prefs)
 end fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_Open
 
 on fmGUI_ObjectClick_CancelButton(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_CancelButton(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_CancelButton(prefs)
 end fmGUI_ObjectClick_CancelButton

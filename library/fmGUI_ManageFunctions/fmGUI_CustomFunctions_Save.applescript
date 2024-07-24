@@ -1,5 +1,5 @@
 -- fmGUI_CustomFunctions_Save({})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- Save and close Manage Custom Functions window
 
 
@@ -59,13 +59,13 @@ end fmGUI_CustomFunctions_Save
 --------------------
 
 on fmGUI_NameOfFrontmostWindow()
-	tell application "htcLib" to fmGUI_NameOfFrontmostWindow()
+	tell application "fmGuiLib" to fmGUI_NameOfFrontmostWindow()
 end fmGUI_NameOfFrontmostWindow
 
 on windowWaitUntil(prefs)
-	tell application "htcLib" to windowWaitUntil(prefs)
+	tell application "fmGuiLib" to windowWaitUntil(prefs)
 end windowWaitUntil
 
 on getFmAppProcessID()
-	tell application "htcLib" to getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
 end getFmAppProcessID

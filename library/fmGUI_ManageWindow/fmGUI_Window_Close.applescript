@@ -1,5 +1,5 @@
 -- fmGUI_Window_Close(someWindowName)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Closes specify window name
 
 

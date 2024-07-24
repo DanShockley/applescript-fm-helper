@@ -1,5 +1,5 @@
 -- fmGUI_ManageScripts_SearchBoxClear({})
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Clears the search box in the Script Workspace. 
 
 
@@ -23,7 +23,7 @@ end run
 --------------------
 
 on fmGUI_ManageScripts_SearchBoxClear(prefs)
-	-- version 2020-03-03, Erik Shagdar, NYHTC
+	-- version 2020-03-03, Erik Shagdar
 	
 	try
 		fmGUI_AppFrontMost()
@@ -49,10 +49,10 @@ end fmGUI_ManageScripts_SearchBoxClear
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageScripts_Open(prefs)
-	tell application "htcLib" to fmGUI_ManageScripts_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageScripts_Open(prefs)
 end fmGUI_ManageScripts_Open
 

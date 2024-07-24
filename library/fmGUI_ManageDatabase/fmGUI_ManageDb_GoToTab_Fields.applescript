@@ -1,5 +1,5 @@
 -- fmGUI_ManageDb_GoToTab_Fields({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Go to the "Fields" tab of manage database
 
 
@@ -37,5 +37,5 @@ end fmGUI_ManageDb_GoToTab_Fields
 --------------------
 
 on fmGUI_ManageDb_GoToTab(prefs)
-	tell application "htcLib" to fmGUI_ManageDb_GoToTab(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDb_GoToTab(prefs)
 end fmGUI_ManageDb_GoToTab

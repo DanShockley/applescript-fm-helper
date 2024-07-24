@@ -1,5 +1,5 @@
 -- fmGUI_ManageScripts_ListOfScriptNames(someDbName)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Return the list of all script names
 
 

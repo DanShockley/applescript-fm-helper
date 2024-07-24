@@ -1,5 +1,5 @@
 -- fmGUI_ManageDb_GoToTab_Relationships({})
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Go to the "Relationship" tab of manage database
 
 
@@ -37,5 +37,5 @@ end fmGUI_ManageDb_GoToTab_Relationships
 --------------------
 
 on fmGUI_ManageDb_GoToTab(prefs)
-	tell application "htcLib" to fmGUI_ManageDb_GoToTab(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDb_GoToTab(prefs)
 end fmGUI_ManageDb_GoToTab

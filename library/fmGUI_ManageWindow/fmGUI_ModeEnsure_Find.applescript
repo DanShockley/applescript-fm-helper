@@ -1,5 +1,5 @@
 -- fmGUI_ModeEnsure_Find()
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- Go to 'Find' mode
 
 
@@ -35,5 +35,5 @@ end fmGUI_ModeEnsure_Find
 --------------------
 
 on fmGUI_ModeSelect(modeToSelect)
-	tell application "htcLib" to fmGUI_ModeSelect(modeToSelect)
+	tell application "fmGuiLib" to fmGUI_ModeSelect(modeToSelect)
 end fmGUI_ModeSelect

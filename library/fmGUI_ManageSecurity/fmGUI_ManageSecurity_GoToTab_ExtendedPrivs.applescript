@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_GoToTab_ExtendedPrivs({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Go to the "Extended Privilege" tab of manage security
 
 
@@ -37,5 +37,5 @@ end fmGUI_ManageSecurity_GoToTab_ExtendedPrivs
 --------------------
 
 on fmGUI_ManageSecurity_GotoTab(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_GotoTab(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_GotoTab(prefs)
 end fmGUI_ManageSecurity_GotoTab

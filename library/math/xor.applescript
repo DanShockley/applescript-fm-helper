@@ -1,5 +1,5 @@
 -- xor(firstBoolean, secondBoolean)
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- perform an xor operation on 2 booleans
 
 (*

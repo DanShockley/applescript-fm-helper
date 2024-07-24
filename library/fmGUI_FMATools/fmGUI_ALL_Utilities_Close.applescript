@@ -1,5 +1,5 @@
 -- fmGUI_ALL_Utilities_Close()
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Closes ALL (known) possible utility windows. 
 
 
@@ -40,14 +40,14 @@ end fmGUI_ALL_Utilities_Close
 
 
 on fmGUI_2empowerFM_Toolbox_Close()
-	tell application "htcLib" to fmGUI_2empowerFM_Toolbox_Close()
+	tell application "fmGuiLib" to fmGUI_2empowerFM_Toolbox_Close()
 end fmGUI_2empowerFM_Toolbox_Close
 
 on fmGUI_DataViewer_Close()
-	tell application "htcLib" to fmGUI_DataViewer_Close()
+	tell application "fmGuiLib" to fmGUI_DataViewer_Close()
 end fmGUI_DataViewer_Close
 
 on fmGUI_Inspector_Close()
-	tell application "htcLib" to fmGUI_Inspector_Close()
+	tell application "fmGuiLib" to fmGUI_Inspector_Close()
 end fmGUI_Inspector_Close
 

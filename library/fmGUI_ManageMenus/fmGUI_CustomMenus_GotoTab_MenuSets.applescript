@@ -1,5 +1,5 @@
 -- fmGUI_CustomMenus_GotoTab_MenuSets({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Open Manage Custom Menus window and go to the menu sets tab
 
 
@@ -37,5 +37,5 @@ end fmGUI_CustomMenus_GotoTab_MenuSets
 --------------------
 
 on fmGUI_CustomMenus_GotoTab(prefs)
-	tell application "htcLib" to fmGUI_CustomMenus_GotoTab(prefs)
+	tell application "fmGuiLib" to fmGUI_CustomMenus_GotoTab(prefs)
 end fmGUI_CustomMenus_GotoTab

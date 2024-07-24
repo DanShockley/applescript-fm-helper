@@ -1,5 +1,5 @@
 -- fmGUI_ManageScripts_FmScript_Select({fmScriptName:null, altPatterns:null})
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Select an existing script in the Script Workspace.
 
 
@@ -147,34 +147,34 @@ end fmGUI_ManageScripts_FmScript_Select
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ALL_Utilities_Close()
-	tell application "htcLib" to fmGUI_ALL_Utilities_Close()
+	tell application "fmGuiLib" to fmGUI_ALL_Utilities_Close()
 end fmGUI_ALL_Utilities_Close
 
 on fmGUI_ManageScripts_Open(prefs)
-	tell application "htcLib" to fmGUI_ManageScripts_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageScripts_Open(prefs)
 end fmGUI_ManageScripts_Open
 
 on fmGUI_ManageScripts_ScriptListFocus(prefs)
-	tell application "htcLib" to fmGUI_ManageScripts_ScriptListFocus(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageScripts_ScriptListFocus(prefs)
 end fmGUI_ManageScripts_ScriptListFocus
 
 on fmGUI_ManageScripts_SearchBoxClear(prefs)
-	tell application "htcLib" to fmGUI_ManageScripts_SearchBoxClear(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageScripts_SearchBoxClear(prefs)
 end fmGUI_ManageScripts_SearchBoxClear
 
 on fmGUI_ManageScripts_SearchBoxFind(prefs)
-	tell application "htcLib" to fmGUI_ManageScripts_SearchBoxFind(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageScripts_SearchBoxFind(prefs)
 end fmGUI_ManageScripts_SearchBoxFind
 
 on quoteString(prefs)
-	tell application "htcLib" to quoteString(prefs)
+	tell application "fmGuiLib" to quoteString(prefs)
 end quoteString
 
 on unParseChars(prefs)
-	tell application "htcLib" to unParseChars(prefs)
+	tell application "fmGuiLib" to unParseChars(prefs)
 end unParseChars
 

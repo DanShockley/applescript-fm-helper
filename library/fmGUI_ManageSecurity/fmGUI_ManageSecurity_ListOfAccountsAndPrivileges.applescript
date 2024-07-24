@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_ListOfAccountsAndPrivileges({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Return the list of all accountName-PrivSet lists
 
 
@@ -56,9 +56,9 @@ end fmGUI_ManageSecurity_ListOfAccountsAndPrivileges
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageSecurity_GoToTab_Accounts(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_GoToTab_Accounts(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_GoToTab_Accounts(prefs)
 end fmGUI_ManageSecurity_GoToTab_Accounts

@@ -1,5 +1,4 @@
 -- fmGUI_ManageScripts_ScriptListFocus({})
--- NYHTC
 -- Focus script workspace
 
 
@@ -53,5 +52,5 @@ end fmGUI_ManageScripts_ScriptListFocus
 --------------------
 
 on fmGUI_ManageScripts_Open(prefs)
-	tell application "htcLib" to fmGUI_ManageScripts_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageScripts_Open(prefs)
 end fmGUI_ManageScripts_Open

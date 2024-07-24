@@ -1,11 +1,11 @@
 -- fmGUI_CustomMenus_MenuSet_CreateUpdate({})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- create/update a menu set
 
 
 (*
 HISTORY:
-	1.4 - 2017-12-18 ( eshagdar ): added to htcLib. renamed fmGUI_CustomMenus_CustomMenuSet_CreateUpdate to fmGUI_CustomMenus_MenuSet_CreateUpdate.
+	1.4 - 2017-12-18 ( eshagdar ): added to fmGuiLib. renamed fmGUI_CustomMenus_CustomMenuSet_CreateUpdate to fmGUI_CustomMenus_MenuSet_CreateUpdate.
 	1.3 - 2014-06-12 ( dshockley ): updated to successfully finish editing menus
 	1.2 - 2014-03-06 ( dshockley ): updated to remove any extra menu items that go beyond what was specified by the parameters. 
 	1.1 - 2014-01-15 ( dshockley ): 
@@ -242,17 +242,17 @@ end fmGUI_CustomMenus_MenuSet_CreateUpdate
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ObjectClick_OkButton(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_OkButton(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_OkButton(prefs)
 end fmGUI_ObjectClick_OkButton
 
 on fmGUI_NameOfFrontmostWindow()
-	tell application "htcLib" to fmGUI_NameOfFrontmostWindow()
+	tell application "fmGuiLib" to fmGUI_NameOfFrontmostWindow()
 end fmGUI_NameOfFrontmostWindow
 
 on windowWaitUntil_FrontNotIS(prefs)
-	tell application "htcLib" to windowWaitUntil_FrontNotIS(prefs)
+	tell application "fmGuiLib" to windowWaitUntil_FrontNotIS(prefs)
 end windowWaitUntil_FrontNotIS

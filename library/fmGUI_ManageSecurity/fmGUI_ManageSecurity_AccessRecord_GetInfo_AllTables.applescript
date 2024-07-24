@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_AccessRecord_GetInfo_AllTables({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- gather all the info about the currently opened privSet
 
 
@@ -62,17 +62,17 @@ end fmGUI_ManageSecurity_AccessRecord_GetInfo_AllTables
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageSecurity_AccessRecord_GetInfo_OneTable(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_AccessRecord_GetInfo_OneTable(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_AccessRecord_GetInfo_OneTable(prefs)
 end fmGUI_ManageSecurity_AccessRecord_GetInfo_OneTable
 
 on fmGUI_ManageSecurity_AccessRecord_GetTablesNames(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_AccessRecord_GetTablesNames(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_AccessRecord_GetTablesNames(prefs)
 end fmGUI_ManageSecurity_AccessRecord_GetTablesNames
 
 on windowWaitUntil_FrontIS(prefs)
-	tell application "htcLib" to windowWaitUntil_FrontIS(prefs)
+	tell application "fmGuiLib" to windowWaitUntil_FrontIS(prefs)
 end windowWaitUntil_FrontIS

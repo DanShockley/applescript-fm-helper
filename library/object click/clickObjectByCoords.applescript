@@ -1,5 +1,5 @@
 -- clickObjectByCoords(someObject)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Click on some object by coordinates
 
 (*
@@ -65,11 +65,11 @@ end clickObjectByCoords
 --------------------
 
 on clickAtCoords(xClick, yClick)
-	tell application "htcLib" to clickAtCoords(xClick, yClick)
+	tell application "fmGuiLib" to clickAtCoords(xClick, yClick)
 end clickAtCoords
 
 on minNum(someList)
-	tell application "htcLib" to minNum(someList)
+	tell application "fmGuiLib" to minNum(someList)
 end minNum
 
 
@@ -79,7 +79,7 @@ on ensureObjectRef(someObjectRef)
 	
 	tell application "Finder" to set ensureObjPath to (container of (container of (path to me)) as text) & "text parsing:ensureObjectRef.applescript"
 	set codeEnsureObj to read file ensureObjPath as text
-	tell application "htcLib" to set codeEnsureObj to "script codeEnsureObj " & return & getTextBetween({sourceText:codeEnsureObj, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeEnsureObj"
+	tell application "fmGuiLib" to set codeEnsureObj to "script codeEnsureObj " & return & getTextBetween({sourceText:codeEnsureObj, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeEnsureObj"
 	set codeEnsureObj to run script codeEnsureObj
 	tell codeEnsureObj to ensureObjectRef(someObjectRef)
 end ensureObjectRef

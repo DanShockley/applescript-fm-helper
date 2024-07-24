@@ -1,5 +1,5 @@
 -- databaseNamesOfVisibleWindows({fmAppType:"Pro"})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- return a list of db names for the specified window names
 
 
@@ -56,5 +56,5 @@ end databaseNamesOfVisibleWindows
 --------------------
 
 on dbNameOfWindowName(someWindowName)
-	tell application "htcLib" to dbNameOfWindowName(someWindowName)
+	tell application "fmGuiLib" to dbNameOfWindowName(someWindowName)
 end dbNameOfWindowName

@@ -1,5 +1,5 @@
 -- fmGUI_CustomFunctions_FunctionNames({})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- get name of every function
 
 
@@ -49,9 +49,9 @@ end fmGUI_CustomFunctions_FunctionNames
 --------------------
 
 on fmGUI_CustomFunctions_Open(prefs)
-	tell application "htcLib" to fmGUI_CustomFunctions_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_CustomFunctions_Open(prefs)
 end fmGUI_CustomFunctions_Open
 
 on getFmAppProcessID()
-	tell application "htcLib" to getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
 end getFmAppProcessID

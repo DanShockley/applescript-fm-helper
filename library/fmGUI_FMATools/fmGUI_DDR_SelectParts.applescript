@@ -1,5 +1,5 @@
 -- fmGUI_DDR_SelectParts({partsList:{}})
--- Erik Shagar, NYHTC
+-- Erik Shagar
 -- Ensure parts are selected when generating a DDR. All parts are selected if a list is not specified.
 
 (*
@@ -23,7 +23,7 @@ end run
 --------------------
 
 on fmGUI_DDR_SelectParts(prefs)
-	-- version 1.1, Erik Shagar, NYHTC
+	-- version 1.1, Erik Shagar
 	
 	try
 		set defaultPrefs to {partsList:{}}
@@ -75,5 +75,5 @@ end fmGUI_DDR_SelectParts
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost

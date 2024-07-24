@@ -1,5 +1,5 @@
 -- Script Step Specify Calc
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 
 (*
 	For a selection of script steps, bring up a useful calculation window for some chosen option.
@@ -11,7 +11,7 @@ HISTORY:
 	
 	
 REQUIRES:
-	htcLib.app
+	fmGuiLib.app
 	
 *)
 
@@ -129,7 +129,7 @@ on clickByPositionSize(objectPosition, objectSize)
 	set xClick to xCoord + objOffset
 	set yClick to yCoord + objOffset
 	
-	tell application "htcLib" to clickAtCoords(xClick, yClick)
+	tell application "fmGuiLib" to clickAtCoords(xClick, yClick)
 	return result
 end clickByPositionSize
 

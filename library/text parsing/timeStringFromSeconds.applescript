@@ -1,5 +1,5 @@
 -- timeStringFromSeconds(someSeconds)
--- Daniel A. Shockley
+-- Dan Shockley
 (* 
 	Takes some number of seconds and returns a time as "HH:MM:SS". 
 	NOTE: it will ONLY include an additional portion for number of days if the seconds are more than those of a single day (e.g. "123:09:00:00" for 123 days + 9 hours).

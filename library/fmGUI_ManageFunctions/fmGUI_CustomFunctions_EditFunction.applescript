@@ -1,5 +1,5 @@
 -- fmGUI_CustomFunctions_EditFunction({functionName:null, functionOldName:null, doNotChangeExisting:false, availability:"ALL", parameterList:{}, calcCode:null, doNotUpdateIfVersion:null})
--- Daniel A. Shockley, Erik Shagdar, NYHTC
+-- Daniel A. Shockley, Erik Shagdar
 -- Edits the custom function
 
 
@@ -186,43 +186,43 @@ end fmGUI_CustomFunctions_EditFunction
 --------------------
 
 on fmGUI_CustomFunctions_Open(prefs)
-	tell application "htcLib" to fmGUI_CustomFunctions_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_CustomFunctions_Open(prefs)
 end fmGUI_CustomFunctions_Open
 
 on fmGUI_CustomFunctions_SelectFunction(prefs)
-	tell application "htcLib" to fmGUI_CustomFunctions_SelectFunction(prefs)
+	tell application "fmGuiLib" to fmGUI_CustomFunctions_SelectFunction(prefs)
 end fmGUI_CustomFunctions_SelectFunction
 
 on fmGUI_ObjectClick_Button(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_Button({buttonRef:my coerceToString(buttonRef of prefs)} & prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_Button({buttonRef:my coerceToString(buttonRef of prefs)} & prefs)
 end fmGUI_ObjectClick_Button
 
 on fmGUI_ObjectClick_CancelButton(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_CancelButton(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_CancelButton(prefs)
 end fmGUI_ObjectClick_CancelButton
 
 on fmGUI_ObjectClick_OkButton(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_OkButton(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_OkButton(prefs)
 end fmGUI_ObjectClick_OkButton
 
 on getTextBetween(prefs)
-	tell application "htcLib" to getTextBetween(prefs)
+	tell application "fmGuiLib" to getTextBetween(prefs)
 end getTextBetween
 
 on parseChars(prefs)
-	tell application "htcLib" to parseChars(prefs)
+	tell application "fmGuiLib" to parseChars(prefs)
 end parseChars
 
 on windowWaitUntil(prefs)
-	tell application "htcLib" to windowWaitUntil(prefs)
+	tell application "fmGuiLib" to windowWaitUntil(prefs)
 end windowWaitUntil
 
 on windowWaitUntil_FrontIS(prefs)
-	tell application "htcLib" to windowWaitUntil_FrontIS(prefs)
+	tell application "fmGuiLib" to windowWaitUntil_FrontIS(prefs)
 end windowWaitUntil_FrontIS
 
 on getFmAppProcessID()
-	tell application "htcLib" to getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
 end getFmAppProcessID
 
 
@@ -232,7 +232,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceTEXT:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceTEXT:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

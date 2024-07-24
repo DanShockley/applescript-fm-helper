@@ -1,5 +1,5 @@
 -- fmGUI_ModeEnsure_Browse()
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- Go to 'Browse' mode
 
 
@@ -35,5 +35,5 @@ end fmGUI_ModeEnsure_Browse
 --------------------
 
 on fmGUI_ModeSelect(modeToSelect)
-	tell application "htcLib" to fmGUI_ModeSelect(modeToSelect)
+	tell application "fmGuiLib" to fmGUI_ModeSelect(modeToSelect)
 end fmGUI_ModeSelect

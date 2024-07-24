@@ -1,5 +1,5 @@
 -- SFR_DictItem(itemName, itemValue)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Creates a SixFriedRice.com-style dictionary string for use in FileMaker.
 
 
@@ -32,5 +32,5 @@ end SFR_DictItem
 --------------------
 
 on SFR_Escape(someString)
-	tell application "htcLib" to SFR_Escape(someString)
+	tell application "fmGuiLib" to SFR_Escape(someString)
 end SFR_Escape

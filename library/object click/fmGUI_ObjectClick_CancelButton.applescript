@@ -1,5 +1,5 @@
 -- fmGUI_ObjectClick_CancelButton({buttonRef:null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Wrapper method for clicking the cancel button and waiting for the window to close
 
 
@@ -39,5 +39,5 @@ end fmGUI_ObjectClick_CancelButton
 --------------------
 
 on fmGUI_ObjectClick_Button(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_Button(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_Button(prefs)
 end fmGUI_ObjectClick_Button

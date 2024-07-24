@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_PrivSet_Update_DictAccessType({extendPrivRows:null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- helper handler that takes access type ( view/edit/create/delete ), table access ( yes/no ) or access calc ( when the poup is 'limited...' ) and if it matches the original calc, returns an access type ( yes/no/limited... ) and an access calc
 
 
@@ -86,5 +86,5 @@ end fmGUI_ManageSecurity_PrivSet_Update_DictAccessType
 --------------------
 
 on removeAllWhitespace(prefs)
-	tell application "htcLib" to removeAllWhitespace(prefs)
+	tell application "fmGuiLib" to removeAllWhitespace(prefs)
 end removeAllWhitespace

@@ -1,5 +1,5 @@
 -- closeDatabase({waitCycleDelaySeconds:10, waitSaveTotalSeconds:10 * minutes, dbName:null, closeScriptName:"CLOSE_SCRIPT"})
--- Daniel A. Shockley
+-- Dan Shockley
 -- If possible, close the frontmost database. If it takes too long, error. 
 
 
@@ -125,37 +125,37 @@ end closeDatabase
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageScripts_Close(prefs)
-	tell application "htcLib" to fmGUI_ManageScripts_Close(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageScripts_Close(prefs)
 end fmGUI_ManageScripts_Close
 
 on fmGUI_ManageScripts_FmScript_Select(prefs)
-	tell application "htcLib" to fmGUI_ManageScripts_FmScript_Select(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageScripts_FmScript_Select(prefs)
 end fmGUI_ManageScripts_FmScript_Select
 
 on fmGUI_ManageScripts_Open(prefs)
-	tell application "htcLib" to fmGUI_ManageScripts_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageScripts_Open(prefs)
 end fmGUI_ManageScripts_Open
 
 on fmGUI_Wait_MenuItemAvailable(prefs)
-	tell application "htcLib" to fmGUI_Wait_MenuItemAvailable(prefs)
+	tell application "fmGuiLib" to fmGUI_Wait_MenuItemAvailable(prefs)
 end fmGUI_Wait_MenuItemAvailable
 
 on logConsole(processName, consoleMsg)
-	tell application "htcLib" to logConsole(processName, consoleMsg)
+	tell application "fmGuiLib" to logConsole(processName, consoleMsg)
 end logConsole
 
 on logLEVEL(level, someMsg)
-	tell application "htcLib" to logLEVEL(level, someMsg)
+	tell application "fmGuiLib" to logLEVEL(level, someMsg)
 end logLEVEL
 
 on getFmAppProcessID()
-	tell application "htcLib" to getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
 end getFmAppProcessID
 
 on getFmAppPath()
-	tell application "htcLib" to getFmAppPath()
+	tell application "fmGuiLib" to getFmAppPath()
 end getFmAppPath

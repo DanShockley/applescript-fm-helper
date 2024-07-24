@@ -1,5 +1,5 @@
 -- fmGUI_ManageScripts_Select_SpecifyScriptWindow({dbName:null, scriptName:null, scriptParams:null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- specify script ( and options ) from the specify script window
 
 
@@ -20,7 +20,7 @@ HISTORY:
 
 
 on run
-	fmGUI_ManageScripts_Select_SpecifyScriptWindow({dbName:"<CurrentFile>", scriptName:"HtcCloseAllDatabases", scriptParams:"CallStack ( \"\" )"})
+	fmGUI_ManageScripts_Select_SpecifyScriptWindow({dbName:"<CurrentFile>", scriptName:"OPEN_SCRIPT", scriptParams:"CallStack ( \"\" )"})
 end run
 
 --------------------
@@ -161,29 +161,29 @@ end fmGUI_ManageScripts_Select_SpecifyScriptWindow
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_NameOfFrontmostWindow()
-	tell application "htcLib" to fmGUI_NameOfFrontmostWindow()
+	tell application "fmGuiLib" to fmGUI_NameOfFrontmostWindow()
 end fmGUI_NameOfFrontmostWindow
 
 on fmGUI_ObjectClick_OkButton(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_OkButton(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_OkButton(prefs)
 end fmGUI_ObjectClick_OkButton
 
 on fmGUI_PopupSet(prefs)
 	set objRef to my coerceToString(objRef of prefs)
-	tell application "htcLib" to fmGUI_PopupSet({objRef:objRef} & prefs)
+	tell application "fmGuiLib" to fmGUI_PopupSet({objRef:objRef} & prefs)
 end fmGUI_PopupSet
 
 on fmGUI_TextFieldSet(prefs)
 	set objRef to my coerceToString(objRef of prefs)
-	tell application "htcLib" to fmGUI_TextFieldSet({objRef:objRef} & prefs)
+	tell application "fmGuiLib" to fmGUI_TextFieldSet({objRef:objRef} & prefs)
 end fmGUI_TextFieldSet
 
 on getTextBetween(prefs)
-	tell application "htcLib" to getTextBetween(prefs)
+	tell application "fmGuiLib" to getTextBetween(prefs)
 end getTextBetween
 
 
@@ -193,7 +193,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceTEXT:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceTEXT:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

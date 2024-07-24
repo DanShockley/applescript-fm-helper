@@ -1,5 +1,5 @@
 -- fmGUI_ManageDb_FieldListFocus({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Focus in the list of fields in the "Fields" tab of Manage Database
 
 
@@ -46,9 +46,9 @@ end fmGUI_ManageDb_FieldListFocus
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageDb_GoToTab_Fields(prefs)
-	tell application "htcLib" to fmGUI_ManageDb_GoToTab_Fields(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDb_GoToTab_Fields(prefs)
 end fmGUI_ManageDb_GoToTab_Fields

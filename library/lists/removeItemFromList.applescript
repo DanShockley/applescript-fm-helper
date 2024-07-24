@@ -1,5 +1,5 @@
 -- removeItemFromList(prefs)
--- Daniel A. Shockley
+-- Dan Shockley
 -- remove all instances of an item from the specified list
 
 

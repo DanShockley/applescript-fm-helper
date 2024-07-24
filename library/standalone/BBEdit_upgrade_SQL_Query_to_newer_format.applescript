@@ -1,5 +1,5 @@
 -- BBEdit_upgrade_SQL_Query_to_newer_format({})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- BBEdit - upgrade SQL Query to newer format
 
 (*
@@ -67,11 +67,11 @@ on BBEdit_upgrade_SQL_Query_to_newer_format(prefs)
 		set literalSearch_SpacesToTabs to "       "
 		set literalReplace_SpacesToTabs to ASCII character 9
 		
-		set literalSearch_ExecuteOLD1 to "sqlResult = HTC_ExecuteFileSQL ( sqlQuery; \"\"; \";\"; \"¦\" )"
-		set literalReplace_ExecuteOLD1 to "sqlResult = HTC_ExecuteFileSQL ( sqlQuery ; \"\" ; \";\" ; Char ( 13 ) )"
+		set literalSearch_ExecuteOLD1 to "sqlResult = ExecuteSQL ( sqlQuery; \";\"; \"¦\" )"
+		set literalReplace_ExecuteOLD1 to "sqlResult = ExecuteSQL ( sqlQuery ; \";\" ; Char ( 13 ) )"
 		
-		set literalSearch_ExecuteOLD2 to "HTC_ExecuteFileSQL ( sqlQuery; \"\"; Char ( 9 ); \"¦\" )"
-		set literalReplace_ExecuteOLD2 to "HTC_ExecuteFileSQL ( sqlQuery ; \"\" ; Char ( 9 ) ; Char ( 13 ) )"
+		set literalSearch_ExecuteOLD2 to "ExecuteSQL ( sqlQuery; Char ( 9 ); \"¦\" )"
+		set literalReplace_ExecuteOLD2 to "ExecuteSQL ( sqlQuery ; Char ( 9 ) ; Char ( 13 ) )"
 		
 		
 		set literalSearch_IfSqlResultOLD to "If ( sqlResult = \"?\"; \"\"; sqlResult )"

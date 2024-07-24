@@ -2,6 +2,7 @@
 cliclick
 main.scpt
 vendor/
+fmGuiLib.app
 htcLib.app
 temp.applescript
 CompiledHandlers

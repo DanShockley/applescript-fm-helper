@@ -1,11 +1,11 @@
 -- fmGUI_CustomMenus_MenuSet_Select({menuSetName:null})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- select specified menu set name. result existence of menu set.
 
 
 (*
 HISTORY:
-	1.1 - 2017-12-18 ( eshagdar ): moved to htcLib. renamed 'fmGUI_CustomMenus_CustomMenuSet_Select' to 'fmGUI_CustomMenus_MenuSet_Select'. param is now a record.
+	1.1 - 2017-12-18 ( eshagdar ): moved to fmGuiLib. renamed 'fmGUI_CustomMenus_CustomMenuSet_Select' to 'fmGUI_CustomMenus_MenuSet_Select'. param is now a record.
 	1.0 - 201x-xx-xx ( dshockley ): created
 
 
@@ -61,9 +61,9 @@ end fmGUI_CustomMenus_MenuSet_Select
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_CustomMenus_GotoTab_MenuSets(prefs)
-	tell application "htcLib" to fmGUI_CustomMenus_GotoTab_MenuSets(prefs)
+	tell application "fmGuiLib" to fmGUI_CustomMenus_GotoTab_MenuSets(prefs)
 end fmGUI_CustomMenus_GotoTab_MenuSets

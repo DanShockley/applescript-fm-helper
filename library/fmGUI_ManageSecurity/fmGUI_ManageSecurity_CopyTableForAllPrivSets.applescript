@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_CopyTableForAllPrivSets({sourceTable:null, effectTable:null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- copy setting for from one table to another in each privSet.
 
 
@@ -69,29 +69,29 @@ end fmGUI_ManageSecurity_CopyTableForAllPrivSets
 --------------------
 
 on fmGUI_ManageSecurity_AccessRecord_CopyTable(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_AccessRecord_CopyTable(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_AccessRecord_CopyTable(prefs)
 end fmGUI_ManageSecurity_AccessRecord_CopyTable
 
 on fmGUI_ManageSecurity_PrivSet_GetInfo(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_GetInfo(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_GetInfo(prefs)
 end fmGUI_ManageSecurity_PrivSet_GetInfo
 
 on fmGUI_ManageSecurity_PrivSet_Names(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_Names(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_Names(prefs)
 end fmGUI_ManageSecurity_PrivSet_Names
 
 on fmGUI_ManageSecurity_PrivSet_OpenForEdit(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_OpenForEdit(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_OpenForEdit(prefs)
 end fmGUI_ManageSecurity_PrivSet_OpenForEdit
 
 on fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_Open(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_Open(prefs)
 end fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_Open
 
 on fmGUI_ManageSecurity_Save(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_Save(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_Save(prefs)
 end fmGUI_ManageSecurity_Save
 
 on fmGUI_ObjectClick_OkButton(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_OkButton(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_OkButton(prefs)
 end fmGUI_ObjectClick_OkButton

@@ -1,12 +1,12 @@
 -- fmGUI_ManageLayouts_Layout_CreateOrUpdate({layoutName:null, oldLayoutName:null, doNotChangeExisting:false, baseTableName:null, layoutParentFolder:"", includeInLayoutMenus:0, menuSet:null, formViewEnabled:1, listViewEnabled:1, tableViewEnabled:1, defaultView:"Form View", scriptTriggers:{}})
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Create/Update a layout.
 
 
 (*
 HISTORY:
 	2020-03-04 ( dshockley ): Minor fixes. Proper calls to fmGUI_CheckboxSet and fmGUI_PopupSet. 1625: Added support for addNearTop. 1638: Standardized version. Added fmGUI_ALL_Utilities_Close. 
-	2020-03-03 ( dshockley, hdu ): Updated as standalone function for fm-scripts git repository. Use clickObjectByCoords instead of clickObjFromHtcLib.
+	2020-03-03 ( dshockley, hdu ): Updated as standalone function for fm-scripts git repository. Use clickObjectByCoords instead of older function.
 	-- 1.4 - 2017-06-14 ( eshagdar ): narrowed scope
 	-- 1.3 - 2017-05-18 ( eshagdar ): updated for FM15.
 	-- 1.2 - 2016-08-24 ( eshagdar ): wait until 'Layout Setup' window comes up.
@@ -238,45 +238,45 @@ end fmGUI_ManageLayouts_Layout_CreateOrUpdate
 --------------------
 
 on clickObjectByCoords(prefs)
-	tell application "htcLib" to clickObjectByCoords(my coerceToString(prefs))
+	tell application "fmGuiLib" to clickObjectByCoords(my coerceToString(prefs))
 end clickObjectByCoords
 
 on fmGUI_CheckboxSet(prefs)
 	set objRefStr to coerceToString(objRef of prefs)
-	tell application "htcLib" to fmGUI_CheckboxSet({objRef:objRefStr} & prefs)
+	tell application "fmGuiLib" to fmGUI_CheckboxSet({objRef:objRefStr} & prefs)
 end fmGUI_CheckboxSet
 
 on fmGUI_ALL_Utilities_Close()
-	tell application "htcLib" to fmGUI_ALL_Utilities_Close()
+	tell application "fmGuiLib" to fmGUI_ALL_Utilities_Close()
 end fmGUI_ALL_Utilities_Close
 
 on fmGUI_ManageLayouts_LayoutFolderSelect(prefs)
-	tell application "htcLib" to fmGUI_ManageLayouts_LayoutFolderSelect(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageLayouts_LayoutFolderSelect(prefs)
 end fmGUI_ManageLayouts_LayoutFolderSelect
 
 on fmGUI_ManageLayouts_Open(prefs)
-	tell application "htcLib" to fmGUI_ManageLayouts_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageLayouts_Open(prefs)
 end fmGUI_ManageLayouts_Open
 
 on fmGUI_ManageLayouts_PopupNewItemOfType(prefs)
-	tell application "htcLib" to fmGUI_ManageLayouts_PopupNewItemOfType(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageLayouts_PopupNewItemOfType(prefs)
 end fmGUI_ManageLayouts_PopupNewItemOfType
 
 on fmGUI_ManageLayouts_Select(prefs)
-	tell application "htcLib" to fmGUI_ManageLayouts_Select(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageLayouts_Select(prefs)
 end fmGUI_ManageLayouts_Select
 
 on fmGUI_PopupSet(prefs)
 	set objRefStr to coerceToString(objRef of prefs)
-	tell application "htcLib" to fmGUI_PopupSet({objRef:objRefStr} & prefs)
+	tell application "fmGuiLib" to fmGUI_PopupSet({objRef:objRefStr} & prefs)
 end fmGUI_PopupSet
 
 on logConsole(processName, consoleMsg)
-	tell application "htcLib" to logConsole(processName, consoleMsg)
+	tell application "fmGuiLib" to logConsole(processName, consoleMsg)
 end logConsole
 
 on windowWaitUntil_FrontIS(prefs)
-	tell application "htcLib" to windowWaitUntil_FrontIS(prefs)
+	tell application "fmGuiLib" to windowWaitUntil_FrontIS(prefs)
 end windowWaitUntil_FrontIS
 
 
@@ -286,7 +286,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

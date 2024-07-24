@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_GoToTab({tabName:null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Go to specified tab of manage scripts
 
 
@@ -54,9 +54,9 @@ end fmGUI_ManageSecurity_GoToTab
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageSecurity_Open(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_Open(prefs)
 end fmGUI_ManageSecurity_Open

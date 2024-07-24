@@ -1,5 +1,5 @@
 -- dateToFileMakerTimestamp(incomingDate)
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- Converts an AppleScript date to a FileMaker Timestamp.
 
 

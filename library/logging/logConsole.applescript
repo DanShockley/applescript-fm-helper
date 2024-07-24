@@ -43,9 +43,9 @@ end logConsole
 --------------------
 
 on coerceToString(incomingObject)
-	tell application "htcLib" to coerceToString(incomingObject)
+	tell application "fmGuiLib" to coerceToString(incomingObject)
 end coerceToString
 
 on replaceSimple(prefs)
-	tell application "htcLib" to replaceSimple(prefs)
+	tell application "fmGuiLib" to replaceSimple(prefs)
 end replaceSimple

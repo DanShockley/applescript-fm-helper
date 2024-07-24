@@ -55,7 +55,7 @@ end fmGUI_ManageLayouts_OpenEditForSelected
 
 on fmGUI_ObjectClick_Button(prefs)
 	set prefs to {windowContextRef:coerceToString(windowContextRef of prefs)} & prefs
-	tell application "htcLib" to fmGUI_ObjectClick_Button(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_Button(prefs)
 end fmGUI_ObjectClick_Button
 
 
@@ -66,7 +66,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

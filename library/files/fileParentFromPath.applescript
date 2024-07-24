@@ -1,5 +1,5 @@
 -- fileParentFromPath({filePath:null, pathDelim:null})
--- Daniel A. Shockley
+-- Dan Shockley
 -- Gets the parent folder path of the path.
 
 

@@ -1,5 +1,5 @@
 -- fmGUI_DDR_SelectTables({TableList:{}})
--- Erik Shagar, NYHTC
+-- Erik Shagar
 -- Ensure tables are selected when generating a DDR. All tables are selected if a list is not specified.
 
 (*
@@ -21,7 +21,7 @@ end run
 --------------------
 
 on fmGUI_DDR_SelectTables(prefs)
-	-- version 1.1, Erik Shagar, NYHTC
+	-- version 1.1, Erik Shagar
 	
 	try
 		set defaultPrefs to {TableList:{}}
@@ -73,5 +73,5 @@ end fmGUI_DDR_SelectTables
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost

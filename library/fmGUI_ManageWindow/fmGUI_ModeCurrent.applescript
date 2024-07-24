@@ -1,5 +1,5 @@
 -- fmGUI_ModeCurrent({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Return the mode of the frontmost layout.
 
 
@@ -39,5 +39,5 @@ end fmGUI_ModeCurrent
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost

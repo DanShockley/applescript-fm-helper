@@ -1,9 +1,9 @@
 -- Set clipboard to standard HTC layout object standard template
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 
 (*
 This macros assumes:
-	you have FmObjTranslator and htcLib apps compiled on your machine.
+	you have FmObjTranslator and fmGuiLib apps compiled on your machine.
 	the current layout uses 'Aspire' layout theme and the header is 50px tall 
 *)
 
@@ -32,7 +32,7 @@ property labelHeight : 14
 
 
 
-if debugMode then tell application "htcLib" to logConsole("", "START")
+if debugMode then tell application "fmGuiLib" to logConsole("", "START")
 
 
 -- get table and list of non-standard field names
@@ -41,7 +41,7 @@ tell application "System Events"
 		set insertFieldMenuItem to first menu item of menu "Insert" of menu bar item "Insert" of menu bar 1 whose name starts with "Field"
 	end tell
 end tell
-tell application "htcLib" to fmGUI_ClickMenuItem({menuItemRef:my coerceToString(insertFieldMenuItem)})
+tell application "fmGuiLib" to fmGUI_ClickMenuItem({menuItemRef:my coerceToString(insertFieldMenuItem)})
 tell application "System Events"
 	tell process "FileMaker Pro Advanced"
 		set tablePopUpObj to pop up button 1 of window 1
@@ -53,12 +53,12 @@ tell application "System Events"
 		set fieldNames to name of static text 1 of every row of table 1 of scroll area 1 of window 1
 	end tell
 end tell
-tell application "htcLib"
+tell application "fmGuiLib"
 	set tableName to getTextBetween({sourceTEXT:tableName, beforeText:"Ò", afterText:"Ó"}) -- "Current Table (ÒD_NOTEÓ)"
 	fmGUI_ObjectClick_CancelButton({windowNameThatCloses:"Specify Field"})
 	set fieldNames to sort(fieldNames)
 end tell
-if debugMode then tell application "htcLib" to logConsole("", "got table/fields")
+if debugMode then tell application "fmGuiLib" to logConsole("", "got table/fields")
 
 
 -- get pk field name and create XML of remaining non-standard fields
@@ -74,7 +74,7 @@ repeat with oneFieldName in fieldNames
 	else
 		set oneFieldXML to oneFieldObj()
 		set fieldTopPos to fieldTopPx + (fieldHeight + fieldOffset) * iterFieldOffset
-		tell application "htcLib"
+		tell application "fmGuiLib"
 			set oneFieldXML to replaceSimple({sourceTEXT:oneFieldXML, oldChars:template_oneName, newChars:oneFieldName})
 			set oneFieldXML to replaceSimple({sourceTEXT:oneFieldXML, oldChars:template_fieldTopPx, newChars:fieldTopPos})
 			set oneFieldXML to replaceSimple({sourceTEXT:oneFieldXML, oldChars:template_fieldBotPx, newChars:fieldTopPos + fieldHeight})
@@ -84,13 +84,13 @@ repeat with oneFieldName in fieldNames
 		set iterFieldOffset to iterFieldOffset + 1
 	end if
 end repeat
-if debugMode then tell application "htcLib" to logConsole("", "iterated through " & (count of fieldNames) & " fields")
+if debugMode then tell application "fmGuiLib" to logConsole("", "iterated through " & (count of fieldNames) & " fields")
 set the clipboard to fieldsXML
 
 
 -- append field XML to full template and convert XML to FM objects
 set xmlMetaData to metadataObj()
-tell application "htcLib"
+tell application "fmGuiLib"
 	set xmlMetaData to replaceSimple({sourceTEXT:xmlMetaData, oldChars:template_fields, newChars:fieldsXML})
 	set xmlMetaData to replaceSimple({sourceTEXT:xmlMetaData, oldChars:template_tableName, newChars:tableName})
 	set xmlMetaData to replaceSimple({sourceTEXT:xmlMetaData, oldChars:template_pkName, newChars:pkFieldName})
@@ -104,7 +104,7 @@ set debugMode of fmObjTrans to debugMode
 set the clipboard to convertXmlToObjects(xmlMetaData) of fmObjTrans
 
 
-if debugMode then tell application "htcLib" to logConsole("", "FINISH")
+if debugMode then tell application "fmGuiLib" to logConsole("", "FINISH")
 return true
 
 

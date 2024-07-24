@@ -55,9 +55,9 @@ end databaseNameOfFrontWindow
 --------------------
 
 on dbNameOfWindowName(frontWindowName)
-	tell application "htcLib" to dbNameOfWindowName(frontWindowName)
+	tell application "fmGuiLib" to dbNameOfWindowName(frontWindowName)
 end dbNameOfWindowName
 
 on getFmAppProcessID()
-	tell application "htcLib" to getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
 end getFmAppProcessID

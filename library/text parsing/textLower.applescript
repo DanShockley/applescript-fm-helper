@@ -1,5 +1,5 @@
 -- textLower({str:""})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- takes some string and returns the lowercase string
 
 

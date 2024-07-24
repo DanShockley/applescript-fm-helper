@@ -1,5 +1,5 @@
 -- fmGUI_ManageDb_FieldsPickTable(baseTableName)
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- select the specified ( if not already selected ) base table on the Fields tab of Manage Database.
 
 
@@ -54,16 +54,16 @@ end fmGUI_ManageDb_FieldsPickTable
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageDb_GoToTab_Fields(prefs)
-	tell application "htcLib" to fmGUI_ManageDb_GoToTab_Fields(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDb_GoToTab_Fields(prefs)
 end fmGUI_ManageDb_GoToTab_Fields
 
 on fmGUI_PopupSet(prefs)
 	set objRefStr to coerceToString(objRef of prefs)
-	tell application "htcLib" to fmGUI_PopupSet({objRef:objRefStr} & prefs)
+	tell application "fmGuiLib" to fmGUI_PopupSet({objRef:objRefStr} & prefs)
 end fmGUI_PopupSet
 
 
@@ -73,7 +73,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceTEXT:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceTEXT:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

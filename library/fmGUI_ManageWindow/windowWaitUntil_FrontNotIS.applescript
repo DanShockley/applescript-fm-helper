@@ -1,5 +1,5 @@
 -- windowWaitUntil_FrontNotIS({windowName:"", windowNameTest:"", whichWindow:"", waitCycleDelaySeconds:"", waitCycleMax:""})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- keep checking until the frontmost window matches specified criteria.
 
 
@@ -37,5 +37,5 @@ end windowWaitUntil_FrontNotIS
 --------------------
 
 on windowWaitUntil(prefs)
-	tell application "htcLib" to windowWaitUntil(prefs)
+	tell application "fmGuiLib" to windowWaitUntil(prefs)
 end windowWaitUntil

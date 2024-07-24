@@ -1,5 +1,5 @@
 -- fmGUI_getRecCounts()
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Get the counts of the found set and total # of records
 
 
@@ -63,13 +63,13 @@ end fmGUI_getRecCounts
 --------------------
 
 on fmGUI_ModeEnsure_Browse()
-	tell application "htcLib" to fmGUI_ModeEnsure_Browse()
+	tell application "fmGuiLib" to fmGUI_ModeEnsure_Browse()
 end fmGUI_ModeEnsure_Browse
 
 on getTextAfter(sourceText, afterThis)
-	tell application "htcLib" to getTextAfter(sourceText, afterThis)
+	tell application "fmGuiLib" to getTextAfter(sourceText, afterThis)
 end getTextAfter
 
 on getTextBefore(sourceTEXT, stopHere)
-	tell application "htcLib" to getTextBefore(sourceTEXT, stopHere)
+	tell application "fmGuiLib" to getTextBefore(sourceTEXT, stopHere)
 end getTextBefore

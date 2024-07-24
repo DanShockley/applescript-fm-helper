@@ -1,5 +1,5 @@
 -- ensureFileMakerDatabase({serverIP:"", dbName:"", mainDbName:"", customLinkReceiverScriptName:""})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- Make sure that a database is open and (one of) its window(s) is in front.
 
 
@@ -72,13 +72,13 @@ end ensureFileMakerDatabase
 --------------------
 
 on displayFileMakerDatabase(prefs)
-	tell application "htcLib" to displayFileMakerDatabase(prefs)
+	tell application "fmGuiLib" to displayFileMakerDatabase(prefs)
 end displayFileMakerDatabase
 
 on openFileMakerDatabase(prefs)
-	tell application "htcLib" to openFileMakerDatabase(prefs)
+	tell application "fmGuiLib" to openFileMakerDatabase(prefs)
 end openFileMakerDatabase
 
 on logConsole(processName, consoleMsg)
-	tell application "htcLib" to logConsole(processName, consoleMsg)
+	tell application "fmGuiLib" to logConsole(processName, consoleMsg)
 end logConsole

@@ -1,5 +1,5 @@
 -- sendToFMP(someData)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Sends someData back to FileMaker window 1 on a layout called "AppleScript_Transfer-DO_NOT_RENAME"
 
 

@@ -1,5 +1,5 @@
 -- trimWhitespace(inputString)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Takes some string and returns the string with whitespace trimmed from beginning and end. 
 
 

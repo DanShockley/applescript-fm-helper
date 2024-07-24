@@ -1,5 +1,5 @@
 -- fmGUI_ManageDataSources_Open(prefs)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Open Manage Data Sources
 
 
@@ -49,9 +49,9 @@ end fmGUI_ManageDataSources_Open
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_NameOfFrontmostWindow()
-	tell application "htcLib" to fmGUI_NameOfFrontmostWindow()
+	tell application "fmGuiLib" to fmGUI_NameOfFrontmostWindow()
 end fmGUI_NameOfFrontmostWindow

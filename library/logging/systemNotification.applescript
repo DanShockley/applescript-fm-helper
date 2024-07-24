@@ -1,5 +1,5 @@
 -- systemNotification({msg:"", msgTitle:"", msgSubtitle:"", msgSound:default, noSound:null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Create an system level notification
 
 

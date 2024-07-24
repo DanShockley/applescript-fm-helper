@@ -1,5 +1,5 @@
 -- fmGUI_ManageDb_Field_Edit({editMode:"", tableName:"", fieldName:"", altPatterns:"", fieldComment:"", dataType:"", fieldType:"", calcCode:"", autoEnterCalcCode:"", autoEnterCalcContextTOC:"", alwaysEvaluate:"", calcContextTOC:"", storageGlobal:"", storeCalculationResults:"", storageIndexChoice:"", autoIndex:"", maxRepetition:"", indexLanguage:"", allowEditing:"", overwriteExistingValue:"", autoEnterIsConstant:"", autoEnterIsCalculation:"", autoEnterIsLookup:"", autoEnterSpecialValue:"", autoSerial:"", autoEnterConstantData:"", validationCalcCode:"", validationCalcContextTOC:""})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- Edit a field. Should already exist - false if it does not. Any BOOLEAN parameters can be either actually boolean, or 1/0.  This function will change that to match UI scripting interface needs.
 
 
@@ -689,42 +689,42 @@ end fmGUI_ManageDb_Field_Edit
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_CheckboxSet(prefs)
 	set objRefStr to coerceToString(objRef of prefs)
-	tell application "htcLib" to fmGUI_CheckboxSet({objRef:objRefStr} & prefs)
+	tell application "fmGuiLib" to fmGUI_CheckboxSet({objRef:objRefStr} & prefs)
 end fmGUI_CheckboxSet
 
 on fmGUI_ManageDb_Field_Select(prefs)
-	tell application "htcLib" to fmGUI_ManageDb_Field_Select(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDb_Field_Select(prefs)
 end fmGUI_ManageDb_Field_Select
 
 on fmGUI_ObjectClick_AffectsWindow(buttonRef)
-	tell application "htcLib" to fmGUI_ObjectClick_AffectsWindow(buttonRef)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_AffectsWindow(buttonRef)
 end fmGUI_ObjectClick_AffectsWindow
 
 on fmGUI_PopupSet(prefs)
 	set objRefStr to coerceToString(objRef of prefs)
-	tell application "htcLib" to fmGUI_PopupSet({objRef:objRefStr} & prefs)
+	tell application "fmGuiLib" to fmGUI_PopupSet({objRef:objRefStr} & prefs)
 end fmGUI_PopupSet
 
 on fmGUI_TextFieldSet(prefs)
 	set objRefStr to coerceToString(objRef of prefs)
-	tell application "htcLib" to fmGUI_TextFieldSet({objRef:objRefStr} & prefs)
+	tell application "fmGuiLib" to fmGUI_TextFieldSet({objRef:objRefStr} & prefs)
 end fmGUI_TextFieldSet
 
 on clickObjectByCoords(prefs)
-	tell application "htcLib" to clickObjectByCoords(my coerceToString(prefs))
+	tell application "fmGuiLib" to clickObjectByCoords(my coerceToString(prefs))
 end clickObjectByCoords
 
 on windowWaitUntil(prefs)
-	tell application "htcLib" to windowWaitUntil(prefs)
+	tell application "fmGuiLib" to windowWaitUntil(prefs)
 end windowWaitUntil
 
 on windowWaitUntil_FrontIS(prefs)
-	tell application "htcLib" to windowWaitUntil_FrontIS(prefs)
+	tell application "fmGuiLib" to windowWaitUntil_FrontIS(prefs)
 end windowWaitUntil_FrontIS
 
 
@@ -734,7 +734,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

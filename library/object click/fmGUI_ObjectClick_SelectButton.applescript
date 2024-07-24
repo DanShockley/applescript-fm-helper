@@ -1,5 +1,5 @@
 -- fmGUI_ObjectClick_SelectButton({buttonRef:null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Wrapper method for clicking the seelct button
 
 
@@ -38,5 +38,5 @@ end fmGUI_ObjectClick_SelectButton
 --------------------
 
 on fmGUI_ObjectClick_Button(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_Button(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_Button(prefs)
 end fmGUI_ObjectClick_Button

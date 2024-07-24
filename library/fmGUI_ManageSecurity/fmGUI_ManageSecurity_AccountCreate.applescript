@@ -1,11 +1,11 @@
 -- fmGUI_ManageSecurity_AccountCreate({accountName:null, accountPassword:null, authenticatedVia:"FileMaker", mustChangeOnNextLogin:0, accountStatus:"Active", privilegeSet:null, accountDescription:"", fullAccessAccountName:null, fullAccessPassword:null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- create a new fm account
 
 
 (*
 HISTORY:
-	1.4.1 - 2017-10-31 ( eshagdar ): moved from tuneup tool to htcLib
+	1.4.1 - 2017-10-31 ( eshagdar ): moved from tuneup tool to fmGuiLib
 	1.4 - 2017-06-14 ( eshagdar ): narrowed scope
 	1.3 - 2017-04-03 ( eshagdar ): narrowed scope. use handler to test for window name.
 	1.2 - 2017-02-24 ( eshagdar ): pass credentials through to open manage security
@@ -82,20 +82,20 @@ end fmGUI_ManageSecurity_AccountCreate
 --------------------
 
 on fmGUI_ManageSecurity_AccountEdit(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_AccountEdit(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_AccountEdit(prefs)
 end fmGUI_ManageSecurity_AccountEdit
 
 on fmGUI_ManageSecurity_GoToTab_Accounts(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_GoToTab_Accounts(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_GoToTab_Accounts(prefs)
 end fmGUI_ManageSecurity_GoToTab_Accounts
 
 on fmGUI_ObjectClick_Button(prefs)
 	set buttonRef to my coerceToString(buttonRef of prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_Button({buttonRef:buttonRef} & prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_Button({buttonRef:buttonRef} & prefs)
 end fmGUI_ObjectClick_Button
 
 on windowWaitUntil_FrontIS(prefs)
-	tell application "htcLib" to windowWaitUntil_FrontIS(prefs)
+	tell application "fmGuiLib" to windowWaitUntil_FrontIS(prefs)
 end windowWaitUntil_FrontIS
 
 
@@ -105,7 +105,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

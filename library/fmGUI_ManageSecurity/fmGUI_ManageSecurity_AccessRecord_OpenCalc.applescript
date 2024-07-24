@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_AccessRecord_OpenCalc({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- open calc box ( or field-level access ) for the currently selected table of the record-access window in manage security
 
 
@@ -69,9 +69,9 @@ end fmGUI_ManageSecurity_AccessRecord_OpenCalc
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on windowWaitUntil(prefs)
-	tell application "htcLib" to windowWaitUntil(prefs)
+	tell application "fmGuiLib" to windowWaitUntil(prefs)
 end windowWaitUntil

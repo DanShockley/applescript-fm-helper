@@ -1,5 +1,5 @@
 -- removeAllWhitespace({str:null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Removes all whitespace ( returns, tabs, spaces ) from the provided string
 
 
@@ -47,5 +47,5 @@ end removeAllWhitespace
 --------------------
 
 on replaceSimple(prefs)
-	tell application "htcLib" to replaceSimple(prefs)
+	tell application "fmGuiLib" to replaceSimple(prefs)
 end replaceSimple

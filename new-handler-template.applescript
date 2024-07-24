@@ -49,6 +49,6 @@ end someAwesomeHandlerName
 --------------------
 
 on someRequiredHandler(prefs)
-	return "helper code goes here. Generally this is just a slug that calls the same function in 'htcLib' application that"
-	-- tell app "htcLib" to someRequiredHandler(prefs)
+	return "helper code goes here. Generally this is just a slug that calls the same function in 'fmGuiLib' application that"
+	-- tell app "fmGuiLib" to someRequiredHandler(prefs)
 end someRequiredHandler

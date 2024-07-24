@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_AccessRecord_GetCalc({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- get the field-level access for the currently opened table of manage security
 
 
@@ -59,13 +59,13 @@ end fmGUI_ManageSecurity_AccessRecord_GetCalc
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageSecurity_AccessRecord_GetFieldPriv(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_AccessRecord_GetFieldPriv(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_AccessRecord_GetFieldPriv(prefs)
 end fmGUI_ManageSecurity_AccessRecord_GetFieldPriv
 
 on fmGUI_ManageSecurity_AccessRecord_OpenCalc(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_AccessRecord_OpenCalc(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_AccessRecord_OpenCalc(prefs)
 end fmGUI_ManageSecurity_AccessRecord_OpenCalc

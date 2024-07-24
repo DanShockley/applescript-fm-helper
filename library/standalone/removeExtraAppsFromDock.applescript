@@ -1,5 +1,5 @@
 -- removeExtraAppsFromDock{listOfAllowedAppNames:null}
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Remove all apps from the dock that are not specified. Has a default set of apps, but is ignored if a list is passed in
 
 (*

@@ -1,5 +1,5 @@
 -- fmGUI_ManageDataSources_Save(notInManageWindowIsError:null)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Close ( and Save ) Manage Data Sources
 
 
@@ -78,9 +78,9 @@ end fmGUI_ManageDataSources_Save
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on windowWaitUntil(prefs)
-	tell application "htcLib" to windowWaitUntil(prefs)
+	tell application "fmGuiLib" to windowWaitUntil(prefs)
 end windowWaitUntil

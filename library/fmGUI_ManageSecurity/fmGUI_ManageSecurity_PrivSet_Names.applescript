@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_PrivSet_Names({fullAccessAccountName:"admin", fullAccessPassword:""})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- get a list of all existings privSet names
 
 
@@ -50,9 +50,9 @@ end fmGUI_ManageSecurity_PrivSet_Names
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageSecurity_GoToTab_PrivSets(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_GoToTab_PrivSets(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_GoToTab_PrivSets(prefs)
 end fmGUI_ManageSecurity_GoToTab_PrivSets

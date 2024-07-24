@@ -1,5 +1,5 @@
 -- minNum(someList)
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- find the smallest number in a list
 
 (*

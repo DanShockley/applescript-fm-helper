@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_AccountNames(fullAccessAccountName:null, fullAccessPassword:null)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Open Manage Security window
 
 
@@ -49,9 +49,9 @@ end fmGUI_ManageSecurity_AccountNames
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageSecurity_GoToTab_Accounts(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_GoToTab_Accounts(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_GoToTab_Accounts(prefs)
 end fmGUI_ManageSecurity_GoToTab_Accounts

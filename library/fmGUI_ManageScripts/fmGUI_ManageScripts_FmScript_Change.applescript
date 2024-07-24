@@ -1,5 +1,5 @@
 -- fmGUI_ManageScripts_FmScript_Change({fmScriptName:null, includeInMenu:null, runFullAccess:null, renameOnly:false, doNotChangeExisting:false, altPatterns:null, pasteScriptStepsFromClipbrd:null})
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Make sure an existing script has the specified script steps content, saving if any changes DID need to be made. 
 
 
@@ -178,23 +178,23 @@ end fmGUI_ManageScripts_FmScript_Change
 
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 
 on fmGUI_ManageScripts_FmScript_Select(prefs)
-	tell application "htcLib" to fmGUI_ManageScripts_FmScript_Select(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageScripts_FmScript_Select(prefs)
 end fmGUI_ManageScripts_FmScript_Select
 
 on fmGUI_ManageScripts_Open(prefs)
-	tell application "htcLib" to fmGUI_ManageScripts_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageScripts_Open(prefs)
 end fmGUI_ManageScripts_Open
 
 on fmGUI_SelectAll()
-	tell application "htcLib" to fmGUI_SelectAll()
+	tell application "fmGuiLib" to fmGUI_SelectAll()
 end fmGUI_SelectAll
 
 on logConsole(processName, consoleMsg)
-	tell application "htcLib" to logConsole(processName, consoleMsg)
+	tell application "fmGuiLib" to logConsole(processName, consoleMsg)
 end logConsole
 

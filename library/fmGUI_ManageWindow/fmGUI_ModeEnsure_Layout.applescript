@@ -1,5 +1,5 @@
 -- fmGUI_ModeEnsure_Layout()
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- Go to 'Layout' mode
 
 
@@ -36,5 +36,5 @@ end fmGUI_ModeEnsure_Layout
 --------------------
 
 on fmGUI_ModeSelect(modeToSelect)
-	tell application "htcLib" to fmGUI_ModeSelect(modeToSelect)
+	tell application "fmGuiLib" to fmGUI_ModeSelect(modeToSelect)
 end fmGUI_ModeSelect

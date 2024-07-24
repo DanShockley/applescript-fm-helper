@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_AllTables({accessRecord:null, recordAccess:null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- update record access of the currently opened privilege set
 
 
@@ -75,24 +75,24 @@ end fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_AllTables
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_OneTable(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_OneTable(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_OneTable(prefs)
 end fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_OneTable
 
 on fmGUI_ObjectClick_OkButton(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_OkButton(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_OkButton(prefs)
 end fmGUI_ObjectClick_OkButton
 
 on fmGUI_Popup_SelectByCommand(prefs)
 	set objRefStr to coerceToString(objRef of prefs)
-	tell application "htcLib" to fmGUI_Popup_SelectByCommand({objRef:objRefStr} & prefs)
+	tell application "fmGuiLib" to fmGUI_Popup_SelectByCommand({objRef:objRefStr} & prefs)
 end fmGUI_Popup_SelectByCommand
 
 on windowWaitUntil_FrontIS(prefs)
-	tell application "htcLib" to windowWaitUntil_FrontIS(prefs)
+	tell application "fmGuiLib" to windowWaitUntil_FrontIS(prefs)
 end windowWaitUntil_FrontIS
 
 
@@ -102,7 +102,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceTEXT:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceTEXT:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

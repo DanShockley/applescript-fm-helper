@@ -1,5 +1,4 @@
 -- fmGUI_ManageDb_TableListFocus({})
--- NYHTC
 -- Focus in the list of tables in the "Tables" tab of Manage Database
 
 
@@ -47,5 +46,5 @@ end fmGUI_ManageDb_TableListFocus
 --------------------
 
 on fmGUI_ManageDb_GoToTab_Tables(prefs)
-	tell application "htcLib" to fmGUI_ManageDb_GoToTab_Tables(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDb_GoToTab_Tables(prefs)
 end fmGUI_ManageDb_GoToTab_Tables

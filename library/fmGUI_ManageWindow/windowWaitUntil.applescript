@@ -1,5 +1,5 @@
 -- windowWaitUntil(windowName:"", windowNameTest:"", whichWindow:"", waitCycleDelaySeconds:"", waitCycleMax:"")
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- keep checking until the frontmost window matches specified criteria.
 
 
@@ -140,10 +140,10 @@ end windowWaitUntil
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on getFmAppProcessID()
-	tell application "htcLib" to getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
 end getFmAppProcessID
 

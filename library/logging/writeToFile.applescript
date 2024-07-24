@@ -1,5 +1,5 @@
 -- writeToFile({outputText:"", fullFilePath:null, fileName:null, fileDirectory:null, appendText:false, appendLine:true})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Write some text to a file
 
 
@@ -36,7 +36,7 @@ on writeToFile(prefs)
 	else if fileName of prefs is not null then
 		set outputFile to fileDirectory of prefs & fileName of prefs
 	else
-		set outputFile to ((path to desktop) as string) & "ASFileWrittenBy_htcLib.txt"
+		set outputFile to ((path to desktop) as string) & "ASFileWrittenBy_fmGuiLib.txt"
 	end if
 	
 	

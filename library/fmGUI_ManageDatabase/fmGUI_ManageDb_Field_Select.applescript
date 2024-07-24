@@ -1,5 +1,5 @@
 -- fmGUI_ManageDb_Field_Select(fieldName:"", tableName:"", altPatterns:"")
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- Attempt to select a field based on name or, alternatively, other partial matches.
 
 
@@ -116,17 +116,17 @@ end fmGUI_ManageDb_Field_Select
 --------------------
 
 on coerceToString(incomingObject)
-	tell application "htcLib" to coerceToString(incomingObject)
+	tell application "fmGuiLib" to coerceToString(incomingObject)
 end coerceToString
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageDb_FieldListFocus(prefs)
-	tell application "htcLib" to fmGUI_ManageDb_FieldListFocus(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDb_FieldListFocus(prefs)
 end fmGUI_ManageDb_FieldListFocus
 
 on fmGUI_ManageDb_FieldsPickTable(baseTableName)
-	tell application "htcLib" to fmGUI_ManageDb_FieldsPickTable(baseTableName)
+	tell application "fmGuiLib" to fmGUI_ManageDb_FieldsPickTable(baseTableName)
 end fmGUI_ManageDb_FieldsPickTable

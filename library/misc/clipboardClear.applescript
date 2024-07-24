@@ -1,5 +1,5 @@
 -- removeExtraAppsFromDock{listOfAllowedAppNames:null}
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- clear the clipboard
 
 (*

@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_Mapping({tableList:{}, tableExcludeList:{}, viewMapping:{}, editMapping:{}, createMapping:{}, deleteMapping:{}})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Update all tables ( or specified list of tables ) based on a mapping
 
 
@@ -127,29 +127,29 @@ end fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_Mapping
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageSecurity_AccessRecord_GetInfo_OneTable(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_AccessRecord_GetInfo_OneTable(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_AccessRecord_GetInfo_OneTable(prefs)
 end fmGUI_ManageSecurity_AccessRecord_GetInfo_OneTable
 
 on fmGUI_ManageSecurity_AccessRecord_GetTablesNames(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_AccessRecord_GetTablesNames(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_AccessRecord_GetTablesNames(prefs)
 end fmGUI_ManageSecurity_AccessRecord_GetTablesNames
 
 on fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_OneTable(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_OneTable(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_OneTable(prefs)
 end fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_OneTable
 
 on fmGUI_ManageSecurity_PrivSet_Update_DictAccessType(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_Update_DictAccessType(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_Update_DictAccessType(prefs)
 end fmGUI_ManageSecurity_PrivSet_Update_DictAccessType
 
 on fmGUI_NameOfFrontmostWindow()
-	tell application "htcLib" to fmGUI_NameOfFrontmostWindow()
+	tell application "fmGuiLib" to fmGUI_NameOfFrontmostWindow()
 end fmGUI_NameOfFrontmostWindow
 
 on listRemoveFromFirstList({mainList, listOfItemsToRemove})
-	tell application "htcLib" to listRemoveFromFirstList({mainList, listOfItemsToRemove})
+	tell application "fmGuiLib" to listRemoveFromFirstList({mainList, listOfItemsToRemove})
 end listRemoveFromFirstList

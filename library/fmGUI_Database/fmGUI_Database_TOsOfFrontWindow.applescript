@@ -1,5 +1,5 @@
 -- fmGUI_Database_TOsOfFrontWindow({})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- return the name of every table occurence of the frontmost window
 
 
@@ -39,9 +39,9 @@ end fmGUI_Database_TOsOfFrontWindow
 --------------------
 
 on fmGUI_NameOfFrontmostWindow()
-	tell application "htcLib" to fmGUI_NameOfFrontmostWindow()
+	tell application "fmGuiLib" to fmGUI_NameOfFrontmostWindow()
 end fmGUI_NameOfFrontmostWindow
 
 on namesOfTOsOfWindowName(prefs)
-	tell application "htcLib" to namesOfTOsOfWindowName(prefs)
+	tell application "fmGuiLib" to namesOfTOsOfWindowName(prefs)
 end namesOfTOsOfWindowName

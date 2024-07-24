@@ -40,5 +40,5 @@ end fmGUI_ObjectClick_AffectsWindow
 --------------------
 
 on clickObjectByCoords(someObject)
-	tell application "htcLib" to clickObjectByCoords(someObject)
+	tell application "fmGuiLib" to clickObjectByCoords(someObject)
 end clickObjectByCoords

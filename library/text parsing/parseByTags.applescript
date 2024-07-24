@@ -1,5 +1,5 @@
 -- parseByTags({sourceTEXT:"", itemStartStr:"", itemEndStr:"", includeMarkers:false})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- parse sourceText by tags, optionally including them
 
 
@@ -50,10 +50,10 @@ end parseByTags
 --------------------
 
 on patternCount(prefs)
-	tell application "htcLib" to patternCount(prefs)
+	tell application "fmGuiLib" to patternCount(prefs)
 end patternCount
 
 on getTextBetween(prefs)
-	tell application "htcLib" to getTextBetween(prefs)
+	tell application "fmGuiLib" to getTextBetween(prefs)
 end getTextBetween
 

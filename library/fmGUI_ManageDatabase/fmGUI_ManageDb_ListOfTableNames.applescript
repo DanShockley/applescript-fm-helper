@@ -1,5 +1,5 @@
 -- fmGUI_ManageDb_ListOfTableNames({stayOpen:false})
--- Daniel Shockley, NYHTC
+-- Daniel Shockley
 -- Return a list of FileMaker table names.
 
 
@@ -51,9 +51,9 @@ end fmGUI_ManageDb_ListOfTableNames
 --------------------
 
 on fmGUI_ManageDb_GoToTab_Tables(prefs)
-	tell application "htcLib" to fmGUI_ManageDb_GoToTab_Tables(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDb_GoToTab_Tables(prefs)
 end fmGUI_ManageDb_GoToTab_Tables
 
 on fmGUI_ManageDB_Save(prefs)
-	tell application "htcLib" to fmGUI_ManageDB_Save(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDB_Save(prefs)
 end fmGUI_ManageDB_Save

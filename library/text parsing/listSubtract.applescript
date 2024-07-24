@@ -1,5 +1,5 @@
 -- listSubtract(originalList, subtractionList)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Subtracts items in subtractionList from originalList (if an item occurs in originalList multiple times, ALL occurrences removed). 
 
 

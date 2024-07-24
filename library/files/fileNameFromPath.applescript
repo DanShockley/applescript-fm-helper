@@ -1,5 +1,5 @@
 -- fileNameFromPath({filePath:null, pathDelim:null})
--- Daniel A. Shockley
+-- Dan Shockley
 -- Gets the file (or folder) name from the path. 
 
 

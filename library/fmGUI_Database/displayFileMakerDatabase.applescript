@@ -1,5 +1,5 @@
 -- displayFileMakerDatabase({dbName:"", waitCycleDelaySeconds:"", waitSaveTotalSeconds:""})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- If open, then display first window this finds and return true, else return false.
 
 
@@ -121,11 +121,11 @@ end displayFileMakerDatabase
 --------------------
 
 on logConsole(processName, consoleMsg)
-	tell application "htcLib" to logConsole(processName, consoleMsg)
+	tell application "fmGuiLib" to logConsole(processName, consoleMsg)
 end logConsole
 
 on getFmAppPath()
-	tell application "htcLib" to getFmAppPath()
+	tell application "fmGuiLib" to getFmAppPath()
 end getFmAppPath
 
 
@@ -134,7 +134,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

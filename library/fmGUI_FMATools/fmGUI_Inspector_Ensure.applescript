@@ -1,5 +1,5 @@
 -- fmGUI_Inspector_Ensure()
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Opens FileMaker's Inspector window
 
 
@@ -49,9 +49,9 @@ end fmGUI_Inspector_Ensure
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ModeEnsure_Layout()
-	tell application "htcLib" to fmGUI_ModeEnsure_Layout()
+	tell application "fmGuiLib" to fmGUI_ModeEnsure_Layout()
 end fmGUI_ModeEnsure_Layout

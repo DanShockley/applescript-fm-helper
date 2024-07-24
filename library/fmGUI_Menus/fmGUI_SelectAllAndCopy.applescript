@@ -1,5 +1,5 @@
 -- fmGUI_SelectAllAndCopy()
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- select all and copy in whatever the context is
 
 
@@ -62,17 +62,17 @@ end fmGUI_SelectAllAndCopy
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on clipboardClear()
-	tell application "htcLib" to clipboardClear()
+	tell application "fmGuiLib" to clipboardClear()
 end clipboardClear
 
 on fmGUI_CopySelected(prefs)
-	tell application "htcLib" to fmGUI_CopySelected(prefs)
+	tell application "fmGuiLib" to fmGUI_CopySelected(prefs)
 end fmGUI_CopySelected
 
 on fmGUI_SelectAll()
-	tell application "htcLib" to fmGUI_SelectAll()
+	tell application "fmGuiLib" to fmGUI_SelectAll()
 end fmGUI_SelectAll

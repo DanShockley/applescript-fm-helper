@@ -1,5 +1,5 @@
 -- SFR_Escape(someString)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Escapes strings for use in a SixFriedRice.com-style dictionary string for use in FileMaker.
 
 
@@ -41,5 +41,5 @@ end SFR_Escape
 --------------------
 
 on replaceSimple(prefs)
-	tell application "htcLib" to replaceSimple(prefs)
+	tell application "fmGuiLib" to replaceSimple(prefs)
 end replaceSimple

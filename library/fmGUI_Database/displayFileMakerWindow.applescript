@@ -126,23 +126,23 @@ end displayFileMakerWindow
 --------------------
 
 on fmGUI_ClickMenuItem(prefs)
-	tell application "htcLib" to fmGUI_ClickMenuItem({menuItemRef:my coerceToString(menuItemRef of prefs)} & prefs)
+	tell application "fmGuiLib" to fmGUI_ClickMenuItem({menuItemRef:my coerceToString(menuItemRef of prefs)} & prefs)
 end fmGUI_ClickMenuItem
 
 on getTextBefore(sourceTEXT, stopHere)
-	tell application "htcLib" to getTextBefore(sourceTEXT, stopHere)
+	tell application "fmGuiLib" to getTextBefore(sourceTEXT, stopHere)
 end getTextBefore
 
 on getTextBetween(prefs)
-	tell application "htcLib" to getTextBetween(prefs)
+	tell application "fmGuiLib" to getTextBetween(prefs)
 end getTextBetween
 
 on logConsole(processName, consoleMsg)
-	tell application "htcLib" to logConsole(processName, consoleMsg)
+	tell application "fmGuiLib" to logConsole(processName, consoleMsg)
 end logConsole
 
 on getFmAppProcessID()
-	tell application "htcLib" to getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
 end getFmAppProcessID
 
 
@@ -152,7 +152,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceTEXT:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceTEXT:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

@@ -197,17 +197,17 @@ end getObjectAndSubs
 --------------------
 
 on coerceToString(incomingObject)
-	tell application "htcLib" to coerceToString(incomingObject)
+	tell application "fmGuiLib" to coerceToString(incomingObject)
 end coerceToString
 
 on ensureObjectRef(someObject)
-	tell application "htcLib" to ensureObjectRef(someObject)
+	tell application "fmGuiLib" to ensureObjectRef(someObject)
 end ensureObjectRef
 
 on quoteString(someString)
-	tell application "htcLib" to quoteString(someString)
+	tell application "fmGuiLib" to quoteString(someString)
 end quoteString
 
 on repeatString(prefs)
-	tell application "htcLib" to repeatString(prefs)
+	tell application "fmGuiLib" to repeatString(prefs)
 end repeatString

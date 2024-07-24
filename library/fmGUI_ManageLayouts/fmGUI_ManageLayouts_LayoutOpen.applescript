@@ -70,27 +70,27 @@ end fmGUI_ManageLayouts_LayoutOpen
 --------------------
 
 on fmGUI_ALL_Utilities_Close()
-	tell application "htcLib" to fmGUI_ALL_Utilities_Close()
+	tell application "fmGuiLib" to fmGUI_ALL_Utilities_Close()
 end fmGUI_ALL_Utilities_Close
 
 on fmGUI_ManageLayouts_Open(prefs)
-	tell application "htcLib" to fmGUI_ManageLayouts_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageLayouts_Open(prefs)
 end fmGUI_ManageLayouts_Open
 
 on fmGUI_ManageLayouts_Select(prefs)
-	tell application "htcLib" to fmGUI_ManageLayouts_Select(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageLayouts_Select(prefs)
 end fmGUI_ManageLayouts_Select
 
 on fmGUI_NameOfFrontmostWindow()
-	tell application "htcLib" to fmGUI_NameOfFrontmostWindow()
+	tell application "fmGuiLib" to fmGUI_NameOfFrontmostWindow()
 end fmGUI_NameOfFrontmostWindow
 
 on clickObjectByCoords(prefs)
-	tell application "htcLib" to clickObjectByCoords(prefs)
+	tell application "fmGuiLib" to clickObjectByCoords(prefs)
 end clickObjectByCoords
 
 on windowWaitUntil_FrontNotIS(prefs)
-	tell application "htcLib" to windowWaitUntil_FrontNotIS(prefs)
+	tell application "fmGuiLib" to windowWaitUntil_FrontNotIS(prefs)
 end windowWaitUntil_FrontNotIS
 
 

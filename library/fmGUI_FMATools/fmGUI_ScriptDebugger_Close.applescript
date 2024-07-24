@@ -1,5 +1,5 @@
 -- fmGUI_ScriptDebugger_Close()
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Closes FileMaker's Script Debugger window
 
 
@@ -47,5 +47,5 @@ end fmGUI_ScriptDebugger_Close
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost

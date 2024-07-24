@@ -1,5 +1,5 @@
 -- fmGUI_showAllRecs()
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- Show all records in the current layout
 
 
@@ -55,9 +55,9 @@ end fmGUI_showAllRecs
 --------------------
 
 on fmGUI_ModeEnsure_Browse()
-	tell application "htcLib" to fmGUI_ModeEnsure_Browse()
+	tell application "fmGuiLib" to fmGUI_ModeEnsure_Browse()
 end fmGUI_ModeEnsure_Browse
 
 on fmGUI_getRecCounts()
-	tell application "htcLib" to fmGUI_getRecCounts()
+	tell application "fmGuiLib" to fmGUI_getRecCounts()
 end fmGUI_getRecCounts

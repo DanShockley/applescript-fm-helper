@@ -1,5 +1,5 @@
 -- fmGUI_ManageLayouts_LayoutListFocus(prefs)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- open Manage Layouts
 
 
@@ -51,5 +51,5 @@ end fmGUI_ManageLayouts_LayoutListFocus
 --------------------
 
 on fmGUI_ManageLayouts_Open(prefs)
-	tell application "htcLib" to fmGUI_ManageLayouts_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageLayouts_Open(prefs)
 end fmGUI_ManageLayouts_Open

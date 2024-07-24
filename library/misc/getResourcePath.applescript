@@ -1,5 +1,5 @@
 -- getResourcePath({resourceName:"", subDirectoryName:"", subDirectoryList:{}})
--- Daniel Shockley, NYHTC
+-- Daniel Shockley
 -- return full filepath for a named resource ( optionally within a subfolder ).
 
 (*

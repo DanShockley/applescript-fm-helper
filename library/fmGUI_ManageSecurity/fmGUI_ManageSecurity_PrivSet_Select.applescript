@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_PrivSet_Select({privSetName:"Developer", fullAccessAccountName:"admin", fullAccessPassword:""})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- select the specified privilege set
 
 
@@ -55,9 +55,9 @@ end fmGUI_ManageSecurity_PrivSet_Select
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on fmGUI_ManageSecurity_GoToTab_PrivSets(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_GoToTab_PrivSets(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_GoToTab_PrivSets(prefs)
 end fmGUI_ManageSecurity_GoToTab_PrivSets

@@ -1,5 +1,5 @@
 -- SFR_Unescape(someString)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Unescapes strings from a SixFriedRice.com-style dictionary string for use in FileMaker.
 
 
@@ -41,5 +41,5 @@ end SFR_Unescape
 --------------------
 
 on replaceSimple(prefs)
-	tell application "htcLib" to replaceSimple(prefs)
+	tell application "fmGuiLib" to replaceSimple(prefs)
 end encodeCharForURL

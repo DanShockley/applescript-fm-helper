@@ -221,13 +221,13 @@ end dbNameOfWindowName
 --------------------
 
 on getTextBetween({sourceTEXT, beforeText, afterText})
-	tell application "htcLib" to getTextBetween({sourceTEXT, beforeText, afterText})
+	tell application "fmGuiLib" to getTextBetween({sourceTEXT, beforeText, afterText})
 end getTextBetween
 
 on parseChars(prefs)
-	tell application "htcLib" to parseChars(prefs)
+	tell application "fmGuiLib" to parseChars(prefs)
 end parseChars
 
 on getFmAppPath()
-	tell application "htcLib" to getFmAppPath()
+	tell application "fmGuiLib" to getFmAppPath()
 end getFmAppPath

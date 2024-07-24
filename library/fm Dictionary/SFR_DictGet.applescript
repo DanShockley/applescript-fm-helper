@@ -1,5 +1,5 @@
 -- SFR_DictGet(someDict, itemName)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Reads a named hash item from a SixFriedRice.com-style dictionary string - for use in FileMaker.
 
 
@@ -51,9 +51,9 @@ end SFR_DictGet
 --------------------
 
 on SFR_Escape(someString)
-	tell application "htcLib" to SFR_Escape(someString)
+	tell application "fmGuiLib" to SFR_Escape(someString)
 end SFR_Escape
 
 on SFR_Unescape(someString)
-	tell application "htcLib" to SFR_Unescape(someString)
+	tell application "fmGuiLib" to SFR_Unescape(someString)
 end SFR_Unescape

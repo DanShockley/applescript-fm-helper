@@ -1,5 +1,5 @@
 -- fmGUI_CustomFunctions_ParamsForFunction({functionName:null})
--- Dan Shockley, NYHTC
+-- Dan Shockley
 -- return a list of params for a specified function
 
 
@@ -55,13 +55,13 @@ end fmGUI_CustomFunctions_ParamsForFunction
 --------------------
 
 on fmGUI_CustomFunctions_Open(prefs)
-	tell application "htcLib" to fmGUI_CustomFunctions_Open(prefs)
+	tell application "fmGuiLib" to fmGUI_CustomFunctions_Open(prefs)
 end fmGUI_CustomFunctions_Open
 
 on parseChars(prefs)
-	tell application "htcLib" to parseChars(prefs)
+	tell application "fmGuiLib" to parseChars(prefs)
 end parseChars
 
 on getFmAppProcessID()
-	tell application "htcLib" to getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
 end getFmAppProcessID

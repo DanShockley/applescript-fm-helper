@@ -105,25 +105,25 @@ end fmGUI_fullAccessToggle
 --------------------
 
 on fmGUI_isInFullAccessMode(prefs)
-	tell application "htcLib" to fmGUI_isInFullAccessMode(prefs)
+	tell application "fmGuiLib" to fmGUI_isInFullAccessMode(prefs)
 end fmGUI_isInFullAccessMode
 
 on fmGUI_NameOfFrontmostWindow()
-	tell application "htcLib" to fmGUI_NameOfFrontmostWindow()
+	tell application "fmGuiLib" to fmGUI_NameOfFrontmostWindow()
 end fmGUI_NameOfFrontmostWindow
 
 on fmGUI_Menu_RunScript(prefs)
-	tell application "htcLib" to fmGUI_Menu_RunScript(prefs)
+	tell application "fmGuiLib" to fmGUI_Menu_RunScript(prefs)
 end fmGUI_Menu_RunScript
 
 on fmGUI_Relogin(prefs)
-	tell application "htcLib" to fmGUI_Relogin(prefs)
+	tell application "fmGuiLib" to fmGUI_Relogin(prefs)
 end fmGUI_Relogin
 
 on logConsole(processName, consoleMsg)
-	tell application "htcLib" to logConsole(processName, consoleMsg)
+	tell application "fmGuiLib" to logConsole(processName, consoleMsg)
 end logConsole
 
 on xor(firstBoolean, secondBoolean)
-	tell application "htcLib" to xor(firstBoolean, secondBoolean)
+	tell application "fmGuiLib" to xor(firstBoolean, secondBoolean)
 end xor

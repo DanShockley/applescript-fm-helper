@@ -1,5 +1,5 @@
 -- quoteString(someString)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Converts a string into an escaped string (so if evaluated, would become the original string).
 
 
@@ -47,5 +47,5 @@ end quoteString
 --------------------
 
 on replaceSimple(prefs)
-	tell application "htcLib" to replaceSimple(prefs)
+	tell application "fmGuiLib" to replaceSimple(prefs)
 end replaceSimple

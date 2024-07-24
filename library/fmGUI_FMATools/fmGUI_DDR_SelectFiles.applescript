@@ -1,5 +1,5 @@
 -- fmGUI_DDR_SelectFiles({dbNameList:{}})
--- Erik Shagar, NYHTC
+-- Erik Shagar
 -- Ensure files are selected when generating a DDR. All databases are selected if a list is not specified.
 
 (*
@@ -22,7 +22,7 @@ end run
 --------------------
 
 on fmGUI_DDR_SelectFiles(prefs)
-	-- version 1.1, Erik Shagar, NYHTC
+	-- version 1.1, Erik Shagar
 	
 	try
 		set defaultPrefs to {dbNameList:{}}
@@ -85,5 +85,5 @@ end fmGUI_DDR_SelectFiles
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost

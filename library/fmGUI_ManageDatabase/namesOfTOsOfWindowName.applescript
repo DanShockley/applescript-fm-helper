@@ -1,5 +1,5 @@
 -- namesOfTOsOfWindowName(someWindowName)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- return the name of every table occurence of the specified window
 
 

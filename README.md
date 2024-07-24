@@ -7,13 +7,13 @@ Although some of the FileMaker-specific handlers are written to work with both P
 
 
 ### Install
-Once the repository is saved, be sure to execute the make.sh, which will install dependencies (cliclick) and compile an 'htcLib' application. You will need to enable assistive access in order to use it since make of the handlers maniupulates the GUI. Note also that executing the recompile.sh file will do a git pull and run make.sh in one shot. Be sure to Allow any dialogs that request to automate other apps, or the scripts will not function. 
+Once the repository is saved, be sure to execute the make.sh, which will install dependencies (cliclick) and compile an 'fmGuiLib' application. You will need to enable assistive access in order to use it since make of the handlers maniupulates the GUI. Note also that executing the recompile.sh file will do a git pull and run make.sh in one shot. Be sure to Allow any dialogs that request to automate other apps, or the scripts will not function. 
 
 ### Usage
-Just tell application 'htcLib' to run some handler. Here is an example:
+Just tell application 'fmGuiLib' to run some handler. Here is an example:
 
 ```-- AppleScript
-tell application "htcLib" to replaceSimple({sourceTEXT:"hello world!", oldChars:"o", newChars:"a"})
+tell application "fmGuiLib" to replaceSimple({sourceTEXT:"hello world!", oldChars:"o", newChars:"a"})
 ```
 
 **NOTE:** If you're passing any objects into the app, you _may sometimes_ need to first coerce the object reference into a string. If you discover that you need to do this, you can bring a copy of the coerceToString handler ( /applescript-fm-helper/library/text parsing/coerceToString.applescript) into your local script/app.

@@ -1,5 +1,5 @@
 -- fmGUI_ManageLayouts_Open({})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- open Manage Layouts
 
 
@@ -36,5 +36,5 @@ end fmGUI_ManageLayouts_Open
 --------------------
 
 on fmGUI_Menu_OpenLayouts(prefs)
-	tell application "htcLib" to fmGUI_Menu_OpenLayouts(prefs)
+	tell application "fmGuiLib" to fmGUI_Menu_OpenLayouts(prefs)
 end fmGUI_Menu_OpenLayouts

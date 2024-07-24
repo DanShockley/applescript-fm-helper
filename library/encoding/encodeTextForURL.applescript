@@ -47,5 +47,5 @@ end encodeTextForURL
 --------------------
 
 on encodeCharForURL(this_char)
-	tell application "htcLib" to encodeCharForURL(this_char)
+	tell application "fmGuiLib" to encodeCharForURL(this_char)
 end encodeCharForURL

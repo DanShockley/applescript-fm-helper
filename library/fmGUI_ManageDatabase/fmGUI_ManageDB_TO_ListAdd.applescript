@@ -1,5 +1,5 @@
 -- fmGUI_ManageDB_TO_ListAdd({TOList:null})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- given a list of table occurences, add them to the current DB.
 
 
@@ -63,17 +63,17 @@ end fmGUI_ManageDB_TO_ListAdd
 --------------------
 
 on fmGUI_ManageDb_TO_Add(prefs)
-	tell application "htcLib" to fmGUI_ManageDb_TO_Add(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDb_TO_Add(prefs)
 end fmGUI_ManageDb_TO_Add
 
 on fmGUI_ManageDB_Save(prefs)
-	tell application "htcLib" to fmGUI_ManageDB_Save(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDB_Save(prefs)
 end fmGUI_ManageDB_Save
 
 on parseChars(prefs)
-	tell application "htcLib" to parseChars(prefs)
+	tell application "fmGuiLib" to parseChars(prefs)
 end parseChars
 
 on replaceSimple(prefs)
-	tell application "htcLib" to replaceSimple(prefs)
+	tell application "fmGuiLib" to replaceSimple(prefs)
 end replaceSimple

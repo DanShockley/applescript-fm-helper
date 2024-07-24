@@ -1,5 +1,5 @@
 -- repeatString(someString)
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- Repeats a string the specified number of times, optionally with a separator. 
 
 
@@ -46,5 +46,5 @@ end repeatString
 --------------------
 
 on unParseChars(thisList, newDelim)
-	tell application "htcLib" to unParseChars(thisList, newDelim)
+	tell application "fmGuiLib" to unParseChars(thisList, newDelim)
 end unParseChars

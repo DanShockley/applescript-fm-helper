@@ -1,5 +1,5 @@
 -- getFromFMP({fmType:""})
--- Daniel A. Shockley, NYHTC
+-- Dan Shockley
 -- picks up the contents of a field in FileMaker 17 ( should also work on 13 and 14, but is currently untested ) whose layout is called "AppleScript_Transfer-DO_NOT_RENAME"
 
 

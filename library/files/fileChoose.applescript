@@ -1,5 +1,5 @@
 -- fileChoose({prompt:"Choose items:", allowMulti:false})
--- Daniel A. Shockley
+-- Dan Shockley
 -- Asks the user for one or more items (files OR folders). 
 
 

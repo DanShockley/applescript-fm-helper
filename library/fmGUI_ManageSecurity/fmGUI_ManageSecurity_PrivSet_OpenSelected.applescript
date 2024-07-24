@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_PrivSet_OpenSelected(prefs)
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- open the currently selected privSet
 
 
@@ -53,15 +53,15 @@ end fmGUI_ManageSecurity_PrivSet_OpenSelected
 --------------------
 
 on fmGUI_AppFrontMost()
-	tell application "htcLib" to fmGUI_AppFrontMost()
+	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
 on clickObjectByCoords(someObject)
-	tell application "htcLib" to clickObjectByCoords(my coerceToString(someObject))
+	tell application "fmGuiLib" to clickObjectByCoords(my coerceToString(someObject))
 end clickObjectByCoords
 
 on windowWaitUntil(prefs)
-	tell application "htcLib" to windowWaitUntil(prefs)
+	tell application "fmGuiLib" to windowWaitUntil(prefs)
 end windowWaitUntil
 
 
@@ -71,7 +71,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString

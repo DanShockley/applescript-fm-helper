@@ -1,5 +1,5 @@
 -- dbNumberOfWindowName(someWindowName)
--- Daniel A. Shockley
+-- Dan Shockley
 -- return the number of the specified window
 
 

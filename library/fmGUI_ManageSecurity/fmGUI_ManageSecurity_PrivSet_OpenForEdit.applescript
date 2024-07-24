@@ -1,5 +1,5 @@
 -- fmGUI_ManageSecurity_PrivSet_OpenForEdit(prefs)
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- open the specified privSet
 
 
@@ -44,13 +44,13 @@ end fmGUI_ManageSecurity_PrivSet_OpenForEdit
 --------------------
 
 on fmGUI_ManageSecurity_PrivSet_OpenSelected(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_OpenSelected(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_OpenSelected(prefs)
 end fmGUI_ManageSecurity_PrivSet_OpenSelected
 
 on fmGUI_ManageSecurity_PrivSet_Select(prefs)
-	tell application "htcLib" to fmGUI_ManageSecurity_PrivSet_Select(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageSecurity_PrivSet_Select(prefs)
 end fmGUI_ManageSecurity_PrivSet_Select
 
 on windowWaitUntil(prefs)
-	tell application "htcLib" to windowWaitUntil(prefs)
+	tell application "fmGuiLib" to windowWaitUntil(prefs)
 end windowWaitUntil

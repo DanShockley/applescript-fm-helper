@@ -42,7 +42,7 @@ on CopyValuesFromViewIndexWindow({})
 		end tell
 	end tell
 	
-	tell application "htcLib" to set indexTextBlock to unParseChars(indexList, return)
+	tell application "fmGuiLib" to set indexTextBlock to unParseChars(indexList, return)
 	
 	set the clipboard to indexTextBlock
 	

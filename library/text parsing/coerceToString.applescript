@@ -1,5 +1,5 @@
 -- coerceToString(incomingObject)
--- Daniel A. Shockley & Erik Shagdar, NYHTC
+-- Daniel A. Shockley & Erik Shagdar
 -- string-ifies an object
 
 

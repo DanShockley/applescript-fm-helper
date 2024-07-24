@@ -1,5 +1,5 @@
 -- fmGUI_ManageDb_TO_Remove({TOName:null, deleteCurrent:false, exitManageDb:false})
--- Erik Shagdar, NYHTC
+-- Erik Shagdar
 -- delete the specified table occurence
 
 
@@ -26,7 +26,7 @@ end run
 --------------------
 
 on fmGUI_ManageDb_TO_Remove(prefs)
-	-- version 1.0, Erik Shagdar, NYHTC
+	-- version 1.0, Erik Shagdar
 	
 	try
 		set defaultPrefs to {TOName:null, deleteCurrent:false, exitManageDb:false}
@@ -102,28 +102,28 @@ end fmGUI_ManageDb_TO_Remove
 --------------------
 
 on clickAtCoords(xCoord, yCoord)
-	tell application "htcLib" to clickAtCoords(xCoord, yCoord)
+	tell application "fmGuiLib" to clickAtCoords(xCoord, yCoord)
 end clickAtCoords
 
 on fmGUI_ManageDb_GoToTab_Relationships(prefs)
-	tell application "htcLib" to fmGUI_ManageDb_GoToTab_Relationships(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDb_GoToTab_Relationships(prefs)
 end fmGUI_ManageDb_GoToTab_Relationships
 
 on fmGUI_ManageDb_Save(prefs)
-	tell application "htcLib" to fmGUI_ManageDb_Save(prefs)
+	tell application "fmGuiLib" to fmGUI_ManageDb_Save(prefs)
 end fmGUI_ManageDb_Save
 
 on fmGUI_ObjectClick_Button(prefs)
 	set buttonRef to my coerceToString(buttonRef of prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_Button({buttonRef:buttonRef} & prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_Button({buttonRef:buttonRef} & prefs)
 end fmGUI_ObjectClick_Button
 
 on fmGUI_ObjectClick_CancelButton(prefs)
-	tell application "htcLib" to fmGUI_ObjectClick_CancelButton(prefs)
+	tell application "fmGuiLib" to fmGUI_ObjectClick_CancelButton(prefs)
 end fmGUI_ObjectClick_CancelButton
 
 on windowWaitUntil_FrontIS(prefs)
-	tell application "htcLib" to windowWaitUntil_FrontIS(prefs)
+	tell application "fmGuiLib" to windowWaitUntil_FrontIS(prefs)
 end windowWaitUntil_FrontIS
 
 
@@ -133,7 +133,7 @@ on coerceToString(incomingObject)
 	
 	tell application "Finder" to set coercePath to (container of (container of (path to me)) as text) & "text parsing:coerceToString.applescript"
 	set codeCoerce to read file coercePath as text
-	tell application "htcLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
+	tell application "fmGuiLib" to set codeCoerce to "script codeCoerce " & return & getTextBetween({sourceText:codeCoerce, beforeText:"-- START OF CODE", afterText:"-- END OF CODE"}) & return & "end script" & return & "return codeCoerce"
 	set codeCoerce to run script codeCoerce
 	tell codeCoerce to coerceToString(incomingObject)
 end coerceToString
