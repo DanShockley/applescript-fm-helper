@@ -34,7 +34,7 @@ on fmGUI_ManageSecurity_PrivSet_Select(prefs)
 		
 		try
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					select (first row of (table 1 of scroll area 1 of tab group 1 of window 1) whose name of static text 1 is privSetName of prefs)
 				end tell
 			end tell

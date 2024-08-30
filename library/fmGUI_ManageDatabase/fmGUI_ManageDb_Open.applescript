@@ -60,7 +60,7 @@ on fmGUI_ManageDb_Open(prefs)
 			
 			--zoom out to show all TOs and dismiss any xDBC errors that weren't already dismissed
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					keystroke "i" using command down
 				end tell
 			end tell
@@ -70,7 +70,7 @@ on fmGUI_ManageDb_Open(prefs)
 			
 			-- zoom back in
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set zoomField to text field 1 of tab group 1 of window 1
 					set focused of zoomField to true
 					set value of zoomField to "100"

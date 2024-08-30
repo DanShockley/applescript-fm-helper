@@ -47,14 +47,14 @@ on fmGUI_ManageDataSources_EnsureExists(prefs)
 		
 		-- Make sure a specified Data Source exists.
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set dataSourceExists to exists (first row of (table 1 of scroll area 1 of window 1) whose name of static text 1 is dataSourceName)
 			end tell
 		end tell
 		if not dataSourceExists then
 			-- need to create it: 
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set newButton to first button of window 1 whose name starts with "New"
 				end tell
 			end tell
@@ -63,7 +63,7 @@ on fmGUI_ManageDataSources_EnsureExists(prefs)
 			
 			
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set value of text field 1 of window 1 to dataSourceName
 					set value of text area 1 of scroll area 1 of group 1 of window 1 to dataSourcePath
 					set okButton to first button of window 1 whose name starts with "OK"

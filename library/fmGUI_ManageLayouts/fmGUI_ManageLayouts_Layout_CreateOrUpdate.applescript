@@ -76,7 +76,7 @@ on fmGUI_ManageLayouts_Layout_CreateOrUpdate(layoutOptions)
 		
 		
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set manageLayoutsWindow to window 1
 			end tell
 		end tell
@@ -88,7 +88,7 @@ on fmGUI_ManageLayouts_Layout_CreateOrUpdate(layoutOptions)
 				-- exists and was selected, so click Edit: 
 				
 				tell application "System Events"
-					tell application process "FileMaker Pro Advanced"
+					tell application process "FileMaker Pro"
 						set buttonRef to first button of manageLayoutsWindow whose title is "Edit"
 					end tell
 				end tell
@@ -98,7 +98,7 @@ on fmGUI_ManageLayouts_Layout_CreateOrUpdate(layoutOptions)
 				
 				
 				tell application "System Events"
-					tell application process "FileMaker Pro Advanced"
+					tell application process "FileMaker Pro"
 						set layoutSetupDialog to window 1
 						set interfaceParent to tab group 1 of layoutSetupDialog
 						
@@ -114,7 +114,7 @@ on fmGUI_ManageLayouts_Layout_CreateOrUpdate(layoutOptions)
 					
 				else -- ALLOWED to CHANGE the other properties of the layout:
 					tell application "System Events"
-						tell application process "FileMaker Pro Advanced"
+						tell application process "FileMaker Pro"
 							click (first radio button of interfaceParent whose name is "General")
 							set showRecordsButton to pop up button "Show records from:" of interfaceParent
 							set inludeInMenuButton to checkbox "Include in layout menus" of interfaceParent
@@ -128,7 +128,7 @@ on fmGUI_ManageLayouts_Layout_CreateOrUpdate(layoutOptions)
 					
 					
 					tell application "System Events"
-						tell application process "FileMaker Pro Advanced"
+						tell application process "FileMaker Pro"
 							click (first radio button of interfaceParent whose name is "Views")
 							set formCheckbox to checkbox "Form View" of interfaceParent
 							set listCheckbox to checkbox "List View" of interfaceParent
@@ -146,7 +146,7 @@ on fmGUI_ManageLayouts_Layout_CreateOrUpdate(layoutOptions)
 				end if
 				
 				tell application "System Events"
-					tell application process "FileMaker Pro Advanced"
+					tell application process "FileMaker Pro"
 						click button "OK" of layoutSetupDialog
 					end tell
 				end tell
@@ -163,7 +163,7 @@ on fmGUI_ManageLayouts_Layout_CreateOrUpdate(layoutOptions)
 				if not fmGUI_ManageLayouts_LayoutFolderSelect({folderName:layoutParentFolder of layoutOptions}) then
 					fmGUI_ManageLayouts_PopupNewItemOfType("Folder…")
 					tell application "System Events"
-						tell application process "FileMaker Pro Advanced"
+						tell application process "FileMaker Pro"
 							set value of text field "Folder Name:" of window 1 to layoutParentFolder of layoutOptions
 							click button "OK" of window 1
 							set newFolderRow to first row of (outline 1 of scroll area 1 of manageLayoutsWindow) whose value of text field 1 of group 1 is layoutParentFolder of layoutOptions
@@ -176,7 +176,7 @@ on fmGUI_ManageLayouts_Layout_CreateOrUpdate(layoutOptions)
 			else if addNearTop of layoutOptions then
 				-- select the 1st row/layout so that this new one gets added just below it, instead of at bottom of whole list:
 				tell application "System Events"
-					tell application process "FileMaker Pro Advanced"
+					tell application process "FileMaker Pro"
 						select row 1 of outline 1 of scroll area 1 of manageLayoutsWindow
 					end tell
 				end tell
@@ -188,7 +188,7 @@ on fmGUI_ManageLayouts_Layout_CreateOrUpdate(layoutOptions)
 			-- Create the layout:
 			if debugMode then logConsole(ScriptName, "creating layout: " & (layoutName of layoutOptions))
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set buttonRef to first button of manageLayoutsWindow whose title is "New"
 				end tell
 			end tell
@@ -199,7 +199,7 @@ on fmGUI_ManageLayouts_Layout_CreateOrUpdate(layoutOptions)
 			
 			
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set newLayoutDialog to window 1
 					set value of text field 1 of newLayoutDialog to layoutName of layoutOptions
 					set buttonRef to pop up button 1 of newLayoutDialog
@@ -207,7 +207,7 @@ on fmGUI_ManageLayouts_Layout_CreateOrUpdate(layoutOptions)
 			end tell
 			fmGUI_PopupSet({objRef:buttonRef, objValue:baseTableName of layoutOptions})
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					click button 4 of newLayoutDialog -- select 'Computer'
 					click button 6 of newLayoutDialog -- select 'Form'
 					

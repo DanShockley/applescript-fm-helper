@@ -41,7 +41,7 @@ on fmGUI_ManageDataSources_Save(prefs)
 	try
 		fmGUI_AppFrontMost()
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				if name of window 1 starts with manageWindowNamePrefix then
 					try
 						set manageWindowName to name of window 1

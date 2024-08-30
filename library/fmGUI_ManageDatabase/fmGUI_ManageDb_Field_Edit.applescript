@@ -68,7 +68,7 @@ DEBUGGING   DEBUGGING   DEBUGGING   DEBUGGING   DEBUGGING   DEBUGGING   DEBUGGIN
 		
 		fmGUI_AppFrontMost()
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				
 				-- COMMENT is for any field type:
 				set changeButton to first button of tab group 1 of window 1 whose title is "Change"

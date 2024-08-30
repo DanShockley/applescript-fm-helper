@@ -34,7 +34,7 @@ on fmGUI_ManageDb_ListOfTableNames(prefs)
 		
 		fmGUI_ManageDb_GoToTab_Tables({})
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set fmTableNames to value of static text 1 of (every row of (table 1 of scroll area 1 of tab group 1 of window 1) whose value of static text 2 is "FileMaker")
 			end tell
 		end tell

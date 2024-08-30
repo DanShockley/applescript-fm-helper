@@ -36,7 +36,7 @@ on fmGUI_ManageDb_FieldsPickTable(baseTableName)
 		fmGUI_ManageDb_GoToTab_Fields({})
 		
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set tablePopUpButton to pop up button "Table:" of tab group 1 of window 1
 			end tell
 		end tell

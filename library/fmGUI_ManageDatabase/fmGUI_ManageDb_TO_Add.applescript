@@ -53,7 +53,7 @@ on fmGUI_ManageDb_TO_Add(prefs)
 		
 		-- add a new TO
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set addTocButton to first button of tab group 1 of window 1 whose description contains "Add a table"
 			end tell
 		end tell
@@ -63,7 +63,7 @@ on fmGUI_ManageDb_TO_Add(prefs)
 		
 		-- specify Db of new TO
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set dataSourcePopUpButton to pop up button "Data Source:" of window 1
 			end tell
 		end tell
@@ -72,7 +72,7 @@ on fmGUI_ManageDb_TO_Add(prefs)
 			-- try to select existing data source
 			fmGUI_PopupSet({objRef:dataSourcePopUpButton, objValue:dbName})
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					select (first row of table 1 of scroll area 1 of window 1 whose value of static text 1 is baseTableName)
 				end tell
 			end tell
@@ -80,7 +80,7 @@ on fmGUI_ManageDb_TO_Add(prefs)
 		on error
 			--Not an existing data source, so create it
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					key code 53 -- Hit 'Esc'
 				end tell
 			end tell
@@ -92,7 +92,7 @@ on fmGUI_ManageDb_TO_Add(prefs)
 			-- now that we've added the data source, try again
 			fmGUI_PopupSet({objRef:dataSourcePopUpButton, objValue:dbName})
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					select (first row of table 1 of scroll area 1 of window 1 whose value of static text 1 is baseTableName)
 				end tell
 			end tell
@@ -101,7 +101,7 @@ on fmGUI_ManageDb_TO_Add(prefs)
 		
 		-- specify TO name
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set value of text field "Name" of window 1 to TOName
 			end tell
 		end tell

@@ -36,7 +36,7 @@ on fmGUI_DataViewer_Open(prefs)
 		
 		-- select data viewer window
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				try
 					set dvWindow to first window whose name is equal to dvName
 					set dataViewerMenuItem to null
@@ -51,7 +51,7 @@ on fmGUI_DataViewer_Open(prefs)
 		if dataViewerMenuItem is not null then
 			fmGUI_ClickMenuItem({menuItemRef:dataViewerMenuItem})
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set dvWindow to first window whose name is equal to dvName
 				end tell
 			end tell
@@ -61,13 +61,13 @@ on fmGUI_DataViewer_Open(prefs)
 		-- authenticate viewer if needed
 		try
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					get scroll area 1 of tab group 1 of window 1
 				end tell
 			end tell
 		on error
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set authButton to first button of tab group 1 of dvWindow whose description contains "Auth"
 				end tell
 			end tell

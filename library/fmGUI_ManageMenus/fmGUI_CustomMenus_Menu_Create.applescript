@@ -44,7 +44,7 @@ on fmGUI_CustomMenus_Menu_Create(prefs)
 		-- click new menu button if not on the create menu window
 		if frontWindowName is equal to windowSelectMenu then
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set newMenuButton to first button of window 1 whose description starts with "New Menu"
 				end tell
 			end tell
@@ -55,7 +55,7 @@ on fmGUI_CustomMenus_Menu_Create(prefs)
 		-- create menu
 		windowWaitUntil_FrontIS({windowName:"Create Custom Menu"})
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				if menuBasedOn is null or Â
 					menuBasedOn is equal to "" or Â
 					menuBasedOn is equal to "none" then

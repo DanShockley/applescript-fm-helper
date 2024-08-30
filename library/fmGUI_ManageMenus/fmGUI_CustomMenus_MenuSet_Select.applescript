@@ -39,7 +39,7 @@ on fmGUI_CustomMenus_MenuSet_Select(prefs)
 		
 		
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				try
 					select (first row of table 1 of scroll area 1 of tab group 1 of window 1 whose value of static text 1 is menuSetName of prefs)
 				on error

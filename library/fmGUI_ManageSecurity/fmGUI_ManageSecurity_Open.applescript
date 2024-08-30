@@ -62,7 +62,7 @@ on fmGUI_ManageSecurity_Open(prefs)
 			
 			-- open Manage security
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set manageSecMenuItem to first menu item of menu 1 of menu item "Manage" of menu 1 of menu bar item "File" of menu bar 1 whose name starts with "Security"
 				end tell
 			end tell

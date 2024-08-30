@@ -30,7 +30,7 @@ on fmGUI_ManageDb_DismissXDBCDialog(prefs)
 		
 		-- get obj references
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set windowName to name of window 1
 				try
 					set cancelButton to button "Cancel" of window 1

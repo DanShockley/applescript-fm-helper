@@ -43,7 +43,7 @@ on fmGUI_CustomMenus_MenuSet_CreateUpdate(prefs)
 		
 		-- get button refs
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set createButton to first button of tab group 1 of window 1 whose name starts with "Create"
 				set editButton to first button of tab group 1 of window 1 whose name starts with "Edit"
 				set duplicateButton to first button of tab group 1 of window 1 whose name starts with "Duplicate"
@@ -73,7 +73,7 @@ on fmGUI_CustomMenus_MenuSet_CreateUpdate(prefs)
 		
 		-- We now have open a custom menu SET we can create/edit:
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				-- ensure name and comment
 				set value of text field "Menu Set Name:" of window 1 to menuSetName of menuSetRec
 				set value of text field "Comment:" of window 1 to menuSetComment of menuSetRec

@@ -33,7 +33,7 @@ on fmGUI_ManageDb_ListOfXDBCTableNames(prefs)
 		fmGUI_ManageDb_GoToTab_Tables({})
 		
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set xDBCTableNames to value of static text 1 of (every row of (table 1 of scroll area 1 of tab group 1 of window 1) whose value of static text 2 is not "FileMaker")
 			end tell
 		end tell

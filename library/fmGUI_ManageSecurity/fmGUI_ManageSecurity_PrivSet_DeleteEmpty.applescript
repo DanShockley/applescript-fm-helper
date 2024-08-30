@@ -38,7 +38,7 @@ on fmGUI_ManageSecurity_PrivSet_DeleteEmpty(prefs)
 		
 		-- get a list of all privSets
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set privSetTable to table 1 of scroll area 1 of tab group 1 of window 1
 				set existingPrivSetNames to value of static text 1 of every row of table 1 of scroll area 1 of tab group 1 of window 1
 			end tell
@@ -56,7 +56,7 @@ on fmGUI_ManageSecurity_PrivSet_DeleteEmpty(prefs)
 			else
 				-- delete if there are no accounts for the privSet
 				tell application "System Events"
-					tell application process "FileMaker Pro Advanced"
+					tell application process "FileMaker Pro"
 						set onePrivSetRow to (first row of privSetTable whose value of static text 1 is equal to onePrivSetName)
 						
 						if value of static text 2 of onePrivSetRow is equal to "" then
@@ -78,7 +78,7 @@ on fmGUI_ManageSecurity_PrivSet_DeleteEmpty(prefs)
 		
 		-- final checks
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				-- make sure we don't have errors after deleting
 				if name of window 1 does not start with "Manage Security" then error "unable to delete privSet '" & value of static text 1 of firstPrivSetNoAccounts & "'" number -1024
 				

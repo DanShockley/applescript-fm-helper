@@ -52,7 +52,7 @@ on fmGUI_ManageScripts_Select_SpecifyScriptWindow(prefs)
 		
 		-- get currently selected db
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set selectedDbObj to pop up button 2 of window "Specify Script"
 				set scriptTable to outline 1 of scroll area 1 of window "Specify Script"
 				set selectedDbName to value of selectedDbObj

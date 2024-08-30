@@ -29,7 +29,7 @@ on fmGUI_showAllRecs()
 	try
 		fmGUI_ModeEnsure_Browse()
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				click menu item "Show All Records" of menu 1 of menu bar item "Records" of menu bar 1
 			end tell
 		end tell

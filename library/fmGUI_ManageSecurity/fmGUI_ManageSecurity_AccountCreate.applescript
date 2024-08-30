@@ -51,7 +51,7 @@ on fmGUI_ManageSecurity_AccountCreate(prefs)
 		try
 			-- if the account already exists, move it
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set existingAccountName to value of static text 1 of (first row of (table 1 of scroll area 1 of tab group 1 of window 1) whose value of static text 1 is accountName of prefs)
 				end tell
 			end tell
@@ -60,7 +60,7 @@ on fmGUI_ManageSecurity_AccountCreate(prefs)
 		on error
 			-- no such account, so create it
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set newButton to first button of tab group 1 of window 1 whose name contains "New"
 				end tell
 			end tell

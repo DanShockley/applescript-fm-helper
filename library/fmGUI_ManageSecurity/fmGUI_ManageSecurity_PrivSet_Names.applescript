@@ -34,7 +34,7 @@ on fmGUI_ManageSecurity_PrivSet_Names(prefs)
 		
 		
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set privSetNameList to name of static text 1 of every row of (table 1 of scroll area 1 of tab group 1 of window 1)
 			end tell
 		end tell

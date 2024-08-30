@@ -47,7 +47,7 @@ on fmGUI_ManageSecurity_PrivSet_Rename(prefs)
 		
 		-- rename opened privSet
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set value of text field "Privilege Set Name" of window 1 to privSet_newName of prefs
 				set okButton to button "OK" of window 1
 			end tell

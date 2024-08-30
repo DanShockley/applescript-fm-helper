@@ -48,7 +48,7 @@ on fmGUI_ManageDataSources_Modify(prefs)
 		
 		try -- it DOES exist, so modify it: 
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					select (first row of (table 1 of scroll area 1 of window 1) whose name of static text 1 is dataSourceName)
 					set editButton to first button of window 1 whose name starts with "Edit"
 				end tell
@@ -57,7 +57,7 @@ on fmGUI_ManageDataSources_Modify(prefs)
 			windowWaitUntil_FrontIS({windowName:"Edit Data Source"})
 			
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set value of text field 1 of window 1 to dataSourceName
 					set value of text area 1 of scroll area 1 of group 1 of window 1 to dataSourcePath
 					set okButton to first button of window 1 whose name starts with "OK"

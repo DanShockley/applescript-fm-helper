@@ -21,7 +21,7 @@ on run
 	
 	try
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set frontmost to true
 				
 				set scriptWindow to first window whose (name begins with "Script Workspace" or name begins with "Edit Script")

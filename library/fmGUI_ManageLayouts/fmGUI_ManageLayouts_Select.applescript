@@ -39,7 +39,7 @@ on fmGUI_ManageLayouts_Select(prefs)
 		fmGUI_ManageLayouts_Open({})
 		
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set contextWindow to first window whose name begins with layoutWindowName
 				set searchTextField to text field 1 of contextWindow
 				set searchButton to button 1 of text field 1 of contextWindow
@@ -53,7 +53,7 @@ on fmGUI_ManageLayouts_Select(prefs)
 		-- after filter, search across all matches and select the first row that matches		
 		try
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set clearButton to button 2 of text field 1 of contextWindow
 					select (first row of outline 1 of scroll area 1 of contextWindow whose value of text field 1 is layoutName)
 				end tell

@@ -38,7 +38,7 @@ on fmGUI_ManageDataSources_Delete(prefs)
 		
 		try -- it DOES exist, so delete it: 
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					select (first row of (table 1 of scroll area 1 of window 1) whose name of static text 1 is dataSourceName)
 					set deleteButton to first button of window 1 whose name starts with "Delete"
 				end tell

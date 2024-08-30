@@ -30,7 +30,7 @@ on fmGUI_getRecCounts()
 	try
 		-- get the count string
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set recString to value of static text 3 of group 1 of toolbar 1 of window 1
 			end tell
 		end tell

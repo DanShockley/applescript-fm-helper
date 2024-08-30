@@ -37,7 +37,7 @@ on fmGUI_CustomMenus_GotoTab(prefs)
 		
 		
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				click (first radio button of tab group 1 of window 1 whose name is tabName of prefs)
 			end tell
 		end tell

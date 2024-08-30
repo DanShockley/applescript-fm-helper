@@ -23,7 +23,7 @@ on fmGUI_ModeCurrent(prefs)
 	try
 		fmGUI_AppFrontMost()
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set currentMode to first word of ((description of first group of window 1) as string)
 				return currentMode
 			end tell

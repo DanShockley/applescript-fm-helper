@@ -29,7 +29,7 @@ on fmGUI_ManageDb_TableListFocus(prefs)
 		fmGUI_ManageDb_GoToTab_Tables({})
 		
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set focused of (table 1 of scroll area 1 of tab group 1 of window 1) to true
 				return true
 			end tell

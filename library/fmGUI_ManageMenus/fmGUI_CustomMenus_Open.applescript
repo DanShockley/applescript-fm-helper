@@ -37,7 +37,7 @@ on fmGUI_CustomMenus_Open(prefs)
 		else
 			-- open manage custom menus
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set manageMenusMenuItem to first menu item of menu 1 of menu item "Manage" of menu 1 of menu bar item "File" of menu bar 1 whose name starts with "Custom Menus"
 				end tell
 			end tell

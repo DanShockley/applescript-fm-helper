@@ -31,7 +31,7 @@ on fmGUI_Inspector_Ensure()
 		fmGUI_ModeEnsure_Layout()
 		fmGUI_AppFrontMost()
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				if not (exists (first window whose name contains "Inspector")) then
 					click (first menu item of menu 1 of menu bar item "View" of menu bar 1 whose name is "Inspector")
 				end if

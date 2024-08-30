@@ -35,7 +35,7 @@ on fmGUI_ManageDb_GoToTab(prefs)
 		fmGUI_AppFrontMost()
 		fmGUI_ManageDb_Open({})
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set tabObject to a reference to (first radio button of tab group 1 of window 1 whose title contains tabName)
 				repeat 100 times
 					click tabObject

@@ -37,7 +37,7 @@ on fmGUI_ManageLayouts_Close(prefs)
 		
 		if fmGUI_NameOfFrontmostWindow() starts with windowNamePart then
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set contextWindow to first window whose name begins with windowNamePart
 					set closeButton to first button of contextWindow whose description is "close button"
 				end tell

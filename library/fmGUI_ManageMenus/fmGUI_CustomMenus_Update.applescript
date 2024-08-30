@@ -37,7 +37,7 @@ on fmGUI_CustomMenus_Update(prefs)
 		
 		
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set updateButton to first button of window 1 whose name is "Update"
 				set isButtonEnabled to enabled of updateButton
 			end tell

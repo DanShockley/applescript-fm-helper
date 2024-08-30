@@ -51,7 +51,7 @@ on fmGUI_ManageSecurity_AccountEdit(prefs)
 		if fmGUI_NameOfFrontmostWindow() is not "Edit Account" then
 			fmGUI_ManageSecurity_GoToTab_Accounts(fullAccessCredentials)
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set accountTable to table 1 of scroll area 1 of tab group 1 of window 1
 					
 					--select account, first by accountName, then by accountOldName
@@ -83,7 +83,7 @@ on fmGUI_ManageSecurity_AccountEdit(prefs)
 		--handle objects on the window from the top down:
 		if authenticatedVia of prefs is not null then
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set accountAuthButton to first pop up button of window 1 whose name contains "authenticated via"
 				end tell
 			end tell
@@ -93,7 +93,7 @@ on fmGUI_ManageSecurity_AccountEdit(prefs)
 		
 		if accountName is not null then
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set accountNameRef to text field "Account Name:" of window 1
 				end tell
 			end tell
@@ -103,7 +103,7 @@ on fmGUI_ManageSecurity_AccountEdit(prefs)
 		
 		if accountPassword of prefs is not null then
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set changeButton to first button of window 1 whose name contains "Change"
 				end tell
 			end tell
@@ -111,7 +111,7 @@ on fmGUI_ManageSecurity_AccountEdit(prefs)
 			
 			windowWaitUntil_FrontIS({windowName:passwordWindowName})
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set passRef to text field 1 of window 1
 					set confRef to text field 2 of window 1
 					set setButton to button "Set Password" of window 1
@@ -126,7 +126,7 @@ on fmGUI_ManageSecurity_AccountEdit(prefs)
 		
 		if mustChangeOnNextLogin of prefs is not null then
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set changePasswordCheckbox to checkbox "Require password change on next sign-in" of window 1
 				end tell
 			end tell
@@ -136,7 +136,7 @@ on fmGUI_ManageSecurity_AccountEdit(prefs)
 		
 		if accountStatus of prefs is not null then
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					if accountStatus of prefs is 0 then
 						set statusCheckbox to first radio button of window 1 whose name begins with "Inactive"
 					else
@@ -150,7 +150,7 @@ on fmGUI_ManageSecurity_AccountEdit(prefs)
 		
 		if privilegeSet of prefs is not null then
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set privSetButton to pop up button "Privilege Set:" of window 1
 				end tell
 			end tell
@@ -160,7 +160,7 @@ on fmGUI_ManageSecurity_AccountEdit(prefs)
 		
 		if accountDescription of prefs is not null then
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set descObj to text field "Description:" of window 1
 				end tell
 			end tell

@@ -12,7 +12,7 @@ HISTORY:
 
 on run
 	tell application "System Events"
-		tell application process "FileMaker Pro Advanced"
+		tell application process "FileMaker Pro"
 			set frontmost to true
 			--set FieldCommentInManageDatabase to text field "Comment:" of tab group 1 of window 1
 			set privSetDescription to text field "Description" of window 1

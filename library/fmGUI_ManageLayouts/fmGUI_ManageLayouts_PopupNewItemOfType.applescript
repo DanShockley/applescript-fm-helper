@@ -36,7 +36,7 @@ on fmGUI_ManageLayouts_PopupNewItemOfType(newItemType)
 		fmGUI_ManageLayouts_Open({})
 		
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set newItemOfTypeButton to first button of window 1 whose description is "New Item of Type"
 			end tell
 		end tell
@@ -46,7 +46,7 @@ on fmGUI_ManageLayouts_PopupNewItemOfType(newItemType)
 		
 		-- get positions of the new items
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set newItemTypePosList to position of menu items of menu 1 of newItemOfTypeButton
 			end tell
 		end tell

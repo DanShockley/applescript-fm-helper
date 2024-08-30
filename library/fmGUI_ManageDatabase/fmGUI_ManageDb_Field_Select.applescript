@@ -62,7 +62,7 @@ on fmGUI_ManageDb_Field_Select(prefs)
 		fmGUI_AppFrontMost()
 		try
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					select (first row of (table 1 of scroll area 1 of tab group 1 of window 1) whose value of static text 1 is fieldName of prefs)
 				end tell
 			end tell

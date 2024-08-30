@@ -52,7 +52,7 @@ on fmGUI_ManageLayouts_LayoutOpen(prefs)
 			fmGUI_ALL_Utilities_Close()
 			set startingWindowName to fmGUI_NameOfFrontmostWindow()
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set openButton to first button of window 1 whose title is "Open"
 				end tell
 			end tell
