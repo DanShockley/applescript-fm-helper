@@ -5,6 +5,7 @@
 
 (*
 HISTORY:
+	2024-07-23 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	1.2 - 2017-08-07 ( eshagdar ): click menu items via handlers instead of directly.
 	1.1 - 
 	1.0 - 201x-xx-xx ( dshcokley ): first created
@@ -12,6 +13,7 @@ HISTORY:
 
 REQUIRES:
 	fmGUI_AppFrontMost
+	getFmAppProcessID
 *)
 
 
@@ -24,13 +26,19 @@ end run
 --------------------
 
 on fmGUI_ManageScripts_FmScript_SaveAndExit(prefs)
-	-- version 1.2
+	-- version 2024-07-23
+	
+	try
+		set fmProcID to fmProcID of prefs
+	on error
+		set fmProcID to my getFmAppProcessID()
+	end try
 	
 	try
 		fmGUI_AppFrontMost()
 		
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell process id fmProcID
 				set saveScriptMenuItem to menu item "Save Script" of menu "Scripts" of menu bar 1
 				set needsSave to enabled of saveScriptMenuItem
 				set closeScriptMenuItem to menu item "Close Tab" of menu "View" of menu bar 1
@@ -58,6 +66,9 @@ on fmGUI_ClickMenuItem(prefs)
 	tell application "fmGuiLib" to fmGUI_ClickMenuItem(prefs)
 end fmGUI_ClickMenuItem
 
+on getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
+end getFmAppProcessID
 
 
 on coerceToString(incomingObject)

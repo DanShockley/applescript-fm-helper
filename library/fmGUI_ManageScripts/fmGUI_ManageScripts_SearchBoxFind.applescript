@@ -11,6 +11,7 @@ HISTORY
 REQUIRES:
 	fmGUI_AppFrontMost
 	fmGUI_ManageScripts_Open
+	getFmAppProcessID
 *)
 
 
@@ -23,17 +24,23 @@ end run
 --------------------
 
 on fmGUI_ManageScripts_SearchBoxFind(prefs)
-	-- version 2020-03-04-1528
+	-- version 2024-07-23
 	
 	try
 		set defaultPrefs to {searchCriteria:null, delayTime:0.25, maxDelay:2, delayIncreaseBy:0.25}
 		set prefs to prefs & defaultPrefs
-		
+			
+	try
+		set fmProcID to fmProcID of prefs
+	on error
+		set fmProcID to my getFmAppProcessID()
+	end try
+
 		fmGUI_AppFrontMost()
 		fmGUI_ManageScripts_Open({})
 		
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell process id fmProcID
 				set searchField to text field 1 of splitter group 1 of window 1
 				
 				set focused of searchField to true
@@ -80,3 +87,6 @@ on fmGUI_ManageScripts_Open(prefs)
 	tell application "fmGuiLib" to fmGUI_ManageScripts_Open(prefs)
 end fmGUI_ManageScripts_Open
 
+on getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
+end getFmAppProcessID

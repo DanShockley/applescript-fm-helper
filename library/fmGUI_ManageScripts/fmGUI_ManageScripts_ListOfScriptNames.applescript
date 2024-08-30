@@ -5,6 +5,7 @@
 
 (*
 HISTORY:
+	2024-07-23 ( danshockley ): Updated to tell app by PATH (works-with-FM19+). 
 	1.3.1 - 2019-03-13 ( eshagdar ): updated error message. reformated logic for clarity and brevity.
 	1.3 - 2018-09-20 ( eshagdar ): FileMaker 17 has only version so talk to it by name.
 	1.2 - 2016-07-08 ( eshagdar ): Renamed from 'namesOfScriptsOfDatabase' to 'fmGUI_ManageScripts_ListOfScriptNames'
@@ -13,8 +14,7 @@ HISTORY:
 
 
 REQUIRES:
-	«list of handlers required»
-	«list of handlers required»
+	getFmAppPath
 *)
 
 
@@ -27,12 +27,16 @@ end run
 --------------------
 
 on fmGUI_ManageScripts_ListOfScriptNames(someDbName)
-	-- version 1.3.1
+	-- version 2024-07-23
 	
 	try
-		tell application "FileMaker Pro Advanced"
-			if (count of every FileMaker script of database someDbName) is greater than 0 then return name of every FileMaker script of database someDbName
-		end tell
+		set appPosixPath to getFmAppPath()
+		
+		using terms from application "FileMaker Pro"
+			tell application appPosixPath
+				if (count of every FileMaker script of database someDbName) is greater than 0 then return name of every FileMaker script of database someDbName
+			end tell
+		end using terms from
 		
 		return {}
 	on error errMsg number errNum
@@ -44,3 +48,7 @@ end fmGUI_ManageScripts_ListOfScriptNames
 --------------------
 -- END OF CODE
 --------------------
+
+on getFmAppPath()
+	tell application "fmGuiLib" to getFmAppPath()
+end getFmAppPath

@@ -5,6 +5,7 @@
 
 (*
 HISTORY:
+	2024-07-23 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	2020-03-03 ( dshockley, hdu ): Updated as standalone function for fm-scripts git repository. Minor typo fixes. Note: the altPatterns value is passed down into the 'Select' sub-handler.
 	2017-08-02 ( eshagdar ): run as full access should grant/revoke full access, not include/exclude from menu.
 	2017-06-14 ( eshagdar ): narrowed scope.
@@ -18,8 +19,8 @@ REQUIRES:
 	fmGUI_ManageScripts_FmScript_Select
 	fmGUI_ManageScripts_Open
 	fmGUI_SelectAll
-	logConsole
-	
+	getFmAppProcessID
+	logConsole	
 *)
 
 property debugMode : true
@@ -34,7 +35,7 @@ end run
 --------------------
 
 on fmGUI_ManageScripts_FmScript_Change(prefs)
-	-- version 2020-03-04-1528
+	-- version 2024-07-23
 	
 	-- NOTE: pasteScriptStepsFromClipbrd is no misspelled - applescript breaks when the variable is correctly spelled.
 	set defaultPrefs to {fmScriptName:null, includeInMenu:null, runFullAccess:null, renameOnly:false, doNotChangeExisting:false, altPatterns:null, pasteScriptStepsFromClipbrd:null}
@@ -44,15 +45,18 @@ on fmGUI_ManageScripts_FmScript_Change(prefs)
 	set includeInMenu to includeInMenu of prefs
 	set runFullAccess to runFullAccess of prefs
 	
-	
-	-- if pasteScriptStepsFromClipbrd is FALSE, then only rename the script - do not change script steps. 
+	try
+		set fmProcID to fmProcID of prefs
+	on error
+		set fmProcID to my getFmAppProcessID()
+	end try
 	
 	try
 		fmGUI_AppFrontMost()
 		fmGUI_ManageScripts_Open({})
 		
+		-- if pasteScriptStepsFromClipbrd is FALSE, then only rename the script - do not change script steps. 
 		if pasteScriptStepsFromClipbrd of prefs is null then error "The parameter 'pasteScriptStepsFromClipbrd' MUST be specified." number 1024
-		
 		
 		set scriptSelected to fmGUI_ManageScripts_FmScript_Select(prefs)
 		
@@ -72,7 +76,7 @@ on fmGUI_ManageScripts_FmScript_Change(prefs)
 		
 		-- make sure the script name is up-to-date:
 		tell application "System Events"
-			tell application process "FileMaker Pro Advanced"
+			tell process id fmProcID
 				set currentFmScriptName to name of UI element 1 of (first row of outline 1 of scroll area 1 of splitter group 1 of window 1 whose selected is true)
 				if currentFmScriptName is not equal to fmScriptName of prefs then
 					set ScriptNameTabButton to first button of splitter group 1 of window 1 whose description is currentFmScriptName
@@ -91,7 +95,7 @@ on fmGUI_ManageScripts_FmScript_Change(prefs)
 		-- Include in Menu --- might as well run this now, even if only renaming, since saved automatically:
 		if includeInMenu is not null then
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell process id fmProcID
 					set includeInMenuMenuItem to first menu item of menu 1 of menu bar item "Scripts" of menu bar 1 whose name contains "Scripts Menu"
 					set includeInMenuMenuName to name of includeInMenuMenuItem
 					set includeInMenuStatus to word 1 of includeInMenuMenuName
@@ -113,7 +117,7 @@ on fmGUI_ManageScripts_FmScript_Change(prefs)
 			-- Full Access:
 			if runFullAccess is not null then
 				tell application "System Events"
-					tell application process "FileMaker Pro Advanced"
+					tell process id fmProcID
 						set FullAccessMenuItem to first menu item of menu 1 of menu bar item "Scripts" of menu bar 1 whose name contains "Full Access Privileges"
 						set FullAccessMenuName to name of FullAccessMenuItem
 						set FullAccessStatus to word 1 of FullAccessMenuName
@@ -130,7 +134,7 @@ on fmGUI_ManageScripts_FmScript_Change(prefs)
 			if pasteScriptStepsFromClipbrd of prefs then
 				-- select old steps, delete old steps, paste new from clipboard:	
 				tell application "System Events"
-					tell application process "FileMaker Pro Advanced"
+					tell process id fmProcID
 						select first row of table 1 of scroll area 2 of splitter group 1 of window 1
 					end tell
 				end tell
@@ -139,7 +143,7 @@ on fmGUI_ManageScripts_FmScript_Change(prefs)
 				
 				delay 0.1
 				tell application "System Events"
-					tell application process "FileMaker Pro Advanced"
+					tell process id fmProcID
 						key code 51 -- delete
 						delay 0.1
 						keystroke "v" using command down
@@ -156,7 +160,7 @@ on fmGUI_ManageScripts_FmScript_Change(prefs)
 		if changesMade then
 			-- SAVE Changes before closing: 
 			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+				tell process id fmProcID
 					click menu item "Save Script" of menu "Scripts" of menu bar 1
 					click menu item "Close Tab" of menu "View" of menu bar 1
 				end tell
@@ -181,7 +185,6 @@ on fmGUI_AppFrontMost()
 	tell application "fmGuiLib" to fmGUI_AppFrontMost()
 end fmGUI_AppFrontMost
 
-
 on fmGUI_ManageScripts_FmScript_Select(prefs)
 	tell application "fmGuiLib" to fmGUI_ManageScripts_FmScript_Select(prefs)
 end fmGUI_ManageScripts_FmScript_Select
@@ -197,4 +200,8 @@ end fmGUI_SelectAll
 on logConsole(processName, consoleMsg)
 	tell application "fmGuiLib" to logConsole(processName, consoleMsg)
 end logConsole
+
+on getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
+end getFmAppProcessID
 

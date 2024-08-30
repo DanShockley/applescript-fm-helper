@@ -5,6 +5,7 @@
 
 (*
 HISTORY
+	2024-07-23 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
 	2020-03-04 ( dshockley ): Fixed typo in comments.
 	1.2 - 2017-08-07 ( eshagdar ): wait until window renders.
 	1.1 - 
@@ -14,6 +15,7 @@ HISTORY
 REQUIRES:
 	fmGUI_AppFrontMost
 	fmGUI_NameOfFrontmostWindow
+	getFmAppProcessID
 	windowWaitUntil
 *)
 
@@ -27,7 +29,13 @@ end run
 --------------------
 
 on fmGUI_ManageScripts_Open(prefs)
-	-- version 2020-03-04-1537
+	-- version 2024-07-23
+	
+	try
+		set fmProcID to fmProcID of prefs
+	on error
+		set fmProcID to my getFmAppProcessID()
+	end try
 	
 	try
 		fmGUI_AppFrontMost()
@@ -36,8 +44,8 @@ on fmGUI_ManageScripts_Open(prefs)
 		if fmGUI_NameOfFrontmostWindow() contains windowNamePrefix then
 			return true
 		else
-			tell application "System Events"
-				tell application process "FileMaker Pro Advanced"
+		tell application "System Events"
+			tell process id fmProcID
 					click (first menu item of menu 1 of menu item "Manage" of menu 1 of menu bar item "File" of menu bar 1 whose name starts with "Scripts")
 				end tell
 			end tell
@@ -65,3 +73,7 @@ end fmGUI_NameOfFrontmostWindow
 on windowWaitUntil(prefs)
 	tell application "fmGuiLib" to windowWaitUntil(prefs)
 end windowWaitUntil
+
+on getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
+end getFmAppProcessID

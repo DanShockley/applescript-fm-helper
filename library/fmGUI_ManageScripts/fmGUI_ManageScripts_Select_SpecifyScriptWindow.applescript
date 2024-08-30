@@ -4,18 +4,20 @@
 
 
 (*
+
+HISTORY:
+	2024-07-23 ( danshockley ): Updated to tell app by process ID (works-with-FM19+). 
+	1.0.1 - 2018-01-09 ( eshagdar ): try filtering a second time if it fails at first.
+	1.0 - 2017-12-20 ( eshagdar ): first created
+
 REQUIRES:
 	fmGUI_AppFrontMost
 	fmGUI_NameOfFrontmostWindow
 	fmGUI_ObjectClick_OkButton
 	fmGUI_PopupSet
 	fmGUI_TextFieldSet
+	getFmAppProcessID
 	getTextBetween
-
-
-HISTORY:
-	1.0.1 - 2018-01-09 ( eshagdar ): try filtering a second time if it fails at first.
-	1.0 - 2017-12-20 ( eshagdar ): first created
 *)
 
 
@@ -28,7 +30,7 @@ end run
 --------------------
 
 on fmGUI_ManageScripts_Select_SpecifyScriptWindow(prefs)
-	-- version 1.0.1
+	-- version 2024-07-23
 	
 	try
 		set defaultPrefs to {dbName:null, scriptName:null, scriptParams:null}
@@ -36,6 +38,12 @@ on fmGUI_ManageScripts_Select_SpecifyScriptWindow(prefs)
 		set dbName to dbName of prefs
 		set scriptName to scriptName of prefs
 		set scriptParams to scriptParams of prefs
+		
+		try
+			set fmProcID to fmProcID of prefs
+		on error
+			set fmProcID to my getFmAppProcessID()
+		end try
 		
 		
 		fmGUI_AppFrontMost()
@@ -185,6 +193,10 @@ end fmGUI_TextFieldSet
 on getTextBetween(prefs)
 	tell application "fmGuiLib" to getTextBetween(prefs)
 end getTextBetween
+
+on getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
+end getFmAppProcessID
 
 
 
