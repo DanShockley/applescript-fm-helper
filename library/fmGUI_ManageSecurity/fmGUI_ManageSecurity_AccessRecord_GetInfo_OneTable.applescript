@@ -35,7 +35,7 @@ on fmGUI_ManageSecurity_AccessRecord_GetInfo_OneTable(prefs)
 		windowWaitUntil_FrontIS({windowName:"Custom Record Privileges"})
 		
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				select (first row of table 1 of scroll area 1 of window 1 whose value of static text 1 is equal to tableName of prefs)
 				set oneTableRec to {baseTable:tableName of prefs Â
 					, viewAccess:value of pop up button "View" of window 1 Â

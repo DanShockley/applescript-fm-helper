@@ -22,7 +22,7 @@ end run
 on fmGUI_Window_Close(someWindowName)
 	-- version 1.2
 	
-	tell application "FileMaker Pro Advanced" to close window someWindowName
+	tell application "FileMaker Pro" to close window someWindowName
 	return true
 	
 end fmGUI_Window_Close

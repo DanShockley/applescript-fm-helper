@@ -35,7 +35,7 @@ on fmGUI_ManageSecurity_PrivSet_Update_ExtendedPrivileges(prefs)
 		fmGUI_AppFrontMost()
 		
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set windowName to name of window 1
 				set extendPrivRows to rows of table 1 of scroll area 1 of window 1
 			end tell
@@ -49,7 +49,7 @@ on fmGUI_ManageSecurity_PrivSet_Update_ExtendedPrivileges(prefs)
 		repeat with oneExtendedPrivRow in extendPrivRows
 			set oneExtendedPrivRow to contents of oneExtendedPrivRow
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set oneExtendedPrivCheckbox to checkbox 1 of oneExtendedPrivRow
 					set oneExtendedPrivName to name of oneExtendedPrivCheckbox
 				end tell

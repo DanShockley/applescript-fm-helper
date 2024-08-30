@@ -35,7 +35,7 @@ on fmGUI_Menu_RunScript(prefs)
 		delay 0.1
 		
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				
 				-- IF script workspace is the frontmost window, tell the user don't do that: 
 				try

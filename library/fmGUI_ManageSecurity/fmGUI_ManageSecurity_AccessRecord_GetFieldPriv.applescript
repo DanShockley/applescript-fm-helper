@@ -34,7 +34,7 @@ on fmGUI_ManageSecurity_AccessRecord_GetFieldPriv(prefs)
 		
 		-- get lists of the name and privilege
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set nameList to name of static text 1 of every row of table 1 of scroll area 1 of window 1
 				set privList to name of static text 2 of every row of table 1 of scroll area 1 of window 1
 			end tell

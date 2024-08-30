@@ -53,7 +53,7 @@ on fmGUI_ManageSecurity_Save(prefs)
 		
 		
 		-- confirm with full access account
-		if fmGUI_NameOfFrontmostWindow() is equal to "FileMaker Pro Advanced" then fmGUI_ObjectClick_Button({buttonName:"Allow"})
+		if fmGUI_NameOfFrontmostWindow() is equal to "FileMaker Pro" then fmGUI_ObjectClick_Button({buttonName:"Allow"})
 		if fmGUI_NameOfFrontmostWindow() begins with authWindowName then fmGUI_AuthenticateDialog({accountName:fullAccessAccountName of prefs, pwd:fullAccessPassword of prefs, windowname:authWindowName})
 		
 		

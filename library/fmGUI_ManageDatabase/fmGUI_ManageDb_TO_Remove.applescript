@@ -39,7 +39,7 @@ on fmGUI_ManageDb_TO_Remove(prefs)
 			-- ensure we're in the TO graph
 			fmGUI_ManageDb_GoToTab_Relationships({})
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set frontmost to true
 					set windowPos to position of window 1
 					set windowSize to size of window 1
@@ -52,7 +52,7 @@ on fmGUI_ManageDb_TO_Remove(prefs)
 			
 			-- attempt to select the TO to remove
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					keystroke TOName of prefs
 					keystroke "o" using {command down}
 				end tell
@@ -62,7 +62,7 @@ on fmGUI_ManageDb_TO_Remove(prefs)
 			-- confirm selected TO is the correct one
 			windowWaitUntil_FrontIS({windowName:"Specify Table"})
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set selectedTOName to value of text field "name" of window 1
 				end tell
 			end tell
@@ -73,14 +73,14 @@ on fmGUI_ManageDb_TO_Remove(prefs)
 		
 		-- delete TO
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set deleteButton to first button of tab group 1 of window 1 whose description is "Delete"
 			end tell
 		end tell
 		fmGUI_ObjectClick_Button({buttonRef:deleteButton})
-		windowWaitUntil_FrontIS({windowName:"FileMaker Pro Advanced"})
+		windowWaitUntil_FrontIS({windowName:"FileMaker Pro"})
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set removeButton to button "Remove" of window 1
 			end tell
 		end tell

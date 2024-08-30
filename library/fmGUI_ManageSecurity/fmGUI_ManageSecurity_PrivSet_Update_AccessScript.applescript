@@ -39,7 +39,7 @@ on fmGUI_ManageSecurity_PrivSet_Update_AccessScript(prefs)
 		fmGUI_AppFrontMost()
 		
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set windowName to name of window 1
 				set scriptsPopup to pop up button "Scripts:" of window 1
 			end tell
@@ -56,7 +56,7 @@ on fmGUI_ManageSecurity_PrivSet_Update_AccessScript(prefs)
 			windowWaitUntil_FrontIS({windowName:"Custom Script Privileges"})
 			-- get button refs to for each radio button
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set allowCreate to checkbox "Allow creation of new scripts" of window 1
 					
 					set modifyCheckbox to checkbox 2 of window 1
@@ -73,7 +73,7 @@ on fmGUI_ManageSecurity_PrivSet_Update_AccessScript(prefs)
 			repeat with oneScriptRec in scriptPrivList of scriptsAccess of prefs
 				set oneScriptRec to contents of oneScriptRec
 				tell application "System Events"
-					tell process "FileMaker Pro Advanced"
+					tell application process "FileMaker Pro"
 						set oneScriptRow to (first row of table 1 of scroll area 1 of window 1 whose name of static text 1 is ScriptName of oneScriptRec)
 						select oneScriptRow
 						set oneScriptInfo to name of every static text of oneScriptRow

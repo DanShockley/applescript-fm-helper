@@ -56,7 +56,7 @@ on fmGUI_fullAccessToggle(prefs)
 			-- LEAVE full access
 			
 			try
-				tell application "FileMaker Pro Advanced"
+				tell application "FileMaker Pro"
 					do script (first FileMaker script whose name contains (script_leaveFullAccess of prefs))
 					if debugMode then logConsole(scriptName, "fmGUI_fullAccessToggle ran script: " & script_leaveFullAccess)
 				end tell
@@ -72,7 +72,7 @@ on fmGUI_fullAccessToggle(prefs)
 			-- ENTER full access			
 			
 			try
-				tell application "FileMaker Pro Advanced"
+				tell application "FileMaker Pro"
 					do script (first FileMaker script whose name contains (script_enterFullAccess of prefs))
 					if debugMode then logConsole(scriptName, "fmGUI_fullAccessToggle ran script: " & script_enterFullAccess)
 				end tell

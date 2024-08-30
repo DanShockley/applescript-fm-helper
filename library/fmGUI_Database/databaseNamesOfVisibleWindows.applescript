@@ -35,7 +35,7 @@ on databaseNamesOfVisibleWindows(prefs)
 	set prefs to prefs & defaultPrefs
 	
 		
-	using terms from application "FileMaker Pro Advanced"
+	using terms from application "FileMaker Pro"
 		tell application ID "com.filemaker.client.pro12"
 			set visibleWindowNames to name of every window whose visible is true
 		end tell

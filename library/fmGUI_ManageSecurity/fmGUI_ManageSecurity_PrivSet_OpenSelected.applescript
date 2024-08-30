@@ -31,7 +31,7 @@ on fmGUI_ManageSecurity_PrivSet_OpenSelected(prefs)
 	try
 		fmGUI_AppFrontMost()
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				if name of window 1 does not start with "Manage Security" then error "Manage Security window must be open" number -1024
 				set editButton to first button of tab group 1 of window 1 whose name is "Edit…"
 				if enabled of editButton is false then error "PrivSet is not selected" number -1024

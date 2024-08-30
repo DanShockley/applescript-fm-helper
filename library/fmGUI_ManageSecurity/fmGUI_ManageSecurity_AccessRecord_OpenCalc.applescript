@@ -52,7 +52,7 @@ on fmGUI_ManageSecurity_AccessRecord_OpenCalc(prefs)
 		
 		-- now open the specified calc box
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				click pop up button buttonNum of window 1
 				click menu item 2 of menu 1 of pop up button buttonNum of window 1
 			end tell

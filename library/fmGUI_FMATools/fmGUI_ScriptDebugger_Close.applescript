@@ -27,7 +27,7 @@ on fmGUI_ScriptDebugger_Close()
 	
 	fmGUI_AppFrontMost()
 	tell application "System Events"
-		tell process "FileMaker Pro Advanced"
+		tell application process "FileMaker Pro"
 			
 			try
 				(* 

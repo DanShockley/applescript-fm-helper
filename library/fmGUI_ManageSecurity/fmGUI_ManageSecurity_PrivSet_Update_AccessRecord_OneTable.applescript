@@ -42,7 +42,7 @@ on fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_OneTable(prefs)
 		
 		
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				-- get button refs to edit each row
 				set viewButton to pop up button "View" of window 1
 				set editButton to pop up button "Edit" of window 1

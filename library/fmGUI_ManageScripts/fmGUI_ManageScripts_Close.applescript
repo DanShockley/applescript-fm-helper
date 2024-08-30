@@ -48,7 +48,7 @@ on fmGUI_ManageScripts_Close(prefs)
 				end tell
 			end tell
 			
-			if fmGUI_NameOfFrontmostWindow() is equal to "FileMaker Pro Advanced" then error "There is at least one unsaved script." number -1024
+			if fmGUI_NameOfFrontmostWindow() is equal to "FileMaker Pro" then error "There is at least one unsaved script." number -1024
 			return windowWaitUntil({windowName:windowNamePrefix, windowNameTest:"does not start with", whichWindow:"front"})
 		end if
 		

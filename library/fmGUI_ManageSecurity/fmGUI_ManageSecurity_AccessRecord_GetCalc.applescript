@@ -36,7 +36,7 @@ on fmGUI_ManageSecurity_AccessRecord_GetCalc(prefs)
 		fmGUI_ManageSecurity_AccessRecord_OpenCalc(prefs)
 		
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				if calcFor of prefs is equal to "field" then
 					if name of window 1 is not "Custom Field Privileges" then error "must be on specify calculation window" number -1024
 					set calcValue to my fmGUI_ManageSecurity_AccessRecord_GetFieldPriv({})

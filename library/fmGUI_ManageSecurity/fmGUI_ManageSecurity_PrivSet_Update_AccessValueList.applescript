@@ -39,7 +39,7 @@ on fmGUI_ManageSecurity_PrivSet_Update_AccessValueList(prefs)
 		fmGUI_AppFrontMost()
 		
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set windowName to name of window 1
 				set valueListsPopup to pop up button "Value Lists:" of window 1
 			end tell
@@ -56,7 +56,7 @@ on fmGUI_ManageSecurity_PrivSet_Update_AccessValueList(prefs)
 			windowWaitUntil_FrontIS({windowName:"Custom Value List Privileges"})
 			-- get button refs to for each radio button
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set allowCreate to checkbox "Allow creation of new value lists" of window 1
 					
 					set modifyCheckbox to checkbox 2 of window 1
@@ -73,7 +73,7 @@ on fmGUI_ManageSecurity_PrivSet_Update_AccessValueList(prefs)
 			repeat with oneVLRec in vlPrivList of vlAccess of prefs
 				set oneVLRec to contents of oneVLRec
 				tell application "System Events"
-					tell process "FileMaker Pro Advanced"
+					tell application process "FileMaker Pro"
 						set oneVLRow to (first row of table 1 of scroll area 1 of window 1 whose name of static text 1 is vlName of oneVLRec)
 						select oneVLRow
 						set oneVLInfo to name of every static text of oneVLRow

@@ -57,7 +57,7 @@ on fmGUI_ManageSecurity_Cancel(prefs)
 		
 		
 		-- wait until window is gone
-		windowWaitUntil({whichWindow:"front", windowNameTest:"is not", windowName:"FileMaker Pro Advanced"})
+		windowWaitUntil({whichWindow:"front", windowNameTest:"is not", windowName:"FileMaker Pro"})
 		windowWaitUntil({whichWindow:"front", windowNameTest:"does not start with", windowName:"Manage Security"})
 		
 		return true

@@ -50,7 +50,7 @@ on fmGUI_ManageSecurity_PrivSet_Update(prefs)
 		
 		-- open selected priv ( if needed )
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set windowName to name of window 1
 			end tell
 		end tell
@@ -59,7 +59,7 @@ on fmGUI_ManageSecurity_PrivSet_Update(prefs)
 			
 			-- now check again since we should have opened the privSet
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set windowName to name of window 1
 				end tell
 			end tell
@@ -69,7 +69,7 @@ on fmGUI_ManageSecurity_PrivSet_Update(prefs)
 		
 		-- ensure we're dealing with the correct PrivSet
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set currentlyOpenPrivSet to value of text field 1 of window 1
 			end tell
 		end tell
@@ -78,7 +78,7 @@ on fmGUI_ManageSecurity_PrivSet_Update(prefs)
 		
 		-- get object references for privSet
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set descriptionTextField to text field "Description" of window 1
 				
 				set allowPrintingCheckbox to checkbox "Allow printing" of window 1

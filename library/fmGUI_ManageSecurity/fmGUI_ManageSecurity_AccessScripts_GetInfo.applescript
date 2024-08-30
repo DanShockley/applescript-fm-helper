@@ -35,7 +35,7 @@ on fmGUI_ManageSecurity_AccessScripts_GetInfo(prefs)
 		
 		-- get lists of the name and privilege
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set allowCreate to value of checkbox 1 of window 1
 				set nameList to name of static text 1 of every row of table 1 of scroll area 1 of window 1
 				set privList to name of static text 3 of every row of table 1 of scroll area 1 of window 1

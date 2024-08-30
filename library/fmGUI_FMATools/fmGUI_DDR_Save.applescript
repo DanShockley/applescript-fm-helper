@@ -52,7 +52,7 @@ on fmGUI_DDR_Save(prefs)
 		-- open DDR dialog and select options
 		fmGUI_AppFrontMost()
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set ddrMenuItem to menu item "Database Design Report..." of menu "Tools" of menu bar item "Tools" of menu bar 1
 			end tell
 		end tell
@@ -65,7 +65,7 @@ on fmGUI_DDR_Save(prefs)
 		
 		
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				-- generate XML ( not HTML )
 				click radio button 2 of window 1
 				
@@ -79,7 +79,7 @@ on fmGUI_DDR_Save(prefs)
 		
 		
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				-- view as columns
 				click radio button 3 of radio group 1 of group 1 of window 1
 				delay 0.5
@@ -120,7 +120,7 @@ on fmGUI_DDR_Save(prefs)
 			-- dimiss dialogs
 			try
 				set frontWindowName to fmGUI_NameOfFrontmostWindow()
-				if frontWindowName is "FileMaker Pro Advanced" then
+				if frontWindowName is "FileMaker Pro" then
 					fmGUI_ObjectClick_OkButton({})
 					delay 1
 					fmGUI_ObjectClick_CancelButton({})

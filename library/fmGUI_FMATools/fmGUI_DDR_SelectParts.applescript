@@ -34,7 +34,7 @@ on fmGUI_DDR_SelectParts(prefs)
 		-- get list of available parts
 		fmGUI_AppFrontMost()
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set partsTable to table "Include in report:" of scroll area 3 of window 1
 				set listAvailableParts to name of checkbox 1 of rows of partsTable
 			end tell
@@ -46,7 +46,7 @@ on fmGUI_DDR_SelectParts(prefs)
 		
 		repeat with iter from 1 to count of listAvailableParts
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set onePartIncludeCheckboxRef to checkbox 1 of row iter of partsTable
 					set onePartIncludeCheckboxValue to value of onePartIncludeCheckboxRef
 				end tell
@@ -56,7 +56,7 @@ on fmGUI_DDR_SelectParts(prefs)
 				(onePartName is not in partsList and onePartIncludeCheckboxValue is 1) then
 				-- need to UI script since the table may need to be scrolled
 				tell application "System Events"
-					tell process "FileMaker Pro Advanced"
+					tell application process "FileMaker Pro"
 						click onePartIncludeCheckboxRef
 					end tell
 				end tell

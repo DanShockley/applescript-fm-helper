@@ -44,7 +44,7 @@ on fmGUI_ManageSecurity_AccessRecord_UpdateFieldPriv(prefs)
 		-- if true, then force every field in this table to be ViewOnly
 		if FieldsViewOnly of prefs or FieldsModifiable of prefs or FieldsNoAccess of prefs then
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set fieldsInTable to value of static text 1 of rows of table 1 of scroll area 1 of window 1
 				end tell
 			end tell
@@ -68,7 +68,7 @@ on fmGUI_ManageSecurity_AccessRecord_UpdateFieldPriv(prefs)
 		repeat with oneFieldRec in fieldList
 			set oneFieldRec to contents of oneFieldRec
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					select (first row of table 1 of scroll area 1 of window 1 whose value of static text 1 is fieldName of oneFieldRec)
 					set fieldPrivObj to (first radio button of window 1 whose name contains fieldPriv of oneFieldRec)
 				end tell

@@ -15,7 +15,7 @@ tell application "fmGuiLib" to fmGUI_ManageSecurity_GoToTab_ExtendedPrivs(creden
 -- delete deprecated extended privilege	
 try
 	tell application "System Events"
-		tell process "FileMaker Pro Advanced"
+		tell application process "FileMaker Pro"
 			select (first row of table 1 of scroll area 1 of tab group 1 of window 1 whose value of static text 1 is equal to removePrivName)
 			click button "Delete" of tab group 1 of window 1
 		end tell
@@ -27,7 +27,7 @@ end try
 try
 	-- find and open edit window for priv
 	tell application "System Events"
-		tell process "FileMaker Pro Advanced"
+		tell application process "FileMaker Pro"
 			select (first row of table 1 of scroll area 1 of tab group 1 of window 1 whose value of static text 1 is equal to updatePrivName)
 			set editButton to first button of tab group 1 of window 1 whose name begins with "Edit"
 		end tell
@@ -38,7 +38,7 @@ try
 	
 	-- edit priv and save change
 	tell application "System Events"
-		tell process "FileMaker Pro Advanced"
+		tell application process "FileMaker Pro"
 			set onBox to checkbox 1 of (first row of table 1 of scroll area 1 of window 1 whose value of static text 1 is equal to privSet)
 			if value of onBox is 0 then click onBox
 		end tell

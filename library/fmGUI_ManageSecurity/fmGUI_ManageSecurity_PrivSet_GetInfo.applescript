@@ -47,7 +47,7 @@ on fmGUI_ManageSecurity_PrivSet_GetInfo(prefs)
 		-- open edit PrivSet window if needed
 		set needToOpenEditWindow to true
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				if name of window 1 is "Edit Privilege Set" then set needToOpenEditWindow to false
 			end tell
 		end tell
@@ -58,7 +58,7 @@ on fmGUI_ManageSecurity_PrivSet_GetInfo(prefs)
 		
 		-- now the the info
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set privSetInfo to {privSetName:value of text field "Privilege Set Name" of window 1, privSetDesc:value of text field "Description" of window 1, accessRecord:value of pop up button "Records:" of window 1, accessLayout:value of pop up button "Layouts:" of window 1, accessVL:value of pop up button "Value Lists:" of window 1, accessScript:value of pop up button "Scripts:" of window 1, extendedPrivList:name of checkbox 1 of (every row of table 1 of scroll area 1 of window 1 whose value of checkbox 1 is 1), allowPrinting:value of checkbox "Allow printing" of window 1, allowExporting:value of checkbox "Allow exporting" of window 1, mangeExtPriv:value of checkbox "Manage extended privileges" of window 1, allowOverride:value of checkbox "Allow user to override data validation warnings" of window 1, disconnectIdle:value of checkbox "Disconnect user from server when idle" of window 1, modifyPwd:value of checkbox "Allow user to modify their own password" of window 1, menuCommands:value of pop up button "Available menu commands:" of window 1}
 			end tell
 		end tell
@@ -82,7 +82,7 @@ on fmGUI_ManageSecurity_PrivSet_GetInfo(prefs)
 			-- layout access
 			if accessLayout of privSetInfo is equal to customPriv then
 				tell application "System Events"
-					tell process "FileMaker Pro Advanced"
+					tell application process "FileMaker Pro"
 						set popUpButtonRef to pop up button "Layouts:" of window 1
 						click popUpButtonRef
 						click menu item customPriv of menu 1 of popUpButtonRef
@@ -95,7 +95,7 @@ on fmGUI_ManageSecurity_PrivSet_GetInfo(prefs)
 			-- value list access
 			if accessVL of privSetInfo is equal to customPriv then
 				tell application "System Events"
-					tell process "FileMaker Pro Advanced"
+					tell application process "FileMaker Pro"
 						set popUpButtonRef to pop up button "Value Lists:" of window 1
 						click popUpButtonRef
 						click menu item customPriv of menu 1 of popUpButtonRef
@@ -108,7 +108,7 @@ on fmGUI_ManageSecurity_PrivSet_GetInfo(prefs)
 			-- script access
 			if accessScript of privSetInfo is equal to customPriv then
 				tell application "System Events"
-					tell process "FileMaker Pro Advanced"
+					tell application process "FileMaker Pro"
 						set popUpButtonRef to pop up button "Scripts:" of window 1
 						click popUpButtonRef
 						click menu item customPriv of menu 1 of popUpButtonRef

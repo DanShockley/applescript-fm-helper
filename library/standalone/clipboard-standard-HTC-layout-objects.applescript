@@ -37,13 +37,13 @@ if debugMode then tell application "fmGuiLib" to logConsole("", "START")
 
 -- get table and list of non-standard field names
 tell application "System Events"
-	tell process "FileMaker Pro Advanced"
+	tell application process "FileMaker Pro"
 		set insertFieldMenuItem to first menu item of menu "Insert" of menu bar item "Insert" of menu bar 1 whose name starts with "Field"
 	end tell
 end tell
 tell application "fmGuiLib" to fmGUI_ClickMenuItem({menuItemRef:my coerceToString(insertFieldMenuItem)})
 tell application "System Events"
-	tell process "FileMaker Pro Advanced"
+	tell application process "FileMaker Pro"
 		set tablePopUpObj to pop up button 1 of window 1
 		set tableName to value of tablePopUpObj
 		if tableName does not start with "Current Table" then

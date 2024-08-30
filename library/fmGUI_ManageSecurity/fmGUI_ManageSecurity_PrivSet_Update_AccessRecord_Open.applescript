@@ -39,7 +39,7 @@ on fmGUI_ManageSecurity_PrivSet_Update_AccessRecord_Open(prefs)
 		
 		-- set record access pop up, waiting for  custom privileges window if needed
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set recordsPopup to pop up button "Records:" of window 1
 			end tell
 		end tell

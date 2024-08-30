@@ -51,7 +51,7 @@ on fmGUI_ManageLayouts_Edit(prefs)
 		-- todo: check for first STANDARD window
 		if fmGUI_NameOfFrontmostWindow() is equal to editWindowName then
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set currentLayoutName to value of text field "Layout Name" of tab group 1 of window 1
 				end tell
 			end tell
@@ -85,7 +85,7 @@ on fmGUI_ManageLayouts_Edit(prefs)
 		
 		-- edit layout settings - GENERAL
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set tabButton to radio button "General" of tab group 1 of window 1
 			end tell
 		end tell
@@ -93,7 +93,7 @@ on fmGUI_ManageLayouts_Edit(prefs)
 		
 		-- ensure layout name is updated
 		tell application "System Events"
-			tell process "FileMaker Pro Advanced"
+			tell application process "FileMaker Pro"
 				set layoutNameObj to text field "Layout Name" of tab group 1 of window 1
 			end tell
 		end tell
@@ -102,7 +102,7 @@ on fmGUI_ManageLayouts_Edit(prefs)
 		
 		if not doNotChangeExisting of prefs then
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set includeInMenuCheck to checkbox "Include in layout menus" of tab group 1 of window 1
 					set sourceTO to pop up button 1 of tab group 1 of window 1
 					--set saveAutomaticallyCheck to checkbox "Save record changes automatically" of tab group 1 of window 1
@@ -124,14 +124,14 @@ on fmGUI_ManageLayouts_Edit(prefs)
 		if not doNotChangeExisting of prefs then
 			
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set tabButton to radio button "Views" of tab group 1 of window 1
 				end tell
 			end tell
 			fmGUI_ObjectClick_Button({buttonRef:tabButton})
 			
 			tell application "System Events"
-				tell process "FileMaker Pro Advanced"
+				tell application process "FileMaker Pro"
 					set formViewCheck to checkbox "Table View" of tab group 1 of window 1
 					set listViewCheck to checkbox "List View" of tab group 1 of window 1
 					set tableViewCheck to checkbox "Form View" of tab group 1 of window 1
