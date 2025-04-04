@@ -4,6 +4,7 @@
 
 (*
 HISTORY:
+	2025-04-04 ( danshockley ): Use getFmAppProcessID and then tell by process id. 
 	2023-04-21 ( danshockley ): Revised to be FileMaker-version-independent. 
 	2019-04-25 ( danshockley ): Provide visual feedback that the rows were copied by moving to the end of scroll area.
 	2017-xx-xx ( danshockley ): First created. 
@@ -19,14 +20,14 @@ end run
 --------------------
 
 on CopyValuesFromViewIndexWindow({})
-	-- version 2023-04-21 ( danshockley )
+	-- version 2025-04-04 ( danshockley )
+	
+	set fmProcID to my getFmAppProcessID()
 	
 	tell application "System Events"
-		set frontAppName to get name of first application process whose frontmost is true
-		if frontAppName does not contain "FileMaker" then return false
 		
-		tell application process frontAppName
-			--set frontmost to true
+		tell process id fmProcID
+			set frontmost to true
 			if name of window 1 is not "View Index" then
 				display dialog "Please choose View Index on the field you'd like the list of index values for." buttons {"OK"} default button "OK"
 				return false
@@ -54,3 +55,6 @@ end CopyValuesFromViewIndexWindow
 -- END OF CODE
 --------------------
 
+on getFmAppProcessID()
+	tell application "fmGuiLib" to getFmAppProcessID()
+end getFmAppProcessID
